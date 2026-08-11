@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galerie — GUNSTAR</title>
+<meta name="description" content="Galerie photos et vidéos GUNSTAR — les pièces, les shootings, les coulisses.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header__inner">
+    <a href="index.html" class="brand">
+      <span class="brand__badge">G★</span>
+      GUNSTAR
+    </a>
+    <nav class="nav">
+      <a href="index.html">Accueil</a>
+      <a href="galerie.html" aria-current="page">Galerie</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<section class="section section--tight">
+  <div class="container">
+    <p class="eyebrow">Visuels</p>
+    <h1 style="font-size:clamp(2.4rem,6vw,4rem);">Galerie</h1>
+    <p style="margin-top:1rem;">Photos et vidéos des pièces GUNSTAR — mets à jour cette page avec tes propres visuels (voir README.md pour la marche à suivre).</p>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="container">
+    <div class="filters" role="group" aria-label="Filtrer la galerie">
+      <button type="button" data-filter="all" aria-pressed="true">Tout</button>
+      <button type="button" data-filter="photo" aria-pressed="false">Photos</button>
+      <button type="button" data-filter="video" aria-pressed="false">Vidéos</button>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="container">
+    <div class="grid" data-gallery>
+      <!-- ================================================================
+           Chaque bouton ci-dessous = une case de la galerie.
+           Pour insérer un vrai visuel, remplace le contenu de
+           .media-card__placeholder par une balise <img> ou <video>,
+           et ajoute data-full-src="assets/img/tonfichier.jpg" sur le
+           bouton .media-card pour activer la lightbox.
+           Voir README.md pour un exemple complet.
+      ================================================================= -->
+
+      <button class="media-card reveal" data-type="photo" data-label="Look 01" aria-label="Ouvrir Look 01">
+        <span class="media-card__tag">Photo</span>
+        <div class="media-card__placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="6" width="18" height="14" rx="1.5"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2.5h5L16 6"/></svg>
+          <span>Look 01 — à venir</span>
+        </div>
+      </button>
+
+      <button class="media-card reveal" data-type="photo" data-label="Look 02" aria-label="Ouvrir Look 02">
+        <span class="media-card__tag">Photo</span>
+        <div class="media-card__placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="6" width="18" height="14" rx="1.5"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2.5h5L16 6"/></svg>
+          <span>Look 02 — à venir</span>
+        </div>
+      </button>
+
+      <button class="media-card reveal" data-type="video" data-label="Backstage" aria-label="Ouvrir la vidéo backstage">
+        <span class="media-card__tag">Vidéo</span>
+        <div class="media-card__placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+          <span>Backstage — à venir</span>
+        </div>
+      </button>
+
+      <button class="media-card reveal" data-type="photo" data-label="Look 03" aria-label="Ouvrir Look 03">
+        <span class="media-card__tag">Photo</span>
+        <div class="media-card__placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="6" width="18" height="14" rx="1.5"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2.5h5L16 6"/></svg>
+          <span>Look 03 — à venir</span>
+        </div>
+      </button>
+
+      <button class="media-card reveal" data-type="video" data-label="Teaser drop" aria-label="Ouvrir le teaser">
+        <span class="media-card__tag">Vidéo</span>
+        <div class="media-card__placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+          <span>Teaser — à venir</span>
+        </div>
+      </button>
+
+      <button class="media-card reveal" data-type="photo" data-label="Look 04" aria-label="Ouvrir Look 04">
+        <span class="media-card__tag">Photo</span>
+        <div class="media-card__placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="6" width="18" height="14" rx="1.5"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2.5h5L16 6"/></svg>
+          <span>Look 04 — à venir</span>
+        </div>
+      </button>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox">
+  <button class="lightbox__close" aria-label="Fermer">✕</button>
+  <div class="lightbox__content"></div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="stripe" style="margin-bottom:2.5rem;"></div>
+    <div class="footer__bottom">
+      <span>© 2026 GUNSTAR. Tous droits réservés.</span>
+      <a href="contact.html">Nous contacter</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/script.js"></script>
+</body>
+</html>
