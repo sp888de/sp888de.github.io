@@ -469,3 +469,23 @@ p { margin: 0 0 1rem; color: var(--bone-dim); max-width: 60ch; }
 /* ---------- Reveal on scroll ---------- */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+.landing-video-page {
+  margin: 0;
+  height: 100vh;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-link {
+  display: block;
+  cursor: pointer;
+}
+
+.landing-video {
+  max-width: 80vw;
+  max-height: 80vh;
+  display: block;
+}
