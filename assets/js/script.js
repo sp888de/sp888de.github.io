@@ -57,8 +57,8 @@ function initGallery() {
   const grid = document.querySelector('[data-gallery]');
   if (!grid) return;
 
-  const cards = Array.from(grid.querySelectorAll('.media-card'));
-  const filterButtons = document.querySelectorAll('.filters button');
+  const cards = Array.from(grid.querySelectorAll('.catalog-item'));
+  const filterButtons = document.querySelectorAll('.catalog-filters button');
 
   filterButtons.forEach(btn => {
     btn.addEventListener('click', () => {
