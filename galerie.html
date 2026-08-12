@@ -30,79 +30,120 @@
 
 <section class="section section--tight">
   <div class="container">
-    <p class="eyebrow">Visuels</p>
-    <h1 style="font-size:clamp(2.4rem,6vw,4rem);">Galerie</h1>
-    <p style="margin-top:1rem;">Photos et vidéos des pièces GUNSTAR — mets à jour cette page avec tes propres visuels (voir README.md pour la marche à suivre).</p>
-  </div>
-</section>
-
-<section class="section--tight">
-  <div class="container">
-    <div class="filters" role="group" aria-label="Filtrer la galerie">
-      <button type="button" data-filter="all" aria-pressed="true">Tout</button>
-      <button type="button" data-filter="photo" aria-pressed="false">Photos</button>
-      <button type="button" data-filter="video" aria-pressed="false">Vidéos</button>
+    <div class="catalog-head">
+      <div>
+        <p class="eyebrow">Visuels</p>
+        <h1 style="font-size:clamp(2.4rem,6vw,4rem);">Galerie</h1>
+        <p style="margin-top:1rem;">Photos et vidéos des pièces GUNSTAR — mets à jour cette page avec tes propres visuels (voir README.md pour la marche à suivre).</p>
+      </div>
+      <div class="catalog-filters" role="group" aria-label="Filtrer la galerie">
+        <button type="button" data-filter="all" aria-pressed="true">Tout</button>
+        <button type="button" data-filter="photo" aria-pressed="false">Photos</button>
+        <button type="button" data-filter="video" aria-pressed="false">Vidéos</button>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="section section--tight">
   <div class="container">
-    <div class="grid" data-gallery>
+    <div class="catalog" data-gallery>
       <!-- ================================================================
-           Chaque bouton ci-dessous = une case de la galerie.
+           Chaque bouton ci-dessous = une case du catalogue.
            Pour insérer un vrai visuel, remplace le contenu de
-           .media-card__placeholder par une balise <img> ou <video>,
+           .catalog-item__placeholder par une balise <img> ou <video>,
            et ajoute data-full-src="assets/img/tonfichier.jpg" sur le
-           bouton .media-card pour activer la lightbox.
+           bouton .catalog-item pour activer la lightbox.
            Voir README.md pour un exemple complet.
       ================================================================= -->
 
-      <button class="media-card reveal" data-type="photo" data-label="Look 01" aria-label="Ouvrir Look 01">
-        <span class="media-card__tag">Photo</span>
-        <div class="media-card__placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="6" width="18" height="14" rx="1.5"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2.5h5L16 6"/></svg>
-          <span>Look 01 — à venir</span>
+      <button class="catalog-item reveal" data-type="photo" data-label="Look 01" aria-label="Ouvrir Look 01">
+        <div class="catalog-item__media">
+          <span class="catalog-item__index">N°01</span>
+          <div class="catalog-item__placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="6" width="18" height="14" rx="1.5"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2.5h5L16 6"/></svg>
+            <span>À venir</span>
+          </div>
+        </div>
+        <div class="catalog-item__caption">
+          <span class="name">Look 01</span>
+          <span class="type">Photo</span>
         </div>
       </button>
 
-      <button class="media-card reveal" data-type="photo" data-label="Look 02" aria-label="Ouvrir Look 02">
-        <span class="media-card__tag">Photo</span>
-        <div class="media-card__placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="6" width="18" height="14" rx="1.5"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2.5h5L16 6"/></svg>
-          <span>Look 02 — à venir</span>
+      <button class="catalog-item reveal" data-type="photo" data-label="Look 02" aria-label="Ouvrir Look 02">
+        <div class="catalog-item__media">
+          <span class="catalog-item__index">N°02</span>
+          <div class="catalog-item__placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="6" width="18" height="14" rx="1.5"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2.5h5L16 6"/></svg>
+            <span>À venir</span>
+          </div>
+        </div>
+        <div class="catalog-item__caption">
+          <span class="name">Look 02</span>
+          <span class="type">Photo</span>
         </div>
       </button>
 
-      <button class="media-card reveal" data-type="video" data-label="Backstage" aria-label="Ouvrir la vidéo backstage">
-        <span class="media-card__tag">Vidéo</span>
-        <div class="media-card__placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><polygon points="6 4 20 12 6 20 6 4"/></svg>
-          <span>Backstage — à venir</span>
+      <button class="catalog-item reveal" data-type="video" data-label="Backstage" aria-label="Ouvrir la vidéo backstage">
+        <div class="catalog-item__media">
+          <span class="catalog-item__index">N°03</span>
+          <div class="catalog-item__placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+            <span>À venir</span>
+          </div>
+          <span class="catalog-item__play">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+          </span>
+        </div>
+        <div class="catalog-item__caption">
+          <span class="name">Backstage</span>
+          <span class="type">Vidéo</span>
         </div>
       </button>
 
-      <button class="media-card reveal" data-type="photo" data-label="Look 03" aria-label="Ouvrir Look 03">
-        <span class="media-card__tag">Photo</span>
-        <div class="media-card__placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="6" width="18" height="14" rx="1.5"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2.5h5L16 6"/></svg>
-          <span>Look 03 — à venir</span>
+      <button class="catalog-item reveal" data-type="photo" data-label="Look 03" aria-label="Ouvrir Look 03">
+        <div class="catalog-item__media">
+          <span class="catalog-item__index">N°04</span>
+          <div class="catalog-item__placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="6" width="18" height="14" rx="1.5"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2.5h5L16 6"/></svg>
+            <span>À venir</span>
+          </div>
+        </div>
+        <div class="catalog-item__caption">
+          <span class="name">Look 03</span>
+          <span class="type">Photo</span>
         </div>
       </button>
 
-      <button class="media-card reveal" data-type="video" data-label="Teaser drop" aria-label="Ouvrir le teaser">
-        <span class="media-card__tag">Vidéo</span>
-        <div class="media-card__placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><polygon points="6 4 20 12 6 20 6 4"/></svg>
-          <span>Teaser — à venir</span>
+      <button class="catalog-item reveal" data-type="video" data-label="Teaser drop" aria-label="Ouvrir le teaser">
+        <div class="catalog-item__media">
+          <span class="catalog-item__index">N°05</span>
+          <div class="catalog-item__placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+            <span>À venir</span>
+          </div>
+          <span class="catalog-item__play">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+          </span>
+        </div>
+        <div class="catalog-item__caption">
+          <span class="name">Teaser</span>
+          <span class="type">Vidéo</span>
         </div>
       </button>
 
-      <button class="media-card reveal" data-type="photo" data-label="Look 04" aria-label="Ouvrir Look 04">
-        <span class="media-card__tag">Photo</span>
-        <div class="media-card__placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="6" width="18" height="14" rx="1.5"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2.5h5L16 6"/></svg>
-          <span>Look 04 — à venir</span>
+      <button class="catalog-item reveal" data-type="photo" data-label="Look 04" aria-label="Ouvrir Look 04">
+        <div class="catalog-item__media">
+          <span class="catalog-item__index">N°06</span>
+          <div class="catalog-item__placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="6" width="18" height="14" rx="1.5"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2.5h5L16 6"/></svg>
+            <span>À venir</span>
+          </div>
+        </div>
+        <div class="catalog-item__caption">
+          <span class="name">Look 04</span>
+          <span class="type">Photo</span>
         </div>
       </button>
     </div>
