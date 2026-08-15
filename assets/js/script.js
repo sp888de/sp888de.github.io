@@ -1,17 +1,18 @@
 // =========================================================
 // GUNSTAR — script.js
-// Comportements partagés : nav mobile, reveal au scroll,
-// galerie filtrable + lightbox, formulaire de contact (mailto).
+// Shared behaviors: mobile nav, scroll reveal, gallery filters,
+// product page rendering, contact form (mailto).
 // =========================================================
 
 document.addEventListener('DOMContentLoaded', () => {
   initNav();
   initReveal();
-  initGallery();
+  initGalleryFilters();
+  initProductPage();
   initContactForm();
 });
 
-/* ---------- Navigation mobile ---------- */
+/* ---------- Mobile navigation ---------- */
 function initNav() {
   const toggle = document.querySelector('.nav-toggle');
   const nav = document.querySelector('.nav');
@@ -30,7 +31,7 @@ function initNav() {
   });
 }
 
-/* ---------- Apparition au scroll ---------- */
+/* ---------- Reveal on scroll ---------- */
 function initReveal() {
   const items = document.querySelectorAll('.reveal');
   if (!items.length) return;
@@ -52,8 +53,10 @@ function initReveal() {
   items.forEach(el => observer.observe(el));
 }
 
-/* ---------- Galerie : filtres + lightbox ---------- */
-function initGallery() {
+/* ---------- Gallery filters ---------- */
+/* Each .catalog-item is now a plain <a> pointing to product.html,
+   so no click/lightbox handling is needed here anymore, only filtering. */
+function initGalleryFilters() {
   const grid = document.querySelector('[data-gallery]');
   if (!grid) return;
 
@@ -73,51 +76,61 @@ function initGallery() {
       });
     });
   });
-
-  // Lightbox
-  const lightbox = document.querySelector('.lightbox');
-  if (!lightbox) return;
-  const lightboxContent = lightbox.querySelector('.lightbox__content');
-  const closeBtn = lightbox.querySelector('.lightbox__close');
-
-  cards.forEach(card => {
-    card.addEventListener('click', () => {
-      const src = card.dataset.fullSrc;
-      const type = card.dataset.type;
-      if (!src) return; // carte encore en placeholder, pas de média à ouvrir
-
-      lightboxContent.innerHTML = '';
-      let el;
-      if (type === 'video') {
-        el = document.createElement('video');
-        el.src = src;
-        el.controls = true;
-        el.autoplay = true;
-      } else {
-        el = document.createElement('img');
-        el.src = src;
-        el.alt = card.dataset.label || '';
-      }
-      lightboxContent.appendChild(el);
-      lightbox.classList.add('is-open');
-    });
-  });
-
-  const closeLightbox = () => {
-    lightbox.classList.remove('is-open');
-    lightboxContent.innerHTML = '';
-  };
-
-  closeBtn.addEventListener('click', closeLightbox);
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) closeLightbox();
-  });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeLightbox();
-  });
 }
 
-/* ---------- Formulaire de contact (mailto, sans backend) ---------- */
+/* ---------- Product page ---------- */
+/* Reads ?item=<id> from the URL, looks it up in GUNSTAR_PRODUCTS
+   (see products-data.js) and fills in the product page markup. */
+function initProductPage() {
+  const root = document.getElementById('product-root');
+  if (!root || typeof GUNSTAR_PRODUCTS === 'undefined') return;
+
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('item');
+  const product = GUNSTAR_PRODUCTS.find(p => p.id === id) || GUNSTAR_PRODUCTS[0];
+  if (!product) return;
+
+  document.title = `${product.name} — GUNSTAR`;
+
+  document.getElementById('product-index').textContent = product.tag;
+  document.getElementById('product-category').textContent = product.category;
+  document.getElementById('product-title').textContent = product.name;
+  document.getElementById('product-type').textContent =
+    product.type === 'video' ? 'Video' : 'Photo';
+  document.getElementById('product-description').textContent = product.description;
+
+  const detailsList = document.getElementById('product-details');
+  detailsList.innerHTML = '';
+  product.details.forEach(([label, value]) => {
+    const dt = document.createElement('dt');
+    dt.textContent = label;
+    const dd = document.createElement('dd');
+    dd.textContent = value;
+    detailsList.appendChild(dt);
+    detailsList.appendChild(dd);
+  });
+
+  const slot = document.getElementById('product-media-slot');
+  slot.innerHTML = '';
+
+  let mediaEl;
+  if (product.type === 'video') {
+    mediaEl = document.createElement('video');
+    mediaEl.src = product.src;
+    mediaEl.autoplay = true;
+    mediaEl.muted = true;
+    mediaEl.loop = true;
+    mediaEl.playsInline = true;
+    mediaEl.controls = true; // lets the visitor unmute / pause manually
+  } else {
+    mediaEl = document.createElement('img');
+    mediaEl.src = product.src;
+    mediaEl.alt = product.name;
+  }
+  slot.appendChild(mediaEl);
+}
+
+/* ---------- Contact form (mailto, no backend) ---------- */
 function initContactForm() {
   const form = document.querySelector('[data-contact-form]');
   if (!form) return;
@@ -128,7 +141,7 @@ function initContactForm() {
     const email = form.querySelector('#email').value.trim();
     const message = form.querySelector('#message').value.trim();
 
-    const subject = encodeURIComponent(`Contact site — ${name}`);
+    const subject = encodeURIComponent(`Website contact — ${name}`);
     const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
     window.location.href = `mailto:contact@gunstar.com?subject=${subject}&body=${body}`;
   });
