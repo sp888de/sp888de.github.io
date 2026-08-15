@@ -32,8 +32,7 @@ const GUNSTAR_PRODUCTS = [
     description: "A raw, high-contrast still from the Mercenary series, built around GUNSTAR's signature monochrome silhouette.",
     details: [
       ["Category", "Mercenary"],
-      ["Format", "Photo"],
-      ["Reference", "N°01"]
+      ["Format", "100% coton"],
     ],
     delivery: "Digital piece — no physical shipping required. Full-resolution files are sent by email after your enquiry is confirmed.",
     terms: "By submitting an enquiry you agree to be contacted by GUNSTAR about this piece. Usage rights are discussed and confirmed individually."
@@ -49,8 +48,7 @@ const GUNSTAR_PRODUCTS = [
     description: "Behind-the-scenes footage from the Business Man shoot, motion and attitude captured in one continuous take.",
     details: [
       ["Category", "Business man"],
-      ["Format", "Video"],
-      ["Reference", "N°02"]
+      ["Format", "100% coton"],
     ],
     delivery: "Digital piece — no physical shipping required. Full-resolution files are sent by email after your enquiry is confirmed.",
     terms: "By submitting an enquiry you agree to be contacted by GUNSTAR about this piece. Usage rights are discussed and confirmed individually."
