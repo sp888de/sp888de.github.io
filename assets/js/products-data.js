@@ -44,7 +44,7 @@ const GUNSTAR_PRODUCTS = [
     name: "1011",
     category: "Business man",
     media: [
-      { type: "video", src: "assets/video/gunstarhomepage_2.mp4" },{ type: "photo", src: "assets/img/etoile_blanche.png" }
+      { type: "video", src: "assets/img/P7291258.jpg" },{ type: "photo", src: "assets/img/P7291260.jpg" }, { type: "photo", src: "assets/img/P7291155.jpg" }
     ],
     description: "Behind-the-scenes footage from the Business Man shoot, motion and attitude captured in one continuous take.",
     details: [
