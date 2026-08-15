@@ -628,3 +628,110 @@ p { margin: 0 0 1rem; color: var(--bone-dim); max-width: 60ch; }
   text-transform: uppercase;
   color: var(--steel);
 }
+/* =========================================================
+   Product page — added on top of the existing style.css.
+   Copy this whole block to the end of assets/css/style.css.
+   ========================================================= */
+
+.product-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--steel);
+  margin-bottom: 2rem;
+}
+.product-back:hover,
+.product-back:focus-visible { color: var(--white); }
+
+.product {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+@media (max-width: 860px) {
+  .product { grid-template-columns: 1fr; }
+}
+
+.product-media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--charcoal);
+  border: 1px solid rgba(245,244,240,0.14);
+}
+.product-media img,
+.product-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.product-media__index {
+  position: absolute;
+  top: 0.9rem; left: 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--white);
+  background: rgba(10,10,10,0.75);
+  padding: 0.25em 0.6em;
+  z-index: 2;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  padding-top: 0.4rem;
+}
+.product-info h1 {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  margin-bottom: 0.6rem;
+}
+.product-type {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--steel);
+  margin-bottom: 1.6rem;
+}
+.product-description {
+  font-size: 1.02rem;
+  color: var(--bone-dim);
+  max-width: 46ch;
+  margin-bottom: 2.2rem;
+}
+
+.product-details {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.6rem 1.4rem;
+  padding: 1.6rem 0;
+  margin: 0 0 2.2rem;
+  border-top: 1px solid rgba(245,244,240,0.14);
+  border-bottom: 1px solid rgba(245,244,240,0.14);
+}
+.product-details dt {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--steel);
+}
+.product-details dd {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  color: var(--bone);
+}
+
+.product-cta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
