@@ -35,13 +35,16 @@
 
     <div class="product" id="product-root">
 
-      <!-- Media: filled in by initProductPage() in script.js -->
-      <div class="product-media">
-        <span class="product-media__index" id="product-index">N°00</span>
-        <div id="product-media-slot"></div>
+      <!-- Gallery: thumbnails column + main media, filled in by initProductPage() -->
+      <div class="product-gallery">
+        <div class="product-gallery__thumbs" id="product-thumbs"></div>
+        <div class="product-gallery__main">
+          <span class="product-media__index" id="product-index">N°00</span>
+          <div id="product-media-slot"></div>
+        </div>
       </div>
 
-      <!-- Info: filled in by initProductPage() in script.js -->
+      <!-- Info: title, description, accordion, filled in by initProductPage() -->
       <div class="product-info">
         <p class="eyebrow" id="product-category">Category</p>
         <h1 id="product-title">Loading…</h1>
@@ -49,11 +52,23 @@
 
         <p class="product-description" id="product-description"></p>
 
-        <dl class="product-details" id="product-details"></dl>
-
         <div class="product-cta">
           <a class="btn btn--solid" href="contact.html">Enquire about this piece</a>
-          <a class="btn btn--ghost" href="galerie.html">Back to gallery</a>
+        </div>
+
+        <div class="product-accordion">
+          <details open>
+            <summary>Details</summary>
+            <dl class="product-details" id="product-details"></dl>
+          </details>
+          <details>
+            <summary>Delivery</summary>
+            <p id="product-delivery"></p>
+          </details>
+          <details>
+            <summary>Terms</summary>
+            <p id="product-terms"></p>
+          </details>
         </div>
       </div>
 
