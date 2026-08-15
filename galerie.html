@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gallery — GUNSTAR</title>
-<meta name="description" content="GUNSTAR photo and video gallery — the pieces, the shoots, the behind the scenes.">
+<title>Galerie — GUNSTAR</title>
+<meta name="description" content="Galerie photos et vidéos GUNSTAR — les pièces, les shootings, les coulisses.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -19,12 +19,12 @@
   GUNSTAR
 </a>
     <nav class="nav">
-      <a href="index.html">Home</a>
-      <a href="galerie.html" aria-current="page">Gallery</a>
-      <a href="a-propos.html">About</a>
+      <a href="index.html">Accueil</a>
+      <a href="galerie.html" aria-current="page">Galerie</a>
+      <a href="a-propos.html">À propos</a>
       <a href="contact.html">Contact</a>
     </nav>
-    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+    <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
   </div>
 </header>
 
@@ -32,11 +32,11 @@
   <div class="container">
     <div class="catalog-head">
       <div>
-        <p class="eyebrow">Visuals</p>
-        <h1 style="font-size:clamp(2.4rem,6vw,4rem);">Gallery</h1>
+        <p class="eyebrow">Visuels</p>
+        <h1 style="font-size:clamp(2.4rem,6vw,4rem);">Galerie</h1>
         <p style="margin-top:1rem;">Gallery of the different projects powered by GUNSTAR.</p>
       </div>
-      <div class="catalog-filters" role="group" aria-label="Filter the gallery">
+      <div class="catalog-filters" role="group" aria-label="Filtrer la galerie">
         <button type="button" data-filter="all" aria-pressed="true">All</button>
         <button type="button" data-filter="photo" aria-pressed="false">Mercenary</button>
         <button type="button" data-filter="video" aria-pressed="false">Business man</button>
@@ -50,17 +50,18 @@
   <div class="container">
     <div class="catalog" data-gallery>
       <!-- ================================================================
-           Each link below is one catalog tile. It opens product.html
-           with ?item=<id>, and product.html pulls the rest of the
-           content (title, description, details) from products-data.js.
+           Chaque lien ci-dessous = une case du catalogue.
+           Il ouvre product.html avec ?item=<id>, et product.html va
+           chercher le reste du contenu (titre, description, détails)
+           dans assets/js/products-data.js.
 
-           To add a new tile:
-             1. Add a new object to assets/js/products-data.js
-             2. Copy one of the blocks below, set href="product.html?item=<id>"
-                and data-type + the thumbnail (img or video) to match.
+           Pour ajouter une nouvelle case :
+             1. Ajoute un nouvel objet dans assets/js/products-data.js
+             2. Copie un des blocs ci-dessous, mets à jour href, data-type
+                et la vignette (img ou video).
       ================================================================= -->
 
-      <a class="catalog-item reveal" data-type="photo" href="product.html?item=01" aria-label="Open Look 01">
+      <a class="catalog-item reveal" data-type="photo" href="product.html?item=01" aria-label="Ouvrir Look 01">
         <div class="catalog-item__media">
           <span class="catalog-item__index">N°01</span>
           <img src="assets/img/etoile_blanche.png" alt="Look 01" loading="lazy">
@@ -71,7 +72,7 @@
         </div>
       </a>
 
-      <a class="catalog-item reveal" data-type="video" href="product.html?item=02" aria-label="Open video 1011">
+      <a class="catalog-item reveal" data-type="video" href="product.html?item=02" aria-label="Ouvrir la vidéo 1011">
         <div class="catalog-item__media">
           <span class="catalog-item__index">N°02</span>
           <video src="assets/video/gunstarhomepage_2.mp4"
@@ -83,11 +84,11 @@
         </div>
         <div class="catalog-item__caption">
           <span class="name">1011</span>
-          <span class="type">Video</span>
+          <span class="type">Vidéo</span>
         </div>
       </a>
 
-      <a class="catalog-item reveal" data-type="video" href="product.html?item=03" aria-label="Open video 1012">
+      <a class="catalog-item reveal" data-type="video" href="product.html?item=03" aria-label="Ouvrir la vidéo 1012">
         <div class="catalog-item__media">
           <span class="catalog-item__index">N°03</span>
           <video src="assets/video/gunstarhomepage_2.mp4"
@@ -99,11 +100,11 @@
         </div>
         <div class="catalog-item__caption">
           <span class="name">1012</span>
-          <span class="type">Video</span>
+          <span class="type">Vidéo</span>
         </div>
       </a>
 
-      <a class="catalog-item reveal" data-type="video" href="product.html?item=04" aria-label="Open video 1101">
+      <a class="catalog-item reveal" data-type="video" href="product.html?item=04" aria-label="Ouvrir la vidéo 1101">
         <div class="catalog-item__media">
           <span class="catalog-item__index">N°04</span>
           <video src="assets/video/gunstarhomepage_2.mp4"
@@ -115,11 +116,11 @@
         </div>
         <div class="catalog-item__caption">
           <span class="name">1101</span>
-          <span class="type">Video</span>
+          <span class="type">Vidéo</span>
         </div>
       </a>
 
-      <a class="catalog-item reveal" data-type="video" href="product.html?item=05" aria-label="Open video 1102">
+      <a class="catalog-item reveal" data-type="video" href="product.html?item=05" aria-label="Ouvrir la vidéo 1102">
         <div class="catalog-item__media">
           <span class="catalog-item__index">N°05</span>
           <video src="assets/video/gunstarhomepage_2.mp4"
@@ -131,11 +132,11 @@
         </div>
         <div class="catalog-item__caption">
           <span class="name">1102</span>
-          <span class="type">Video</span>
+          <span class="type">Vidéo</span>
         </div>
       </a>
 
-      <a class="catalog-item reveal" data-type="video" href="product.html?item=06" aria-label="Open video 1001">
+      <a class="catalog-item reveal" data-type="video" href="product.html?item=06" aria-label="Ouvrir la vidéo 1001">
         <div class="catalog-item__media">
           <span class="catalog-item__index">N°06</span>
           <video src="assets/video/gunstarhomepage_2.mp4"
@@ -147,7 +148,7 @@
         </div>
         <div class="catalog-item__caption">
           <span class="name">1001</span>
-          <span class="type">Video</span>
+          <span class="type">Vidéo</span>
         </div>
       </a>
 
@@ -159,8 +160,8 @@
   <div class="container">
     <div class="stripe" style="margin-bottom:2.5rem;"></div>
     <div class="footer__bottom">
-      <span>© 2026 GUNSTAR. All rights reserved.</span>
-      <a href="contact.html">Contact us</a>
+      <span>© 2026 GUNSTAR. Tous droits réservés.</span>
+      <a href="contact.html">Nous contacter</a>
     </div>
   </div>
 </footer>
