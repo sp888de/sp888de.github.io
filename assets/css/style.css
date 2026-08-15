@@ -497,140 +497,10 @@ p { margin: 0 0 1rem; color: var(--bone-dim); max-width: 60ch; }
 }
 
 /* =========================================================
-   Catalogue galerie — inspiré de nobody.solutions :
-   fond noir plein, grille dense à filets fins, légendes
-   monospace sous chaque visuel, numérotation d'archive.
-   ========================================================= */
-.catalog-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  margin-bottom: 2.5rem;
-}
-
-.catalog-filters {
-  display: flex;
-  gap: 1.6rem;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-.catalog-filters button {
-  background: none;
-  border: none;
-  padding: 0 0 0.3rem;
-  color: var(--steel);
-  border-bottom: 1px solid transparent;
-}
-.catalog-filters button:hover,
-.catalog-filters button:focus-visible { color: var(--bone); }
-.catalog-filters button[aria-pressed="true"] {
-  color: var(--white);
-  border-bottom-color: var(--white);
-}
-
-.catalog {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: rgba(245,244,240,0.14);
-  border: 1px solid rgba(245,244,240,0.14);
-}
-@media (max-width: 980px) { .catalog { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 680px) { .catalog { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 440px) { .catalog { grid-template-columns: 1fr; } }
-
-.catalog-item {
-  background: var(--black);
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  padding: 0;
-  border: none;
-  width: 100%;
-  cursor: pointer;
-}
-
-.catalog-item__media {
-  position: relative;
-  aspect-ratio: 4 / 5;
-  overflow: hidden;
-  background: var(--charcoal);
-}
-.catalog-item__media img,
-.catalog-item__media video {
-  width: 100%; height: 100%; object-fit: cover;
-  transition: transform 0.5s ease, filter 0.5s ease;
-  filter: grayscale(0.15);
-}
-.catalog-item:hover .catalog-item__media img,
-.catalog-item:hover .catalog-item__media video {
-  transform: scale(1.045);
-  filter: grayscale(0);
-}
-
-.catalog-item__index {
-  position: absolute;
-  top: 0.7rem; left: 0.7rem;
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
-  color: var(--white);
-  background: rgba(10,10,10,0.75);
-  padding: 0.2em 0.5em;
-}
-
-.catalog-item__play {
-  position: absolute; inset: 0;
-  display: grid; place-items: center;
-  pointer-events: none;
-  opacity: 0.9;
-}
-.catalog-item__play svg { width: 34px; height: 34px; }
-
-.catalog-item__placeholder {
-  position: absolute; inset: 0;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 0.5rem;
-  color: var(--steel);
-  background: repeating-linear-gradient(45deg, rgba(245,244,240,0.04) 0 2px, transparent 2px 14px);
-}
-.catalog-item__placeholder svg { width: 26px; height: 26px; opacity: 0.55; }
-.catalog-item__placeholder span {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.catalog-item__caption {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.75rem 0.9rem;
-  border-top: 1px solid rgba(245,244,240,0.12);
-}
-.catalog-item__caption .name {
-  font-family: var(--font-mono);
-  font-size: 0.74rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--bone);
-}
-.catalog-item__caption .type {
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--steel);
-}
-/* =========================================================
    Product page — added on top of the existing style.css.
    Copy this whole block to the end of assets/css/style.css.
+   (Replaces any earlier "product page" block you may have
+   added from a previous version of this file.)
    ========================================================= */
 
 .product-back {
@@ -657,15 +527,59 @@ p { margin: 0 0 1rem; color: var(--bone-dim); max-width: 60ch; }
   .product { grid-template-columns: 1fr; }
 }
 
-.product-media {
+/* ---------- Gallery: thumbnail column + main media ---------- */
+.product-gallery {
+  display: flex;
+  gap: 0.9rem;
+}
+@media (max-width: 560px) {
+  .product-gallery { flex-direction: column-reverse; }
+}
+
+.product-gallery__thumbs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  width: 76px;
+  flex-shrink: 0;
+}
+@media (max-width: 560px) {
+  .product-gallery__thumbs { flex-direction: row; width: auto; overflow-x: auto; }
+}
+
+.product-gallery__thumb {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border: 1px solid rgba(245,244,240,0.14);
+  background: var(--charcoal);
+  padding: 0;
+  flex-shrink: 0;
+  width: 76px;
+}
+.product-gallery__thumb img,
+.product-gallery__thumb video {
+  width: 100%; height: 100%; object-fit: cover;
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+.product-gallery__thumb:hover img,
+.product-gallery__thumb:hover video { opacity: 0.8; }
+.product-gallery__thumb.is-active {
+  border-color: var(--white);
+}
+.product-gallery__thumb.is-active img,
+.product-gallery__thumb.is-active video { opacity: 1; }
+
+.product-gallery__main {
   position: relative;
+  flex: 1;
   aspect-ratio: 4 / 5;
   overflow: hidden;
   background: var(--charcoal);
   border: 1px solid rgba(245,244,240,0.14);
 }
-.product-media img,
-.product-media video {
+.product-gallery__main img,
+.product-gallery__main video {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -682,6 +596,7 @@ p { margin: 0 0 1rem; color: var(--bone-dim); max-width: 60ch; }
   z-index: 2;
 }
 
+/* ---------- Info column ---------- */
 .product-info {
   display: flex;
   flex-direction: column;
@@ -703,17 +618,57 @@ p { margin: 0 0 1rem; color: var(--bone-dim); max-width: 60ch; }
   font-size: 1.02rem;
   color: var(--bone-dim);
   max-width: 46ch;
+  margin-bottom: 2rem;
+}
+
+.product-cta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
   margin-bottom: 2.2rem;
+}
+
+/* ---------- Accordion (Details / Delivery / Terms) ---------- */
+.product-accordion {
+  border-top: 1px solid rgba(245,244,240,0.14);
+}
+.product-accordion details {
+  border-bottom: 1px solid rgba(245,244,240,0.14);
+}
+.product-accordion summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.1rem 0;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bone);
+  cursor: pointer;
+  list-style: none;
+}
+.product-accordion summary::-webkit-details-marker { display: none; }
+.product-accordion summary::after {
+  content: "+";
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: var(--steel);
+}
+.product-accordion details[open] summary::after { content: "\2212"; }
+
+.product-accordion p {
+  padding-bottom: 1.3rem;
+  color: var(--bone-dim);
+  max-width: 46ch;
 }
 
 .product-details {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 0.6rem 1.4rem;
-  padding: 1.6rem 0;
-  margin: 0 0 2.2rem;
-  border-top: 1px solid rgba(245,244,240,0.14);
-  border-bottom: 1px solid rgba(245,244,240,0.14);
+  padding-bottom: 1.3rem;
+  margin: 0;
 }
 .product-details dt {
   font-family: var(--font-mono);
@@ -728,10 +683,4 @@ p { margin: 0 0 1rem; color: var(--bone-dim); max-width: 60ch; }
   font-size: 0.85rem;
   letter-spacing: 0.03em;
   color: var(--bone);
-}
-
-.product-cta {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
 }
