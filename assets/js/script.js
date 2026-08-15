@@ -1,7 +1,7 @@
 // =========================================================
 // GUNSTAR — script.js
 // Shared behaviors: mobile nav, scroll reveal, gallery filters,
-// product page rendering, contact form (mailto).
+// product page rendering (thumbnails + accordion), contact form.
 // =========================================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -54,8 +54,8 @@ function initReveal() {
 }
 
 /* ---------- Gallery filters ---------- */
-/* Each .catalog-item is now a plain <a> pointing to product.html,
-   so no click/lightbox handling is needed here anymore, only filtering. */
+/* Each .catalog-item is a plain <a> pointing to product.html,
+   so this only needs to handle show/hide filtering. */
 function initGalleryFilters() {
   const grid = document.querySelector('[data-gallery]');
   if (!grid) return;
@@ -80,7 +80,8 @@ function initGalleryFilters() {
 
 /* ---------- Product page ---------- */
 /* Reads ?item=<id> from the URL, looks it up in GUNSTAR_PRODUCTS
-   (see products-data.js) and fills in the product page markup. */
+   (see products-data.js), builds the thumbnail column, shows the
+   first media by default, and fills in the info + accordion. */
 function initProductPage() {
   const root = document.getElementById('product-root');
   if (!root || typeof GUNSTAR_PRODUCTS === 'undefined') return;
@@ -95,9 +96,9 @@ function initProductPage() {
   document.getElementById('product-index').textContent = product.tag;
   document.getElementById('product-category').textContent = product.category;
   document.getElementById('product-title').textContent = product.name;
-  document.getElementById('product-type').textContent =
-    product.type === 'video' ? 'Video' : 'Photo';
   document.getElementById('product-description').textContent = product.description;
+  document.getElementById('product-delivery').textContent = product.delivery || '';
+  document.getElementById('product-terms').textContent = product.terms || '';
 
   const detailsList = document.getElementById('product-details');
   detailsList.innerHTML = '';
@@ -110,24 +111,69 @@ function initProductPage() {
     detailsList.appendChild(dd);
   });
 
-  const slot = document.getElementById('product-media-slot');
-  slot.innerHTML = '';
+  renderProductGallery(product);
+}
 
-  let mediaEl;
-  if (product.type === 'video') {
-    mediaEl = document.createElement('video');
-    mediaEl.src = product.src;
-    mediaEl.autoplay = true;
-    mediaEl.muted = true;
-    mediaEl.loop = true;
-    mediaEl.playsInline = true;
-    mediaEl.controls = true; // lets the visitor unmute / pause manually
-  } else {
-    mediaEl = document.createElement('img');
-    mediaEl.src = product.src;
-    mediaEl.alt = product.name;
+function renderProductGallery(product) {
+  const thumbsWrap = document.getElementById('product-thumbs');
+  const slot = document.getElementById('product-media-slot');
+  const typeLabel = document.getElementById('product-type');
+  if (!thumbsWrap || !slot) return;
+
+  thumbsWrap.innerHTML = '';
+
+  function showMedia(item) {
+    slot.innerHTML = '';
+    let el;
+    if (item.type === 'video') {
+      el = document.createElement('video');
+      el.src = item.src;
+      el.autoplay = true;
+      el.muted = true;
+      el.loop = true;
+      el.playsInline = true;
+      el.controls = true; // lets the visitor unmute / pause manually
+    } else {
+      el = document.createElement('img');
+      el.src = item.src;
+      el.alt = product.name;
+    }
+    slot.appendChild(el);
+    typeLabel.textContent = item.type === 'video' ? 'Video' : 'Photo';
   }
-  slot.appendChild(mediaEl);
+
+  // Build one thumbnail per media entry (only needed if there is more than one)
+  if (product.media.length > 1) {
+    product.media.forEach((item, index) => {
+      const thumb = document.createElement('button');
+      thumb.type = 'button';
+      thumb.className = 'product-gallery__thumb' + (index === 0 ? ' is-active' : '');
+      thumb.setAttribute('aria-label', `View ${product.name} — image ${index + 1}`);
+
+      let thumbEl;
+      if (item.type === 'video') {
+        thumbEl = document.createElement('video');
+        thumbEl.src = item.src;
+        thumbEl.muted = true;
+        thumbEl.playsInline = true;
+      } else {
+        thumbEl = document.createElement('img');
+        thumbEl.src = item.src;
+        thumbEl.alt = '';
+      }
+      thumb.appendChild(thumbEl);
+
+      thumb.addEventListener('click', () => {
+        thumbsWrap.querySelectorAll('.product-gallery__thumb').forEach(t => t.classList.remove('is-active'));
+        thumb.classList.add('is-active');
+        showMedia(item);
+      });
+
+      thumbsWrap.appendChild(thumb);
+    });
+  }
+
+  showMedia(product.media[0]);
 }
 
 /* ---------- Contact form (mailto, no backend) ---------- */
