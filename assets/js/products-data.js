@@ -40,8 +40,8 @@ const GUNSTAR_PRODUCTS = [
   },
   {
     id: "02",
-    tag: "N°02",
-    name: "1011",
+    tag: "N°1011",
+    name: "SNIPER",
     category: "Business man",
     media: [
       { type: "photo", src: "assets/img/P7291258.jpg" },{ type: "photo", src: "assets/img/P7291260.jpg" }, { type: "photo", src: "assets/img/P7291155.jpg" }
@@ -57,8 +57,8 @@ const GUNSTAR_PRODUCTS = [
   },
   {
     id: "03",
-    tag: "N°03",
-    name: "1012",
+    tag: "N°1012",
+    name: "Mechagirl",
     category: "Business man",
     media: [
       { type: "video", src: "assets/video/gunstarhomepage_2.mp4" }
@@ -74,8 +74,8 @@ const GUNSTAR_PRODUCTS = [
   },
   {
     id: "04",
-    tag: "N°04",
-    name: "1101",
+    tag: "N°1101",
+    name: "YEAT",
     category: "Hacker",
     media: [
       { type: "video", src: "assets/video/gunstarhomepage_2.mp4" }
