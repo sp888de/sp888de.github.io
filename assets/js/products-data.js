@@ -23,16 +23,15 @@
 const GUNSTAR_PRODUCTS = [
   {
     id: "01",
-    tag: "N°01",
-    name: "Look 01",
-    category: "Mercenary",
+    tag: "N°0000",
+    name: "INTRODUCTION",
+    category: "None",
     media: [
-      { type: "photo", src: "assets/img/etoile_blanche.png" }
+      { src: "assets/img/etoile_blanche.png" }
     ],
-    description: "A raw, high-contrast still from the Mercenary series, built around GUNSTAR's signature monochrome silhouette.",
+    description: "Congratulation. If you are here it mean that you are curious and soon to be awake. You will find on this site 3 categories (Mercenary, Business man and Hacker. They each correspond to a category of clothe, each category is represented by a binary code : Mercenary => 101.. ; Business man => 110.. ; Hacker => 100.. Hope you will find more info. BE AWAKE.",
     details: [
-      ["Category", "Mercenary"],
-      ["Format", "100% coton"],
+      ["Category", "1010"],
     ],
     delivery: "Digital piece — no physical shipping required. Full-resolution files are sent by email after your enquiry is confirmed.",
     terms: "By submitting an enquiry you agree to be contacted by GUNSTAR about this piece. Usage rights are discussed and confirmed individually."
