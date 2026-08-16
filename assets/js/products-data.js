@@ -29,7 +29,7 @@ const GUNSTAR_PRODUCTS = [
     media: [
       { src: "assets/img/etoile_blanche.png" }
     ],
-    description: "Congratulation. If you are here it mean that you are curious and soon to be awake. You will find on this site 3 categories (Mercenary, Business man and Hacker. They each correspond to a category of clothe, each category is represented by a binary code : Mercenary => 101.. ; Business man => 110.. ; Hacker => 100.. Hope you will find more info. BE AWAKE.",
+    description: "Congratulations. Curiosity brought you into the archive. Three divisions operate inside GUNSTAR: Mercenary, Business man and Hacker. Each division controls a classified clothing series and a binary protocol: Mercenary 101, Business man 110, Hacker 100. Stay alert. Stay awake.",
     details: [
       ["Category", "1010"],
     ],
@@ -40,14 +40,14 @@ const GUNSTAR_PRODUCTS = [
     id: "02",
     tag: "N°1011",
     name: "SNIPER",
-    category: "Business man",
+    category: "Mercenary",
     media: [
       { type: "photo", src: "assets/img/P7291258.jpg" },{ type: "photo", src: "assets/img/P7291260.jpg" }, { type: "photo", src: "assets/img/P7291155.jpg" }
     ],
-    description: "Behind-the-scenes footage from the Business Man shoot, motion and attitude captured in one continuous take.",
+    description: "A field asset from the Mercenary division, engineered around precision, distance and controlled impact.",
     details: [
-      ["Category", "Business man"],
-      ["Format", "100% coton"],
+      ["Category", "Mercenary"],
+      ["Format", "100% cotton"],
     ],
     delivery: "Digital piece — no physical shipping required. Full-resolution files are sent by email after your enquiry is confirmed.",
     terms: "By submitting an enquiry you agree to be contacted by GUNSTAR about this piece. Usage rights are discussed and confirmed individually."
@@ -56,13 +56,13 @@ const GUNSTAR_PRODUCTS = [
     id: "03",
     tag: "N°1012",
     name: "Mechagirl",
-    category: "Business man",
+    category: "Mercenary",
     media: [
       { type: "video", src: "assets/video/gunstarhomepage_2.mp4" }
     ],
-    description: "A second angle on the Business Man story, same energy, different frame.",
+    description: "A second classified entry from the Mercenary division. Same command structure, different operative profile.",
     details: [
-      ["Category", "Business man"],
+      ["Category", "Mercenary"],
       ["Format", "Video"],
       ["Reference", "N°03"]
     ],
@@ -73,13 +73,13 @@ const GUNSTAR_PRODUCTS = [
     id: "04",
     tag: "N°1101",
     name: "YEAT",
-    category: "Hacker",
+    category: "Business man",
     media: [
       { type: "video", src: "assets/video/gunstarhomepage_2.mp4" }
     ],
-    description: "First cut from the Hacker series, low light, sharp lines, GUNSTAR's darker register.",
+    description: "An asset from the Business man division: controlled presence, private access and silent leverage.",
     details: [
-      ["Category", "Hacker"],
+      ["Category", "Business man"],
       ["Format", "Video"],
       ["Reference", "N°04"]
     ],
@@ -90,13 +90,13 @@ const GUNSTAR_PRODUCTS = [
     id: "05",
     tag: "N°05",
     name: "1102",
-    category: "Hacker",
+    category: "Business man",
     media: [
       { type: "video", src: "assets/video/gunstarhomepage_2.mp4" }
     ],
-    description: "Second cut from the Hacker series, continuing the same visual language.",
+    description: "The second Business man file. Capital, influence and discretion encoded into the same visual system.",
     details: [
-      ["Category", "Hacker"],
+      ["Category", "Business man"],
       ["Format", "Video"],
       ["Reference", "N°05"]
     ],
@@ -107,13 +107,13 @@ const GUNSTAR_PRODUCTS = [
     id: "06",
     tag: "N°06",
     name: "1001",
-    category: "Mercenary",
+    category: "Hacker",
     media: [
       { type: "video", src: "assets/video/gunstarhomepage_2.mp4" }
     ],
-    description: "Closing shot of the Mercenary series, a last look before the drop.",
+    description: "The first recovered file from the Hacker division: low light, corrupted signals and unauthorized access.",
     details: [
-      ["Category", "Mercenary"],
+      ["Category", "Hacker"],
       ["Format", "Video"],
       ["Reference", "N°06"]
     ],

@@ -61,21 +61,388 @@ function initGalleryFilters() {
   if (!grid) return;
 
   const cards = Array.from(grid.querySelectorAll('.catalog-item'));
-  const filterButtons = document.querySelectorAll('.catalog-filters button');
+  const filterButtons = Array.from(document.querySelectorAll('.catalog-filters button'));
+  const storageKey = 'gunstar-unlocked-archives';
+  let unlockedArchives = new Set();
+
+  // La progression ne dure que pendant la session du navigateur.
+  try {
+    const storedArchives = JSON.parse(sessionStorage.getItem(storageKey) || '[]');
+    unlockedArchives = new Set(Array.isArray(storedArchives) ? storedArchives : []);
+  } catch (error) {
+    unlockedArchives = new Set();
+  }
+
+  function markArchiveUnlocked(filter) {
+    const button = filterButtons.find(item => item.dataset.filter === filter);
+    if (!button) return;
+    button.classList.add('is-unlocked');
+    const marker = button.querySelector('.filter-lock');
+    if (marker) marker.textContent = '○';
+  }
+
+  function applyFilter(filter) {
+    filterButtons.forEach(button => {
+      button.setAttribute('aria-pressed', String(button.dataset.filter === filter));
+    });
+
+    cards.forEach(card => {
+      const show = filter === 'all' || filter === card.dataset.category;
+      card.style.display = show ? '' : 'none';
+    });
+  }
+
+  unlockedArchives.forEach(markArchiveUnlocked);
+
+  const gate = initAccessGate((filter) => {
+    unlockedArchives.add(filter);
+    markArchiveUnlocked(filter);
+
+    try {
+      sessionStorage.setItem(storageKey, JSON.stringify(Array.from(unlockedArchives)));
+    } catch (error) {
+      // Le filtre reste déverrouillé pour la page courante si le stockage est bloqué.
+    }
+
+    applyFilter(filter);
+  });
 
   filterButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       const filter = btn.dataset.filter;
-      filterButtons.forEach(b => b.setAttribute('aria-pressed', 'false'));
-      btn.setAttribute('aria-pressed', 'true');
+      if (filter === 'all' || unlockedArchives.has(filter) || !gate) {
+        applyFilter(filter);
+        return;
+      }
 
-      cards.forEach(card => {
-        const type = card.dataset.type;
-        const show = filter === 'all' || filter === type;
-        card.style.display = show ? '' : 'none';
-      });
+      gate.open(filter, btn);
     });
   });
+}
+
+/* ---------- Protocoles d'accès aux archives ---------- */
+function initAccessGate(onUnlocked) {
+  const root = document.getElementById('access-gate');
+  if (!root) return null;
+
+  const challenges = Array.from(root.querySelectorAll('[data-challenge]'));
+  const closeButton = root.querySelector('[data-gate-close]');
+  const gateTitle = root.querySelector('#gate-title');
+  const gateCode = root.querySelector('[data-gate-code]');
+  const successScreen = root.querySelector('[data-gate-success]');
+  const successLabel = root.querySelector('[data-success-label]');
+  const protocolNames = {
+    mercenary: { title: 'MERCENARY CLEARANCE', code: 'NODE // 101', label: 'MERCENARY ARCHIVE UNLOCKED' },
+    business: { title: 'BUSINESS CLEARANCE', code: 'NODE // 110', label: 'BUSINESS ARCHIVE UNLOCKED' },
+    hacker: { title: 'HACKER CLEARANCE', code: 'NODE // 100', label: 'HACKER ARCHIVE UNLOCKED' }
+  };
+
+  let activeProtocol = null;
+  let returnFocus = null;
+  let closeTimer = null;
+  let timers = [];
+  let businessWinner = null;
+  let businessReady = false;
+  let hackerAttempts = 0;
+
+  function schedule(callback, delay) {
+    const timer = window.setTimeout(callback, delay);
+    timers.push(timer);
+    return timer;
+  }
+
+  function clearTimers() {
+    timers.forEach(timer => window.clearTimeout(timer));
+    timers = [];
+  }
+
+  function setChallengeVisible(protocol) {
+    challenges.forEach(challenge => {
+      challenge.hidden = challenge.dataset.challenge !== protocol;
+    });
+  }
+
+  function open(protocol, trigger) {
+    const definition = protocolNames[protocol];
+    if (!definition) return;
+
+    window.clearTimeout(closeTimer);
+    clearTimers();
+    activeProtocol = protocol;
+    returnFocus = trigger;
+    root.hidden = false;
+    root.classList.remove('is-granted');
+    successScreen.hidden = true;
+    setChallengeVisible(protocol);
+    gateTitle.textContent = definition.title;
+    gateCode.textContent = definition.code;
+    document.body.classList.add('gate-open');
+
+    window.requestAnimationFrame(() => root.classList.add('is-active'));
+
+    if (protocol === 'mercenary') resetMercenaryProtocol();
+    if (protocol === 'business') resetBusinessProtocol();
+    if (protocol === 'hacker') resetHackerProtocol();
+
+    closeButton.focus({ preventScroll: true });
+  }
+
+  function close() {
+    if (root.hidden) return;
+    clearTimers();
+    activeProtocol = null;
+    businessReady = false;
+    root.classList.remove('is-active', 'is-granted');
+    document.body.classList.remove('gate-open');
+    closeTimer = window.setTimeout(() => {
+      root.hidden = true;
+      successScreen.hidden = true;
+      challenges.forEach(challenge => { challenge.hidden = true; });
+    }, 260);
+
+    if (returnFocus) returnFocus.focus({ preventScroll: true });
+  }
+
+  function grantAccess(protocol) {
+    if (activeProtocol !== protocol) return;
+    const definition = protocolNames[protocol];
+    clearTimers();
+    root.classList.add('is-granted');
+    setChallengeVisible('__success__');
+    successScreen.hidden = false;
+    successLabel.textContent = definition.label;
+    gateTitle.textContent = 'CLEARANCE VERIFIED';
+    onUnlocked(protocol);
+    schedule(close, 1450);
+  }
+
+  // Le contrat exige un alias et un consentement avant la lecture biométrique.
+  const aliasInput = root.querySelector('[data-operative-alias]');
+  const consentInput = root.querySelector('[data-contract-consent]');
+  const signButton = root.querySelector('[data-mercenary-sign]');
+  const signatureStatus = root.querySelector('[data-signature-status]');
+  const signatureState = signButton.querySelector('.signature-state');
+
+  function updateSignatureAvailability() {
+    const ready = aliasInput.value.trim().length >= 2 && consentInput.checked;
+    signButton.disabled = !ready;
+    signatureStatus.textContent = ready
+      ? 'Scanner ready. Place fingerprint to sign.'
+      : 'Complete the record to enable scanner.';
+  }
+
+  function resetMercenaryProtocol() {
+    aliasInput.value = '';
+    consentInput.checked = false;
+    signButton.disabled = true;
+    signButton.classList.remove('is-scanning', 'is-signed');
+    signatureState.textContent = '[ PENDING ]';
+    signatureStatus.textContent = 'Complete the record to enable scanner.';
+    schedule(() => aliasInput.focus({ preventScroll: true }), 320);
+  }
+
+  aliasInput.addEventListener('input', updateSignatureAvailability);
+  consentInput.addEventListener('change', updateSignatureAvailability);
+  signButton.addEventListener('click', () => {
+    if (signButton.disabled || activeProtocol !== 'mercenary') return;
+    signButton.disabled = true;
+    signButton.classList.add('is-scanning');
+    signatureState.textContent = '[ SCANNING ]';
+    signatureStatus.textContent = 'Capturing biometric signature...';
+
+    schedule(() => {
+      signButton.classList.remove('is-scanning');
+      signButton.classList.add('is-signed');
+      signatureState.textContent = '[ SIGNED ]';
+      signatureStatus.textContent = `Operative ${aliasInput.value.trim().toUpperCase()} authenticated.`;
+    }, 1050);
+    schedule(() => grantAccess('mercenary'), 1900);
+  });
+
+  // Les mallettes conservent leur identité pendant que leur ordre visuel change.
+  const caseBoard = root.querySelector('[data-case-board]');
+  const caseButtons = Array.from(caseBoard.querySelectorAll('.case-choice'));
+  const businessStatus = root.querySelector('[data-business-status]');
+
+  function randomizeOrder(items) {
+    const next = items.slice();
+    for (let index = next.length - 1; index > 0; index -= 1) {
+      const swapIndex = Math.floor(Math.random() * (index + 1));
+      [next[index], next[swapIndex]] = [next[swapIndex], next[index]];
+    }
+    return next;
+  }
+
+  function moveCases() {
+    const current = Array.from(caseBoard.children);
+    let next = randomizeOrder(current);
+    if (next.every((item, index) => item === current[index])) next = [current[1], current[2], current[0]];
+
+    const firstPositions = new Map(current.map(item => [item, item.getBoundingClientRect()]));
+    next.forEach(item => caseBoard.appendChild(item));
+
+    next.forEach(item => {
+      const first = firstPositions.get(item);
+      const last = item.getBoundingClientRect();
+      const deltaX = first.left - last.left;
+      const deltaY = first.top - last.top;
+      if (typeof item.animate === 'function') {
+        item.animate(
+          [
+            { transform: `translate(${deltaX}px, ${deltaY}px) rotate(-2deg)` },
+            { transform: 'translate(0, 0) rotate(0deg)' }
+          ],
+          { duration: 470, easing: 'cubic-bezier(.2,.85,.25,1)' }
+        );
+      }
+    });
+  }
+
+  function shuffleBusinessCases(remainingMoves) {
+    if (activeProtocol !== 'business') return;
+    moveCases();
+
+    if (remainingMoves > 1) {
+      schedule(() => shuffleBusinessCases(remainingMoves - 1), 520);
+      return;
+    }
+
+    schedule(() => {
+      businessReady = true;
+      caseBoard.classList.remove('is-shuffling');
+      caseButtons.forEach(button => { button.disabled = false; });
+      businessStatus.textContent = 'TRANSACTION LIVE // SELECT THE ASSET';
+    }, 520);
+  }
+
+  function resetBusinessProtocol() {
+    businessReady = false;
+    caseBoard.classList.remove('is-shuffling');
+    caseButtons.forEach(button => {
+      button.disabled = true;
+      button.classList.remove('is-open', 'has-money', 'is-correct', 'is-wrong');
+      button.querySelector('.case-result').textContent = 'SELECT';
+    });
+
+    businessWinner = caseButtons[Math.floor(Math.random() * caseButtons.length)];
+    businessWinner.classList.add('has-money');
+    businessStatus.textContent = 'VERIFYING ASSET...';
+
+    schedule(() => {
+      caseButtons.forEach(button => button.classList.add('is-open'));
+      businessStatus.textContent = 'MEMORIZE THE ASSET LOCATION';
+    }, 420);
+    schedule(() => {
+      caseButtons.forEach(button => button.classList.remove('is-open'));
+      businessStatus.textContent = 'CASES SEALED // TRACK THE EXCHANGE';
+    }, 1550);
+    schedule(() => {
+      caseBoard.classList.add('is-shuffling');
+      shuffleBusinessCases(6);
+    }, 2050);
+  }
+
+  caseButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      if (!businessReady || activeProtocol !== 'business') return;
+      businessReady = false;
+      caseButtons.forEach(item => { item.disabled = true; });
+      button.classList.add('is-open');
+
+      if (button === businessWinner) {
+        button.classList.add('is-correct');
+        button.querySelector('.case-result').textContent = 'ASSET SECURED';
+        businessStatus.textContent = 'CORRECT CASE // TRANSACTION APPROVED';
+        schedule(() => grantAccess('business'), 1150);
+        return;
+      }
+
+      button.classList.add('is-wrong');
+      button.querySelector('.case-result').textContent = 'EMPTY';
+      businessStatus.textContent = 'EMPTY CASE // TRANSACTION REJECTED';
+      schedule(() => {
+        businessWinner.classList.add('is-open', 'is-correct');
+        businessWinner.querySelector('.case-result').textContent = 'ASSET WAS HERE';
+      }, 450);
+      schedule(resetBusinessProtocol, 1800);
+    });
+  });
+
+  // Le terminal accepte la réponse claire ainsi que deux commandes utilitaires.
+  const terminalLog = root.querySelector('[data-terminal-log]');
+  const terminalForm = root.querySelector('[data-terminal-form]');
+  const terminalInput = root.querySelector('[data-terminal-input]');
+
+  function appendTerminalLine(message, tone = '') {
+    const line = document.createElement('p');
+    if (tone) line.className = `terminal-line--${tone}`;
+    line.textContent = message;
+    terminalLog.appendChild(line);
+    terminalLog.scrollTop = terminalLog.scrollHeight;
+  }
+
+  function showHackerHint() {
+    appendTerminalLine('[HINT] Move every encrypted letter three positions backward.', 'hint');
+    appendTerminalLine('[EXAMPLE] D → A // X → U', 'hint');
+  }
+
+  function resetHackerProtocol() {
+    hackerAttempts = 0;
+    terminalLog.innerHTML = '';
+    terminalInput.value = '';
+    terminalInput.disabled = false;
+    appendTerminalLine('[BOOT] GUNSTAR BLACKNODE v1.0.0');
+    appendTerminalLine('[OK] Secure tunnel established. Trace masked.');
+    appendTerminalLine('[WARN] Encrypted payload recovered from archive sector 100.', 'warning');
+    appendTerminalLine('[TASK] Reverse the cipher and submit plaintext.');
+    schedule(() => terminalInput.focus({ preventScroll: true }), 320);
+  }
+
+  terminalForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (activeProtocol !== 'hacker') return;
+    const command = terminalInput.value.trim().toUpperCase();
+    if (!command) return;
+
+    appendTerminalLine(`root@blacknode:~$ ${terminalInput.value.trim()}`, 'command');
+    terminalInput.value = '';
+
+    if (command === 'HELP' || command === 'HINT') {
+      showHackerHint();
+      return;
+    }
+
+    if (command === 'GUNSTAR') {
+      terminalInput.disabled = true;
+      appendTerminalLine('[OK] PLAINTEXT TOKEN ACCEPTED.', 'success');
+      appendTerminalLine('[OK] HASH MATCH // f31c:100:7a9e', 'success');
+      appendTerminalLine('[ROOT] Vault permissions elevated.', 'success');
+      schedule(() => grantAccess('hacker'), 1250);
+      return;
+    }
+
+    hackerAttempts += 1;
+    appendTerminalLine(`[ERROR] HASH MISMATCH // ATTEMPT ${String(hackerAttempts).padStart(2, '0')}`, 'error');
+    if (hackerAttempts === 3) showHackerHint();
+  });
+
+  root.querySelectorAll('[data-terminal-command]').forEach(button => {
+    button.addEventListener('click', () => {
+      if (button.dataset.terminalCommand === 'hint') showHackerHint();
+      if (button.dataset.terminalCommand === 'clear') terminalLog.innerHTML = '';
+      terminalInput.focus({ preventScroll: true });
+    });
+  });
+
+  closeButton.addEventListener('click', close);
+  root.addEventListener('click', (event) => {
+    if (event.target === root) close();
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !root.hidden) close();
+  });
+
+  return { open, close };
 }
 
 /* ---------- Product page ---------- */
