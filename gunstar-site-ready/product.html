@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product — GUNSTAR</title>
+<meta name="description" content="GUNSTAR product page — visuals, story and details behind each piece.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header__inner">
+    <a href="index.html" class="brand">
+      <span class="brand__badge">G★</span>
+      GUNSTAR
+    </a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="galerie.html" aria-current="page">Gallery</a>
+      <a href="a-propos.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<section class="section section--tight">
+  <div class="container">
+
+    <a class="product-back" href="galerie.html">← Back to gallery</a>
+
+    <div class="product" id="product-root">
+
+      <!-- Gallery: thumbnails column + main media, filled in by initProductPage() -->
+      <div class="product-gallery">
+        <div class="product-gallery__thumbs" id="product-thumbs"></div>
+        <div class="product-gallery__main">
+          <span class="product-media__index" id="product-index">N°00</span>
+          <div id="product-media-slot"></div>
+        </div>
+      </div>
+
+      <!-- Info: title, description, accordion, filled in by initProductPage() -->
+      <div class="product-info">
+        <p class="eyebrow" id="product-category">Category</p>
+        <h1 id="product-title">Loading…</h1>
+        <p class="product-type" id="product-type">Photo</p>
+
+        <p class="product-description" id="product-description"></p>
+
+        <div class="product-cta">
+          <a class="btn btn--solid" href="contact.html">Enquire about this piece</a>
+        </div>
+
+        <div class="product-accordion">
+          <details open>
+            <summary>Details</summary>
+            <dl class="product-details" id="product-details"></dl>
+          </details>
+          <details>
+            <summary>Delivery</summary>
+            <p id="product-delivery"></p>
+          </details>
+          <details>
+            <summary>Terms</summary>
+            <p id="product-terms"></p>
+          </details>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="stripe" style="margin-bottom:2.5rem;"></div>
+    <div class="footer__bottom">
+      <span>© 2026 GUNSTAR. All rights reserved.</span>
+      <a href="contact.html">Contact us</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/products-data.js"></script>
+<script src="assets/js/script.js"></script>
+</body>
+</html>
