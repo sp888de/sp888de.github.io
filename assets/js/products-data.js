@@ -101,8 +101,8 @@ const GUNSTAR_PRODUCTS = [
   },
   {
     id: "05",
-    tag: "N°05",
-    name: "1101",
+    tag: "N°1101",
+    name: "INSERT COIN",
     category: "Business man",
     media: [
       { type: "photo", src: "assets/img/arkan_insert_coin/2FE51D00-C24C-4C75-BEDE-DBB7AEC4BE05.jpeg" },
@@ -120,8 +120,8 @@ const GUNSTAR_PRODUCTS = [
   },
   {
     id: "06",
-    tag: "N°06",
-    name: "10100",
+    tag: "N°10100",
+    name: "Demon vest",
     category: "Mercenary",
     media: [
       { type: "photo", src: "assets/img/demonvest/027826A9-8270-4E91-AEFC-1C23A57866BD_1_105_c.jpeg" },
@@ -139,7 +139,7 @@ const GUNSTAR_PRODUCTS = [
   },
   {
     id: "07",
-    tag: "1100",
+    tag: "11000",
     name: "Pop star wallpaper",
     category: "Business man",
     media: [
