@@ -38,11 +38,11 @@ const GUNSTAR_PRODUCTS = [
   },
   {
     id: "02",
-    tag: "N°1011",
+    tag: "N°1010",
     name: "SNIPER",
     category: "Mercenary",
     media: [
-      { type: "photo", src: "assets/img/P7291258.jpg" },{ type: "photo", src: "assets/img/P7291260.jpg" }, { type: "photo", src: "assets/img/P7291155.jpg" }
+      { type: "photo", src: "assets/img/sniper/P7291258.jpg" },{ type: "photo", src: "assets/img/sniper/P7291260.jpg" }, { type: "photo", src: "assets/img/sniper/P7291155.jpg" }
     ],
     description: "A field asset from the Mercenary division, engineered around precision, distance and controlled impact.",
     details: [
@@ -54,11 +54,11 @@ const GUNSTAR_PRODUCTS = [
   },
   {
     id: "03",
-    tag: "N°1012",
+    tag: "N°1011",
     name: "Mechagirl",
     category: "Mercenary",
     media: [
-      { type: "video", src: "assets/video/gunstarhomepage_2.mp4" }
+      { type: "photo", src: "assets/img/mechagirl/P7291167.jpg" }, { type: "photo", src: "assets/img/mechagirl/P7291170.jpg" }, { type: "photo", src: "assets/img/mechagirl/P7291255.jpg" }, { type: "photo", src: "assets/img/mechagirl/P7291158.jpg" }, { type: "photo", src: "assets/img/mechagirl/P7291250.jpg" }
     ],
     description: "A second classified entry from the Mercenary division. Same command structure, different operative profile.",
     details: [
