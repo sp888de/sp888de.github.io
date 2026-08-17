@@ -18,6 +18,10 @@
 //   details     array of [label, value] pairs for the "Details" tab
 //   delivery    text for the "Delivery" tab
 //   terms       text for the "Terms" tab
+//
+// IMPORTANT: every product object goes INSIDE the same [ ... ]
+// array below, separated by commas. Never close the array (]) and
+// reopen a new { ... } outside it — that breaks the whole file.
 // =========================================================
 
 const GUNSTAR_PRODUCTS = [
@@ -27,11 +31,11 @@ const GUNSTAR_PRODUCTS = [
     name: "INTRODUCTION",
     category: "None",
     media: [
-      { src: "assets/img/etoile_blanche.png" }
+      { type: "photo", src: "assets/img/etoile_blanche.png" }
     ],
     description: "Congratulations. Curiosity brought you into the archive. Three divisions operate inside GUNSTAR: Mercenary, Business man and Hacker. Each division controls a classified clothing series and a binary protocol: Mercenary => 101, Business man => 110, Hacker => 100. Stay alert. Be awake.",
     details: [
-      ["Category", "Knowledge"],
+      ["Category", "Knowledge"]
     ],
     delivery: "Digital piece — no physical shipping required. Full-resolution files are sent by email after your enquiry is confirmed.",
     terms: "By submitting an enquiry you agree to be contacted by GUNSTAR about this piece. Usage rights are discussed and confirmed individually."
@@ -42,12 +46,14 @@ const GUNSTAR_PRODUCTS = [
     name: "SNIPER",
     category: "Mercenary",
     media: [
-      { type: "photo", src: "assets/img/sniper/P7291258.jpg" },{ type: "photo", src: "assets/img/sniper/P7291260.jpg" }, { type: "photo", src: "assets/img/sniper/P7291155.jpg" }
+      { type: "photo", src: "assets/img/sniper/P7291258.jpg" },
+      { type: "photo", src: "assets/img/sniper/P7291260.jpg" },
+      { type: "photo", src: "assets/img/sniper/P7291155.jpg" }
     ],
     description: "A field asset from the Mercenary division, engineered around precision, distance and controlled impact.",
     details: [
       ["Category", "Mercenary"],
-      ["Format", "100% cotton"],
+      ["Format", "100% cotton"]
     ],
     delivery: "Digital piece — no physical shipping required. Full-resolution files are sent by email after your enquiry is confirmed.",
     terms: "By submitting an enquiry you agree to be contacted by GUNSTAR about this piece. Usage rights are discussed and confirmed individually."
@@ -58,7 +64,11 @@ const GUNSTAR_PRODUCTS = [
     name: "Mechagirl",
     category: "Mercenary",
     media: [
-      { type: "photo", src: "assets/img/mechagirl/P7291167.jpg" }, { type: "photo", src: "assets/img/mechagirl/P7291170.jpg" }, { type: "photo", src: "assets/img/mechagirl/P7291255.jpg" }, { type: "photo", src: "assets/img/mechagirl/P7291158.jpg" }, { type: "photo", src: "assets/img/mechagirl/P7291250.jpg" }
+      { type: "photo", src: "assets/img/mechagirl/P7291167.jpg" },
+      { type: "photo", src: "assets/img/mechagirl/P7291170.jpg" },
+      { type: "photo", src: "assets/img/mechagirl/P7291255.jpg" },
+      { type: "photo", src: "assets/img/mechagirl/P7291158.jpg" },
+      { type: "photo", src: "assets/img/mechagirl/P7291250.jpg" }
     ],
     description: "A second classified entry from the Mercenary division. Same command structure, different operative profile.",
     details: [
@@ -116,9 +126,8 @@ const GUNSTAR_PRODUCTS = [
     ],
     delivery: "Digital piece — no physical shipping required. Full-resolution files are sent by email after your enquiry is confirmed.",
     terms: "By submitting an enquiry you agree to be contacted by GUNSTAR about this piece. Usage rights are discussed and confirmed individually."
-  }
-],
-{
+  },
+  {
     id: "07",
     tag: "N°07",
     name: "10100",
@@ -133,9 +142,8 @@ const GUNSTAR_PRODUCTS = [
     ],
     delivery: "Digital piece — no physical shipping required. Full-resolution files are sent by email after your enquiry is confirmed.",
     terms: "By submitting an enquiry you agree to be contacted by GUNSTAR about this piece. Usage rights are discussed and confirmed individually."
-  }
-],
-{
+  },
+  {
     id: "08",
     tag: "1100",
     name: "Pop star wallpaper",
@@ -150,9 +158,8 @@ const GUNSTAR_PRODUCTS = [
     ],
     delivery: "Digital piece — no physical shipping required. Full-resolution files are sent by email after your enquiry is confirmed.",
     terms: "By submitting an enquiry you agree to be contacted by GUNSTAR about this piece. Usage rights are discussed and confirmed individually."
-  }
-],
-{
+  },
+  {
     id: "09",
     tag: "1000",
     name: "Starboy",
@@ -167,10 +174,9 @@ const GUNSTAR_PRODUCTS = [
     ],
     delivery: "Digital piece — no physical shipping required. Full-resolution files are sent by email after your enquiry is confirmed.",
     terms: "By submitting an enquiry you agree to be contacted by GUNSTAR about this piece. Usage rights are discussed and confirmed individually."
-  }
-],
-{
-    id: "09",
+  },
+  {
+    id: "10",
     tag: "1001",
     name: "USB KEY",
     category: "Hacker",
@@ -185,5 +191,4 @@ const GUNSTAR_PRODUCTS = [
     delivery: "Digital piece — no physical shipping required. Full-resolution files are sent by email after your enquiry is confirmed.",
     terms: "By submitting an enquiry you agree to be contacted by GUNSTAR about this piece. Usage rights are discussed and confirmed individually."
   }
-] ;
-
+];
