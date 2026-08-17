@@ -71,16 +71,15 @@ const GUNSTAR_PRODUCTS = [
   },
   {
     id: "04",
-    tag: "N°1101",
-    name: "YEAT",
+    tag: "N°1100",
+    name: "BOGO",
     category: "Business man",
     media: [
-      { type: "video", src: "assets/video/gunstarhomepage_2.mp4" }
+      { type: "photo", src: "assets/img/babytee/... .jpg" }
     ],
     description: "An asset from the Business man division: controlled presence, private access and silent leverage.",
     details: [
       ["Category", "Business man"],
-      ["Format", "Video"],
       ["Reference", "N°04"]
     ],
     delivery: "Digital piece — no physical shipping required. Full-resolution files are sent by email after your enquiry is confirmed.",
@@ -89,15 +88,14 @@ const GUNSTAR_PRODUCTS = [
   {
     id: "05",
     tag: "N°05",
-    name: "1102",
+    name: "1101",
     category: "Business man",
     media: [
-      { type: "video", src: "assets/video/gunstarhomepage_2.mp4" }
+      { type: "photo", src: "assets/img/arkan_insert_coin/... .jpg" }
     ],
     description: "The second Business man file. Capital, influence and discretion encoded into the same visual system.",
     details: [
       ["Category", "Business man"],
-      ["Format", "Video"],
       ["Reference", "N°05"]
     ],
     delivery: "Digital piece — no physical shipping required. Full-resolution files are sent by email after your enquiry is confirmed.",
@@ -106,18 +104,86 @@ const GUNSTAR_PRODUCTS = [
   {
     id: "06",
     tag: "N°06",
-    name: "1001",
-    category: "Hacker",
+    name: "10100",
+    category: "Mercenary",
     media: [
-      { type: "video", src: "assets/video/gunstarhomepage_2.mp4" }
+      { type: "photo", src: "assets/img/demonvest/... .jpg" }
     ],
     description: "The first recovered file from the Hacker division: low light, corrupted signals and unauthorized access.",
     details: [
-      ["Category", "Hacker"],
-      ["Format", "Video"],
+      ["Category", "Mercenary"],
       ["Reference", "N°06"]
     ],
     delivery: "Digital piece — no physical shipping required. Full-resolution files are sent by email after your enquiry is confirmed.",
     terms: "By submitting an enquiry you agree to be contacted by GUNSTAR about this piece. Usage rights are discussed and confirmed individually."
   }
-];
+],
+{
+    id: "07",
+    tag: "N°07",
+    name: "10100",
+    category: "Mercenary",
+    media: [
+      { type: "photo", src: "assets/img/demonvest/... .jpg" }
+    ],
+    description: "The first recovered file from the Hacker division: low light, corrupted signals and unauthorized access.",
+    details: [
+      ["Category", "Mercenary"],
+      ["Reference", "N°06"]
+    ],
+    delivery: "Digital piece — no physical shipping required. Full-resolution files are sent by email after your enquiry is confirmed.",
+    terms: "By submitting an enquiry you agree to be contacted by GUNSTAR about this piece. Usage rights are discussed and confirmed individually."
+  }
+],
+{
+    id: "08",
+    tag: "1100",
+    name: "Pop star wallpaper",
+    category: "Business man",
+    media: [
+      { type: "photo", src: "assets/img/pop_star_wallpaper/... .jpg" }
+    ],
+    description: "The first recovered file from the Hacker division: low light, corrupted signals and unauthorized access.",
+    details: [
+      ["Category", "Business man"],
+      ["Reference", "N°06"]
+    ],
+    delivery: "Digital piece — no physical shipping required. Full-resolution files are sent by email after your enquiry is confirmed.",
+    terms: "By submitting an enquiry you agree to be contacted by GUNSTAR about this piece. Usage rights are discussed and confirmed individually."
+  }
+],
+{
+    id: "09",
+    tag: "1000",
+    name: "Starboy",
+    category: "Hacker",
+    media: [
+      { type: "photo", src: "assets/img/starboy/... .jpg" }
+    ],
+    description: "The first recovered file from the Hacker division: low light, corrupted signals and unauthorized access.",
+    details: [
+      ["Category", "Hacker"],
+      ["Reference", "N°06"]
+    ],
+    delivery: "Digital piece — no physical shipping required. Full-resolution files are sent by email after your enquiry is confirmed.",
+    terms: "By submitting an enquiry you agree to be contacted by GUNSTAR about this piece. Usage rights are discussed and confirmed individually."
+  }
+],
+{
+    id: "09",
+    tag: "1001",
+    name: "USB KEY",
+    category: "Hacker",
+    media: [
+      { type: "photo", src: "assets/img/usb_key/... .jpg" }
+    ],
+    description: "The first recovered file from the Hacker division: low light, corrupted signals and unauthorized access.",
+    details: [
+      ["Category", "Hacker"],
+      ["Reference", "N°06"]
+    ],
+    delivery: "Digital piece — no physical shipping required. Full-resolution files are sent by email after your enquiry is confirmed.",
+    terms: "By submitting an enquiry you agree to be contacted by GUNSTAR about this piece. Usage rights are discussed and confirmed individually."
+  }
+] ;
+
