@@ -48,7 +48,8 @@ const GUNSTAR_PRODUCTS = [
     media: [
       { type: "photo", src: "assets/img/sniper/P7291258.jpg" },
       { type: "photo", src: "assets/img/sniper/P7291260.jpg" },
-      { type: "photo", src: "assets/img/sniper/P7291155.jpg" }
+      { type: "photo", src: "assets/img/sniper/P7291155.jpg" },
+      { type: "video", src: "assets/video/sniper/snipervid.mp4" }
     ],
     description: "A field asset from the Mercenary division, engineered around precision, distance and controlled impact.",
     details: [
@@ -85,7 +86,10 @@ const GUNSTAR_PRODUCTS = [
     name: "BOGO",
     category: "Business man",
     media: [
-      { type: "photo", src: "assets/img/babytee/... .jpg" }
+      { type: "photo", src: "assets/img/babytee/0D04D802-1D4B-4A74-8B21-775653399C15_1_102_o.jpeg" },
+      { type: "photo", src: "assets/img/babytee/30804994-2478-4A84-8C51-87FD69D9662E_1_102_o.jpeg" },
+      { type: "video", src: "assets/img/babytee/IMG_4417.mp4" },
+      { type: "video", src: "assets/img/babytee/bc4eda649d234d3c845555c94d6b5ea6.mp4" }
     ],
     description: "An asset from the Business man division: controlled presence, private access and silent leverage.",
     details: [
@@ -101,7 +105,10 @@ const GUNSTAR_PRODUCTS = [
     name: "1101",
     category: "Business man",
     media: [
-      { type: "photo", src: "assets/img/arkan_insert_coin/... .jpg" }
+      { type: "photo", src: "assets/img/arkan_insert_coin/2FE51D00-C24C-4C75-BEDE-DBB7AEC4BE05.jpeg" },
+      { type: "photo", src: "assets/img/arkan_insert_coin/4F2304B1-1725-4937-A1F5-00C4966709A8.jpeg" },
+      { type: "photo", src: "assets/img/arkan_insert_coin/8091D81E-BF93-41DB-ADD6-1CE79032783A.jpeg" },
+      { type: "photo", src: "assets/img/arkan_insert_coin/A0B33D84-C6AF-418E-8336-B1F632375844_4_5005_c.jpeg" }
     ],
     description: "The second Business man file. Capital, influence and discretion encoded into the same visual system.",
     details: [
@@ -117,7 +124,10 @@ const GUNSTAR_PRODUCTS = [
     name: "10100",
     category: "Mercenary",
     media: [
-      { type: "photo", src: "assets/img/demonvest/... .jpg" }
+      { type: "photo", src: "assets/img/demonvest/027826A9-8270-4E91-AEFC-1C23A57866BD_1_105_c.jpeg" },
+      { type: "photo", src: "assets/img/demonvest/DSC07597.jpg" },
+      { type: "photo", src: "assets/img/demonvest/DSC07666.jpg" },
+      { type: "photo", src: "assets/img/demonvest/gunstar test.png" }
     ],
     description: "The first recovered file from the Hacker division: low light, corrupted signals and unauthorized access.",
     details: [
@@ -133,7 +143,10 @@ const GUNSTAR_PRODUCTS = [
     name: "10100",
     category: "Mercenary",
     media: [
-      { type: "photo", src: "assets/img/demonvest/... .jpg" }
+      { type: "photo", src: "assets/img/demonvest/027826A9-8270-4E91-AEFC-1C23A57866BD_1_105_c.jpeg" },
+      { type: "photo", src: "assets/img/demonvest/DSC07597.jpg" },
+      { type: "photo", src: "assets/img/demonvest/DSC07666.jpg" },
+      { type: "photo", src: "assets/img/demonvest/gunstar test.png" }
     ],
     description: "The first recovered file from the Hacker division: low light, corrupted signals and unauthorized access.",
     details: [
@@ -149,7 +162,10 @@ const GUNSTAR_PRODUCTS = [
     name: "Pop star wallpaper",
     category: "Business man",
     media: [
-      { type: "photo", src: "assets/img/pop_star_wallpaper/... .jpg" }
+      { type: "photo", src: "assets/img/pop_star_wallpaper/29B29B0F-B199-42C5-8F34-66A8E97BBD47_1_102_o.jpeg" },
+      { type: "photo", src: "assets/img/pop_star_wallpaper/67D1B77A-A1FF-4EEA-8BBD-A74CB02AD0B0.jpeg" },
+      { type: "photo", src: "assets/img/pop_star_wallpaper/9514DAB0-2FF9-4F4A-8562-FE19D8860C11_1_102_o.jpeg" },
+      { type: "photo", src: "assets/img/pop_star_wallpaper/AB676C5E-57C5-42B4-AFAD-664D34532DB0_1_102_o.jpeg" }
     ],
     description: "The first recovered file from the Hacker division: low light, corrupted signals and unauthorized access.",
     details: [
@@ -165,7 +181,9 @@ const GUNSTAR_PRODUCTS = [
     name: "Starboy",
     category: "Hacker",
     media: [
-      { type: "photo", src: "assets/img/starboy/... .jpg" }
+      { type: "photo", src: "assets/img/starboy/3D484495-8E69-4FE0-9083-61F8CA46FA90.jpeg" },
+      { type: "photo", src: "assets/img/starboy/51C71CA6-3741-434F-9C0C-A8B6C935E727_1_102_o.jpeg" },
+      { type: "photo", src: "assets/img/starboy/7403F916-C927-481F-96BD-4E784FC2D07C.png" }
     ],
     description: "The first recovered file from the Hacker division: low light, corrupted signals and unauthorized access.",
     details: [
@@ -181,7 +199,9 @@ const GUNSTAR_PRODUCTS = [
     name: "USB KEY",
     category: "Hacker",
     media: [
-      { type: "photo", src: "assets/img/usb_key/... .jpg" }
+      // Aucun fichier image exploitable n'est actuellement listé
+      // directement dans assets/img/usb_key.
+      // Le dépôt contient uniquement "pics".
     ],
     description: "The first recovered file from the Hacker division: low light, corrupted signals and unauthorized access.",
     details: [
