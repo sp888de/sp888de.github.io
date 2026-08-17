@@ -29,9 +29,9 @@ const GUNSTAR_PRODUCTS = [
     media: [
       { src: "assets/img/etoile_blanche.png" }
     ],
-    description: "Congratulations. Curiosity brought you into the archive. Three divisions operate inside GUNSTAR: Mercenary, Business man and Hacker. Each division controls a classified clothing series and a binary protocol: Mercenary 101, Business man 110, Hacker 100. Stay alert. Stay awake.",
+    description: "Congratulations. Curiosity brought you into the archive. Three divisions operate inside GUNSTAR: Mercenary, Business man and Hacker. Each division controls a classified clothing series and a binary protocol: Mercenary => 101, Business man => 110, Hacker => 100. Stay alert. Be awake.",
     details: [
-      ["Category", "1010"],
+      ["Category", "Knowledge"],
     ],
     delivery: "Digital piece — no physical shipping required. Full-resolution files are sent by email after your enquiry is confirmed.",
     terms: "By submitting an enquiry you agree to be contacted by GUNSTAR about this piece. Usage rights are discussed and confirmed individually."
