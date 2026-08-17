@@ -139,25 +139,6 @@ const GUNSTAR_PRODUCTS = [
   },
   {
     id: "07",
-    tag: "N°07",
-    name: "10100",
-    category: "Mercenary",
-    media: [
-      { type: "photo", src: "assets/img/demonvest/027826A9-8270-4E91-AEFC-1C23A57866BD_1_105_c.jpeg" },
-      { type: "photo", src: "assets/img/demonvest/DSC07597.jpg" },
-      { type: "photo", src: "assets/img/demonvest/DSC07666.jpg" },
-      { type: "photo", src: "assets/img/demonvest/gunstar test.png" }
-    ],
-    description: "The first recovered file from the Hacker division: low light, corrupted signals and unauthorized access.",
-    details: [
-      ["Category", "Mercenary"],
-      ["Reference", "N°06"]
-    ],
-    delivery: "Digital piece — no physical shipping required. Full-resolution files are sent by email after your enquiry is confirmed.",
-    terms: "By submitting an enquiry you agree to be contacted by GUNSTAR about this piece. Usage rights are discussed and confirmed individually."
-  },
-  {
-    id: "08",
     tag: "1100",
     name: "Pop star wallpaper",
     category: "Business man",
@@ -176,7 +157,7 @@ const GUNSTAR_PRODUCTS = [
     terms: "By submitting an enquiry you agree to be contacted by GUNSTAR about this piece. Usage rights are discussed and confirmed individually."
   },
   {
-    id: "09",
+    id: "08",
     tag: "1000",
     name: "Starboy",
     category: "Hacker",
@@ -194,7 +175,7 @@ const GUNSTAR_PRODUCTS = [
     terms: "By submitting an enquiry you agree to be contacted by GUNSTAR about this piece. Usage rights are discussed and confirmed individually."
   },
   {
-    id: "10",
+    id: "09",
     tag: "1001",
     name: "USB KEY",
     category: "Hacker",
