@@ -549,17 +549,22 @@ p { margin: 0 0 1rem; color: var(--bone-dim); max-width: 60ch; }
 }
 
 .product-gallery__thumb {
-  aspect-ratio: 4 / 5;
+  width: 76px;
+  height: auto;
+  aspect-ratio: auto;
   overflow: hidden;
   border: 1px solid rgba(245,244,240,0.14);
   background: var(--charcoal);
   padding: 0;
   flex-shrink: 0;
-  width: 76px;
 }
+
 .product-gallery__thumb img,
 .product-gallery__thumb video {
-  width: 100%; height: 100%; object-fit: cover;
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
   opacity: 0.5;
   transition: opacity 0.2s ease;
 }
