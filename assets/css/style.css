@@ -448,7 +448,7 @@ p { margin: 0 0 1rem; color: var(--bone-dim); max-width: 60ch; }
 
 /* ---------- Footer ---------- */
 .footer {
-  background: var(--charcoal);
+  background: var(--black);
   padding: 3.5rem 0 2rem;
 }
 .footer__grid {
