@@ -510,7 +510,6 @@ function initProductPage() {
 function renderProductGallery(product) {
   const thumbsWrap = document.getElementById('product-thumbs');
   const slot = document.getElementById('product-media-slot');
-  const typeLabel = document.getElementById('product-type');
   if (!thumbsWrap || !slot) return;
 
   thumbsWrap.innerHTML = '';
@@ -532,7 +531,6 @@ function renderProductGallery(product) {
       el.alt = product.name;
     }
     slot.appendChild(el);
-    typeLabel.textContent = item.type === 'video' ? 'Video' : 'Photo';
   }
 
   // Build one thumbnail per media entry (only needed if there is more than one)
