@@ -90,37 +90,33 @@ function applyFilter(filter) {
   });
 
   cards.forEach(card => {
-    const show = filter === 'all' || filter === card.dataset.category;
+    const show =
+      filter === 'all' ||
+      filter === card.dataset.category;
 
     card.style.display = show ? '' : 'none';
 
-    // ALL = visual access only.
-    // Products cannot be opened from the global gallery.
     const lockedInAll = filter === 'all';
 
-    card.classList.toggle('is-locked-in-all', lockedInAll);
-    card.setAttribute('aria-disabled', String(lockedInAll));
+    card.classList.toggle(
+      'is-locked-in-all',
+      lockedInAll
+    );
+
+    card.setAttribute(
+      'aria-disabled',
+      String(lockedInAll)
+    );
+
+    // Impossible de sélectionner une vignette avec Tab
+    // lorsqu'on est dans ALL.
     card.tabIndex = lockedInAll ? -1 : 0;
+
+    // Bloque le clic souris dans ALL sans supprimer
+    // la vignette de la page.
+    card.style.pointerEvents = lockedInAll ? 'none' : '';
   });
 }
-
-  cards.forEach(card => {
-  card.addEventListener('click', (event) => {
-    if (card.classList.contains('is-locked-in-all')) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-  });
-
-  card.addEventListener('keydown', (event) => {
-    if (
-      card.classList.contains('is-locked-in-all') &&
-      (event.key === 'Enter' || event.key === ' ')
-    ) {
-      event.preventDefault();
-    }
-  });
-});
   
   unlockedArchives.forEach(markArchiveUnlocked);
 
