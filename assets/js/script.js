@@ -81,17 +81,47 @@ function initGalleryFilters() {
     if (marker) marker.textContent = '○';
   }
 
-  function applyFilter(filter) {
-    filterButtons.forEach(button => {
-      button.setAttribute('aria-pressed', String(button.dataset.filter === filter));
-    });
+function applyFilter(filter) {
+  filterButtons.forEach(button => {
+    button.setAttribute(
+      'aria-pressed',
+      String(button.dataset.filter === filter)
+    );
+  });
 
-    cards.forEach(card => {
-      const show = filter === 'all' || filter === card.dataset.category;
-      card.style.display = show ? '' : 'none';
-    });
-  }
+  cards.forEach(card => {
+    const show = filter === 'all' || filter === card.dataset.category;
 
+    card.style.display = show ? '' : 'none';
+
+    // ALL = visual access only.
+    // Products cannot be opened from the global gallery.
+    const lockedInAll = filter === 'all';
+
+    card.classList.toggle('is-locked-in-all', lockedInAll);
+    card.setAttribute('aria-disabled', String(lockedInAll));
+    card.tabIndex = lockedInAll ? -1 : 0;
+  });
+}
+
+  cards.forEach(card => {
+  card.addEventListener('click', (event) => {
+    if (card.classList.contains('is-locked-in-all')) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  });
+
+  card.addEventListener('keydown', (event) => {
+    if (
+      card.classList.contains('is-locked-in-all') &&
+      (event.key === 'Enter' || event.key === ' ')
+    ) {
+      event.preventDefault();
+    }
+  });
+});
+  
   unlockedArchives.forEach(markArchiveUnlocked);
 
   const gate = initAccessGate((filter) => {
