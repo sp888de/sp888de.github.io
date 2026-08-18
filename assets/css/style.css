@@ -831,6 +831,19 @@ p { margin: 0 0 1rem; color: var(--bone-dim); max-width: 60ch; }
   flex-shrink: 0;
 }
 
+.catalog-item.is-locked-in-all {
+  cursor: default;
+}
+
+.catalog-item.is-locked-in-all:hover .catalog-item__media img,
+.catalog-item.is-locked-in-all:hover .catalog-item__media video {
+  transform: none;
+  filter: grayscale(0.15);
+}
+
+.catalog-item.is-locked-in-all {
+  user-select: none;
+}
 /* =========================================================
    Portail classifié — expériences d'accès par division.
    ========================================================= */
