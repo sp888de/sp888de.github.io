@@ -12,7 +12,13 @@
   font-style: normal;
   font-display: swap;
 }
-
+@font-face {
+  font-family: 'AG Book Pro';
+  src: url('../fonts/ag-book-pro-medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
 /* ---------- Reset ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
@@ -34,7 +40,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   --white-dim:     #cfcdc7;
 
   --font-display: 'BBBouquet', 'Anton', sans-serif;
-  --font-body:    'Archivo', sans-serif;
+  --font-body:    'AG Book Pro', sans-serif;
   --font-mono:    'IBM Plex Mono', monospace;
 
   --container: 1180px;
