@@ -49,7 +49,7 @@ const GUNSTAR_PRODUCTS = [
       { type: "photo", src: "assets/img/sniper/P7291258.jpg" },
       { type: "photo", src: "assets/img/sniper/P7291260.jpg" },
       { type: "photo", src: "assets/img/sniper/P7291155.jpg" },
-      { type: "video", src: "assets/video/sniper/snipervid.mp4" }
+      { type: "video", src: "assets/video/snipervid.mp4" }
     ],
     description: "A field asset from the Mercenary division, engineered around precision, distance and controlled impact.",
     details: [
