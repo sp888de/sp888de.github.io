@@ -124,7 +124,7 @@ const GUNSTAR_PRODUCTS = [
     name: "Demon vest",
     category: "Mercenary",
     media: [
-      { type: "photo", src: "assets/img/demonvest/gunstar test.png" }
+      { type: "photo", src: "assets/img/demonvest/gunstar test.png" },
       { type: "photo", src: "assets/img/demonvest/DSC07597.jpg" },
       { type: "photo", src: "assets/img/demonvest/DSC07666.jpg" },
       { type: "photo", src: "assets/img/demonvest/027826A9-8270-4E91-AEFC-1C23A57866BD_1_105_c.jpeg" }
