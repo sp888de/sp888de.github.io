@@ -124,10 +124,10 @@ const GUNSTAR_PRODUCTS = [
     name: "Demon vest",
     category: "Mercenary",
     media: [
-      { type: "photo", src: "assets/img/demonvest/027826A9-8270-4E91-AEFC-1C23A57866BD_1_105_c.jpeg" },
+      { type: "photo", src: "assets/img/demonvest/gunstar test.png" }
       { type: "photo", src: "assets/img/demonvest/DSC07597.jpg" },
       { type: "photo", src: "assets/img/demonvest/DSC07666.jpg" },
-      { type: "photo", src: "assets/img/demonvest/gunstar test.png" }
+      { type: "photo", src: "assets/img/demonvest/027826A9-8270-4E91-AEFC-1C23A57866BD_1_105_c.jpeg" }
     ],
     description: "The first recovered file from the Hacker division: low light, corrupted signals and unauthorized access.",
     details: [
@@ -144,9 +144,8 @@ const GUNSTAR_PRODUCTS = [
     category: "Business man",
     media: [
       { type: "photo", src: "assets/img/pop_star_wallpaper/29B29B0F-B199-42C5-8F34-66A8E97BBD47_1_102_o.jpeg" },
-      { type: "photo", src: "assets/img/pop_star_wallpaper/67D1B77A-A1FF-4EEA-8BBD-A74CB02AD0B0.jpeg" },
-      { type: "photo", src: "assets/img/pop_star_wallpaper/9514DAB0-2FF9-4F4A-8562-FE19D8860C11_1_102_o.jpeg" },
-      { type: "photo", src: "assets/img/pop_star_wallpaper/AB676C5E-57C5-42B4-AFAD-664D34532DB0_1_102_o.jpeg" }
+      { type: "photo", src: "assets/img/pop_star_wallpaper/AB676C5E-57C5-42B4-AFAD-664D34532DB0_1_102_o.jpeg" },
+      { type: "photo", src: "assets/img/pop_star_wallpaper/67D1B77A-A1FF-4EEA-8BBD-A74CB02AD0B0.jpeg" }
     ],
     description: "The first recovered file from the Hacker division: low light, corrupted signals and unauthorized access.",
     details: [
@@ -162,9 +161,8 @@ const GUNSTAR_PRODUCTS = [
     name: "Starboy",
     category: "Hacker",
     media: [
-      { type: "photo", src: "assets/img/starboy/3D484495-8E69-4FE0-9083-61F8CA46FA90.jpeg" },
-      { type: "photo", src: "assets/img/starboy/51C71CA6-3741-434F-9C0C-A8B6C935E727_1_102_o.jpeg" },
-      { type: "photo", src: "assets/img/starboy/7403F916-C927-481F-96BD-4E784FC2D07C.png" }
+      { type: "photo", src: "assets/img/starboy/7403F916-C927-481F-96BD-4E784FC2D07C.png" },
+      { type: "photo", src: "assets/img/starboy/3D484495-8E69-4FE0-9083-61F8CA46FA90.jpeg" }
     ],
     description: "The first recovered file from the Hacker division: low light, corrupted signals and unauthorized access.",
     details: [
