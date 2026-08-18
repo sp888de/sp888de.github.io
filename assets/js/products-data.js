@@ -177,11 +177,9 @@ const GUNSTAR_PRODUCTS = [
     tag: "1001",
     name: "USB KEY",
     category: "Hacker",
-    media: [
-      // Aucun fichier image exploitable n'est actuellement listé
-      // directement dans assets/img/usb_key.
-      // Le dépôt contient uniquement "pics".
-    ],
+   media: [
+  { type: "photo", src: "assets/img/etoile_blanche.png" }
+],
     description: "The first recovered file from the Hacker division: low light, corrupted signals and unauthorized access.",
     details: [
       ["Category", "Hacker"],
