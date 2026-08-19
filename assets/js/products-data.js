@@ -105,7 +105,7 @@ const GUNSTAR_PRODUCTS = [
     name: "INSERT COIN",
     category: "Business man",
     media: [
-      { type: "photo", src: "assets/img/arkan_insert_coin/A0B33D84-C6AF-418E-8336-B1F632375844_4_5005_c.jpeg" },
+      { type: "photo", src: "assets/img/arkan_insert_coin/IMG_3697.jpeg" },
       { type: "photo", src: "assets/img/arkan_insert_coin/8091D81E-BF93-41DB-ADD6-1CE79032783A.jpeg" },
       { type: "photo", src: "assets/img/arkan_insert_coin/4F2304B1-1725-4937-A1F5-00C4966709A8.jpeg" },
       { type: "photo", src: "assets/img/arkan_insert_coin/2FE51D00-C24C-4C75-BEDE-DBB7AEC4BE05.jpeg" }
