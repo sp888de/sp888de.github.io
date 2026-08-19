@@ -840,7 +840,8 @@ p { margin: 0 0 1rem; color: var(--bone-dim); max-width: 60ch; }
 }
 
 .catalog-item.is-locked-in-all {
-  cursor: default;
+  cursor: not-allowed;
+  opacity: 0.45;
 }
 
 .catalog-item.is-locked-in-all:hover .catalog-item__media img,
