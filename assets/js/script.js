@@ -4,6 +4,13 @@
 // product page rendering (thumbnails + accordion), contact form.
 // =========================================================
 
+// Le portail s'exécute immédiatement (avant DOMContentLoaded) :
+// ce script est chargé en fin de <body>, donc le DOM est déjà
+// disponible, et style.css masque déjà tout le contenu tant que
+// <html> n'a pas la classe .gate-open — voir "Site-wide password
+// gate" dans style.css. Ça évite un flash du contenu protégé.
+initGunstarGate();
+
 document.addEventListener('DOMContentLoaded', () => {
   initNav();
   initReveal();
@@ -12,6 +19,75 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initGunstarTerminal();
 });
+
+/* ---------- Portail mot de passe (toutes les pages) ---------- */
+/* Le mot de passe se change ici. La protection reste côté client :
+   n'importe qui peut lire ce fichier .js publiquement sur
+   GitHub Pages et y trouver le mot de passe en clair — ce portail
+   empêche un visiteur ordinaire de voir le site, pas un
+   utilisateur technique motivé. Pour une vraie protection,
+   il faudrait héberger le site derrière une authentification
+   côté serveur (ex. Cloudflare Access, Netlify password protect). */
+function initGunstarGate() {
+  const PASSWORD = 'GUNSTAR2026';
+  const STORAGE_KEY = 'gunstar-site-unlocked';
+  const html = document.documentElement;
+
+  let unlocked = false;
+  try {
+    unlocked = sessionStorage.getItem(STORAGE_KEY) === '1';
+  } catch (error) {
+    unlocked = false;
+  }
+
+  if (unlocked) {
+    html.classList.add('gate-open');
+    return;
+  }
+
+  const gate = document.createElement('div');
+  gate.className = 'gunstar-gate';
+  gate.innerHTML = [
+    '<div class="gunstar-gate__panel">',
+    '  <div class="gunstar-gate__lights"><i></i><i></i><i></i></div>',
+    '  <p class="gunstar-gate__eyebrow">GUNSTAR // RESTRICTED</p>',
+    '  <h1>ACCESS LOCKED</h1>',
+    '  <p class="gunstar-gate__hint">Enter password to continue.</p>',
+    '  <form class="gunstar-gate__form" data-gate-form>',
+    '    <span>&gt;</span>',
+    '    <input type="password" data-gate-input autocomplete="off" spellcheck="false" placeholder="PASSWORD" aria-label="Mot de passe">',
+    '    <button type="submit">UNLOCK</button>',
+    '  </form>',
+    '  <p class="gunstar-gate__error" data-gate-error hidden>ACCESS DENIED — INCORRECT PASSWORD</p>',
+    '</div>'
+  ].join('');
+
+  document.body.appendChild(gate);
+
+  const form = gate.querySelector('[data-gate-form]');
+  const input = gate.querySelector('[data-gate-input]');
+  const error = gate.querySelector('[data-gate-error]');
+
+  window.setTimeout(() => input.focus({ preventScroll: true }), 50);
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const value = input.value.trim();
+
+    if (value !== '' && value.toUpperCase() === PASSWORD.toUpperCase()) {
+      try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch (error) { /* stockage indisponible : le portail réapparaîtra au rechargement */ }
+      html.classList.add('gate-open');
+      gate.remove();
+      return;
+    }
+
+    error.hidden = false;
+    input.value = '';
+    input.focus({ preventScroll: true });
+    gate.classList.add('is-shake');
+    window.setTimeout(() => gate.classList.remove('is-shake'), 350);
+  });
+}
 
 /* ---------- Mobile navigation ---------- */
 function initNav() {
