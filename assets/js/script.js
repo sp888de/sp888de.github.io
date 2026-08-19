@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initGalleryFilters();
   initProductPage();
   initContactForm();
-  initAboutTerminal();
+  initGunstarTerminal();
 });
 
 /* ---------- Mobile navigation ---------- */
@@ -580,109 +580,6 @@ function renderProductGallery(product) {
   showMedia(product.media[0]);
 }
 
-/* ---------- About terminal (restricted command console) ---------- */
-function initAboutTerminal() {
-  const log = document.getElementById('about-terminal-log');
-  const form = document.getElementById('about-terminal-form');
-  const input = document.getElementById('about-terminal-input');
-  if (!log || !form || !input) return;
-
-  // Add / edit commands here.
-  // Key   = what the visitor types (case-insensitive).
-  // Value = array of strings, one per printed line.
-  const COMMANDS = {
-    help: [
-      'AVAILABLE COMMANDS:',
-      'HELP        — list available commands',
-      'WHOAMI      — system identity',
-      'DIVISIONS   — list divisions',
-      'CLEAR       — clear the screen'
-    ],
-    whoami: [
-      'SYSTEM // GUNSTAR',
-      'STATUS // ACTIVE',
-      'ACCESS // CLASSIFIED'
-    ],
-    divisions: [
-      '[101] MERCENARY',
-      '[110] BUSINESS MAN',
-      '[100] HACKER'
-    ]
-  };
-
-  const history = [];
-  let historyIndex = -1;
-
-  function print(text, className) {
-    const p = document.createElement('p');
-    if (className) p.className = className;
-    p.textContent = text;
-    log.appendChild(p);
-  }
-
-  function scrollToEnd() {
-    log.scrollTop = log.scrollHeight;
-  }
-
-  function runCommand(rawValue) {
-    const trimmed = rawValue.trim();
-    if (!trimmed) return;
-
-    print(`> ${trimmed}`, 'terminal-line--command');
-
-    const key = trimmed.toLowerCase();
-
-    if (key === 'clear') {
-      log.innerHTML = '';
-      scrollToEnd();
-      return;
-    }
-
-    const response = COMMANDS[key];
-    if (response) {
-      response.forEach(line => print(line));
-    } else {
-      print(`COMMAND NOT RECOGNIZED: "${trimmed}"`, 'terminal-line--error');
-      print('TYPE "HELP" TO LIST AVAILABLE COMMANDS.', 'terminal-line--warning');
-    }
-
-    scrollToEnd();
-  }
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const value = input.value;
-    if (!value.trim()) return;
-
-    history.push(value);
-    historyIndex = history.length;
-
-    runCommand(value);
-    input.value = '';
-  });
-
-  // Optional command history via arrow keys.
-  input.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowUp') {
-      if (historyIndex > 0) {
-        historyIndex -= 1;
-        input.value = history[historyIndex];
-        window.requestAnimationFrame(() => input.setSelectionRange(input.value.length, input.value.length));
-      }
-      e.preventDefault();
-    } else if (e.key === 'ArrowDown') {
-      if (historyIndex < history.length - 1) {
-        historyIndex += 1;
-        input.value = history[historyIndex];
-      } else {
-        historyIndex = history.length;
-        input.value = '';
-      }
-      e.preventDefault();
-    }
-  });
-}
-
 /* ---------- Contact form (mailto, no backend) ---------- */
 function initContactForm() {
   const form = document.querySelector('[data-contact-form]');
@@ -697,5 +594,99 @@ function initContactForm() {
     const subject = encodeURIComponent(`Website contact — ${name}`);
     const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
     window.location.href = `mailto:contact@gunstar.com?subject=${subject}&body=${body}`;
+  });
+}
+
+/* ---------- Terminal GUNSTAR (page À propos) ---------- */
+/* Terminal fonctionnel à commandes restreintes : seules les entrées
+   listées dans RESPONSES produisent une réponse. STRASBOURG est une
+   commande cachée volontairement absente de HELP. */
+function initGunstarTerminal() {
+  const root = document.querySelector('[data-gunstar-terminal]');
+  if (!root) return;
+
+  const log = root.querySelector('[data-gunstar-log]');
+  const form = root.querySelector('[data-gunstar-form]');
+  const input = root.querySelector('[data-gunstar-input]');
+  if (!log || !form || !input) return;
+
+  function printLine(text, className = '') {
+    const line = document.createElement('p');
+    if (className) line.className = className;
+    line.textContent = text;
+    log.appendChild(line);
+    log.scrollTop = log.scrollHeight;
+  }
+
+  function printLines(lines, className = '') {
+    lines.forEach(text => printLine(text, className));
+  }
+
+  // Commandes reconnues. Clés déjà normalisées (majuscules, espace unique).
+  const RESPONSES = {
+    HELP: () => printLines([
+      'AVAILABLE COMMANDS:',
+      'LOCATION',
+      'MERCENARY',
+      'HACKER',
+      'BUSINESS MAN'
+    ], 'is-muted'),
+
+    LOCATION: () => printLine('48.873784, 2.350864'),
+
+    MERCENARY: () => printLines([
+      'Congratulations — a mission has been given to the mercenary.',
+      'Please note this code: 101000025.',
+      'It could be useful in a short time.'
+    ]),
+
+    HACKER: () => printLines([
+      '<<< THANK YOU >>>',
+      '<<< CODE : 100111125 >>>',
+      '<<< END OF TRANSMISSION >>>'
+    ]),
+
+    'BUSINESS MAN': () => printLine('Now please do the math: 25 x 2002 x 11 = ???'),
+
+    // Réponse à l'énigme "BUSINESS MAN" — volontairement absente de HELP.
+    '550550': () => printLine("You're good, try to invest with this code on the stock market: 11000002000$"),
+
+    // Commande secrète — volontairement absente de HELP.
+    STRASBOURG: () => printLines([
+      "Bravo d'avoir trouvé cette commande, t'es un vrai digger.",
+      'Pour ça tu obtiens un VIP ACCESS TOKEN.',
+      'Collectionne-les tous pour obtenir une grosse récompense !!'
+    ], 'is-command'),
+
+    CLEAR: () => { log.innerHTML = ''; }
+  };
+
+  function resolveKey(rawValue) {
+    const normalized = rawValue.toUpperCase().replace(/\s+/g, ' ').trim();
+    if (normalized === 'BUSINESSMAN') return 'BUSINESS MAN';
+    return normalized;
+  }
+
+  printLine('GUNSTAR SYSTEM TERMINAL v1.0', 'is-muted');
+  printLine('Type HELP to list available commands.', 'is-muted');
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const raw = input.value.trim();
+    if (!raw) return;
+
+    printLine(`> ${raw}`, 'is-command');
+    input.value = '';
+
+    const key = resolveKey(raw);
+    const respond = RESPONSES[key];
+
+    if (respond) {
+      respond();
+    } else {
+      printLine('ERROR // COMMAND NOT FOUND. Type HELP for available commands.', 'is-error');
+    }
+
+    input.focus({ preventScroll: true });
   });
 }
