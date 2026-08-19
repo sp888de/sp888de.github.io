@@ -105,10 +105,10 @@ const GUNSTAR_PRODUCTS = [
     name: "INSERT COIN",
     category: "Business man",
     media: [
-      { type: "photo", src: "assets/img/arkan_insert_coin/2FE51D00-C24C-4C75-BEDE-DBB7AEC4BE05.jpeg" },
-      { type: "photo", src: "assets/img/arkan_insert_coin/4F2304B1-1725-4937-A1F5-00C4966709A8.jpeg" },
+      { type: "photo", src: "assets/img/arkan_insert_coin/A0B33D84-C6AF-418E-8336-B1F632375844_4_5005_c.jpeg" },
       { type: "photo", src: "assets/img/arkan_insert_coin/8091D81E-BF93-41DB-ADD6-1CE79032783A.jpeg" },
-      { type: "photo", src: "assets/img/arkan_insert_coin/A0B33D84-C6AF-418E-8336-B1F632375844_4_5005_c.jpeg" }
+      { type: "photo", src: "assets/img/arkan_insert_coin/4F2304B1-1725-4937-A1F5-00C4966709A8.jpeg" },
+      { type: "photo", src: "assets/img/arkan_insert_coin/2FE51D00-C24C-4C75-BEDE-DBB7AEC4BE05.jpeg" }
     ],
     description: "The second Business man file. Capital, influence and discretion encoded into the same visual system.",
     details: [
@@ -124,7 +124,7 @@ const GUNSTAR_PRODUCTS = [
     name: "Demon vest",
     category: "Mercenary",
     media: [
-      { type: "photo", src: "assets/img/demonvest/gunstar test.png" },
+      { type: "photo", src: "assets/img/demonvest/gunstar_test.png" },
       { type: "photo", src: "assets/img/demonvest/DSC07597.jpg" },
       { type: "photo", src: "assets/img/demonvest/DSC07666.jpg" },
       { type: "photo", src: "assets/img/demonvest/027826A9-8270-4E91-AEFC-1C23A57866BD_1_105_c.jpeg" }
