@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
    il faudrait héberger le site derrière une authentification
    côté serveur (ex. Cloudflare Access, Netlify password protect). */
 function initGunstarGate() {
-  const PASSWORD = 'GUNSTAR2026';
+  const PASSWORD = '$GUNSTARISATION$';
   const STORAGE_KEY = 'gunstar-site-unlocked';
   const html = document.documentElement;
 
@@ -729,7 +729,7 @@ function initGunstarTerminal() {
 
     // Commande secrète — volontairement absente de HELP.
     STRASBOURG: () => printLines([
-      "Bravo d'avoir trouvé cette commande, t'es un vrai digger.",
+      "Bravo d'avoir trouvé cette commande, tu es eveillé et fais partit intégrante de l'univers GUNSTAR.",
       'Pour ça tu obtiens un VIP ACCESS TOKEN.',
       'Collectionne-les tous pour obtenir une grosse récompense !!'
     ], 'is-command'),
