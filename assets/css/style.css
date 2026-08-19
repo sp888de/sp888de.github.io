@@ -1552,6 +1552,50 @@ body.gate-open { overflow: hidden; }
 .terminal-actions button { padding: 0.25rem 0; color: #778b7a; }
 .terminal-actions button:hover,
 .terminal-actions button:focus-visible { color: #fff; }
+
+/* ---------- About terminal (functional, grayscale, landscape) ---------- */
+.about-terminal {
+  --protocol-accent: #f5f4f0;
+  max-width: none;
+  margin: 0;
+  border: 1px solid rgba(255,255,255,0.22);
+  background: #0a0a0a;
+  box-shadow: 0 0 40px rgba(255,255,255,0.04), 0 30px 80px rgba(0,0,0,0.72);
+}
+.about-terminal .terminal-bar {
+  border-bottom-color: rgba(255,255,255,0.14);
+  background: #141412;
+  color: #8a8a86;
+}
+.about-terminal .terminal-lights i { background: #3a3a37; }
+.about-terminal .terminal-lights i:first-child {
+  background: var(--protocol-accent);
+  box-shadow: 0 0 8px rgba(255,255,255,0.5);
+}
+.about-terminal .terminal-body {
+  height: 190px;
+  min-height: 0;
+  padding: 1rem clamp(1.1rem, 3vw, 1.6rem);
+  overflow-y: auto;
+  color: #9a9a95;
+  background:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 22px 22px;
+  scrollbar-color: #444 #0a0a0a;
+}
+.about-terminal .terminal-body p { margin: 0 0 0.15rem; }
+.about-terminal .terminal-line--command { color: #e7e6e2; }
+.about-terminal .terminal-line--warning { color: #cfcdc7; }
+.about-terminal .terminal-line--error { color: #ff6a63; }
+.about-terminal .terminal-line--success { color: var(--protocol-accent); text-shadow: none; }
+.about-terminal .terminal-command-line {
+  padding: 0.15rem clamp(1.1rem, 3vw, 1.6rem) 0.85rem;
+  border-bottom: 0;
+  border-top: 1px solid rgba(255,255,255,0.16);
+}
+.about-terminal .terminal-command-line input { text-transform: none; }
+
 .node-monitor {
   position: relative;
   padding: 1.5rem 1.2rem;
