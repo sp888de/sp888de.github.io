@@ -105,25 +105,33 @@
         </p>
       </div>
 
-      <div class="terminal-frame about-terminal">
+      <div class="terminal-frame about-terminal" id="about-terminal">
         <div class="terminal-bar">
           <div class="terminal-lights"><i></i><i></i><i></i></div>
           <span>GUNSTAR // TERMINAL</span>
           <span>NODE // 000</span>
         </div>
-        <div class="terminal-body">
-          <p class="terminal-line--command">&gt; whoami</p>
+        <div class="terminal-body" id="about-terminal-log" role="log" aria-live="polite">
           <p>SYSTEM // GUNSTAR</p>
           <p>STATUS // ACTIVE</p>
           <p class="terminal-line--warning">ACCESS // CLASSIFIED</p>
           <p>&nbsp;</p>
-          <p class="terminal-line--command">&gt; list divisions</p>
-          <p>[101] MERCENARY</p>
-          <p>[110] BUSINESS MAN</p>
-          <p>[100] HACKER</p>
-          <p>&nbsp;</p>
-          <p class="terminal-line--success">&gt; awaiting input<span class="terminal-cursor"></span></p>
+          <p>TYPE <span class="terminal-line--command">HELP</span> TO LIST AVAILABLE COMMANDS.</p>
         </div>
+        <form class="terminal-command-line" id="about-terminal-form" autocomplete="off">
+          <span>&gt;</span>
+          <input
+            type="text"
+            id="about-terminal-input"
+            name="command"
+            aria-label="Terminal command"
+            spellcheck="false"
+            autocomplete="off"
+            autocapitalize="off"
+            maxlength="60"
+          >
+          <button type="submit">RUN</button>
+        </form>
       </div>
 
     </div>
