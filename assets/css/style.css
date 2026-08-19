@@ -1461,34 +1461,104 @@ body.gate-open { overflow: hidden; }
 .terminal-log .terminal-line--error { color: #ff594f; }
 .terminal-log .terminal-line--success { color: var(--protocol-accent); text-shadow: 0 0 8px rgba(96,255,122,0.28); }
 
-.about-terminal { --protocol-accent: #60ff7a; max-width: none; margin: 0; }
-.terminal-body {
-  padding: clamp(1.2rem, 3vw, 1.8rem);
-  min-height: 300px;
-  color: #8da792;
+/* ---------- GUNSTAR terminal (page À propos) — gris / noir / blanc ---------- */
+.gunstar-terminal {
+  max-width: none;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(245,244,240,0.16);
+  background: #0c0c0c;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.55);
+}
+.gunstar-terminal__bar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid rgba(245,244,240,0.14);
+  background: #161616;
+  color: #8a8a8a;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  line-height: 1.9;
-  letter-spacing: 0.02em;
+  font-size: 0.6rem;
+  letter-spacing: 0.07em;
+}
+.gunstar-terminal__lights { display: flex; gap: 5px; }
+.gunstar-terminal__lights i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #3a3a3a;
+}
+.gunstar-terminal__lights i:first-child { background: #e5e4e0; box-shadow: 0 0 6px rgba(245,244,240,0.6); }
+.gunstar-terminal__body {
+  padding: 1rem 1.2rem;
   background:
-    linear-gradient(rgba(96,255,122,0.018) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(96,255,122,0.018) 1px, transparent 1px);
+    linear-gradient(rgba(245,244,240,0.014) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245,244,240,0.014) 1px, transparent 1px);
   background-size: 22px 22px;
 }
-.terminal-body p { margin: 0; }
-.terminal-body .terminal-line--command { color: #dce9de; }
-.terminal-body .terminal-line--warning { color: #d9b959; }
-.terminal-body .terminal-line--success { color: var(--protocol-accent); text-shadow: 0 0 8px rgba(96,255,122,0.28); }
-.terminal-cursor {
-  display: inline-block;
-  width: 0.55em;
-  height: 1em;
-  margin-left: 0.3em;
-  background: var(--protocol-accent);
-  vertical-align: text-bottom;
-  animation: terminalBlink 1s steps(1) infinite;
+.gunstar-terminal__log {
+  height: 168px;
+  overflow-y: auto;
+  margin-bottom: 0.85rem;
+  color: #a6a6a2;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  line-height: 1.65;
+  scrollbar-color: #3a3a3a #0c0c0c;
 }
-@keyframes terminalBlink { 50% { opacity: 0; } }
+.gunstar-terminal__log p { margin: 0 0 0.15rem; }
+.gunstar-terminal__log .is-command { color: #f5f4f0; }
+.gunstar-terminal__log .is-muted { color: #66665f; }
+.gunstar-terminal__log .is-error { color: #8a8a84; font-style: italic; }
+.gunstar-terminal__row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.7rem;
+  border-top: 1px solid rgba(245,244,240,0.16);
+  padding-top: 0.75rem;
+}
+.gunstar-terminal__row > span { color: #e5e4e0; font-family: var(--font-mono); font-size: 0.72rem; }
+.gunstar-terminal__row input {
+  min-width: 0;
+  width: 100%;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  color: #f5f4f0;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  caret-color: #f5f4f0;
+}
+.gunstar-terminal__row input::placeholder { color: #55554f; }
+.gunstar-terminal__run {
+  padding: 0.55rem 1.1rem;
+  border: 1px solid rgba(245,244,240,0.45);
+  background: #1c1c1c;
+  color: #f5f4f0;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.05s ease;
+}
+.gunstar-terminal__run:hover,
+.gunstar-terminal__run:focus-visible {
+  background: #2b2b2b;
+  border-color: rgba(245,244,240,0.8);
+}
+.gunstar-terminal__run:active {
+  transform: translateY(1px);
+  background: #f5f4f0;
+  color: #0c0c0c;
+}
+@media (min-width: 801px) {
+  .split > .gunstar-terminal { align-self: stretch; }
+}
 .cipher-packet {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1552,50 +1622,6 @@ body.gate-open { overflow: hidden; }
 .terminal-actions button { padding: 0.25rem 0; color: #778b7a; }
 .terminal-actions button:hover,
 .terminal-actions button:focus-visible { color: #fff; }
-
-/* ---------- About terminal (functional, grayscale, landscape) ---------- */
-.about-terminal {
-  --protocol-accent: #f5f4f0;
-  max-width: none;
-  margin: 0;
-  border: 1px solid rgba(255,255,255,0.22);
-  background: #0a0a0a;
-  box-shadow: 0 0 40px rgba(255,255,255,0.04), 0 30px 80px rgba(0,0,0,0.72);
-}
-.about-terminal .terminal-bar {
-  border-bottom-color: rgba(255,255,255,0.14);
-  background: #141412;
-  color: #8a8a86;
-}
-.about-terminal .terminal-lights i { background: #3a3a37; }
-.about-terminal .terminal-lights i:first-child {
-  background: var(--protocol-accent);
-  box-shadow: 0 0 8px rgba(255,255,255,0.5);
-}
-.about-terminal .terminal-body {
-  height: 190px;
-  min-height: 0;
-  padding: 1rem clamp(1.1rem, 3vw, 1.6rem);
-  overflow-y: auto;
-  color: #9a9a95;
-  background:
-    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-  background-size: 22px 22px;
-  scrollbar-color: #444 #0a0a0a;
-}
-.about-terminal .terminal-body p { margin: 0 0 0.15rem; }
-.about-terminal .terminal-line--command { color: #e7e6e2; }
-.about-terminal .terminal-line--warning { color: #cfcdc7; }
-.about-terminal .terminal-line--error { color: #ff6a63; }
-.about-terminal .terminal-line--success { color: var(--protocol-accent); text-shadow: none; }
-.about-terminal .terminal-command-line {
-  padding: 0.15rem clamp(1.1rem, 3vw, 1.6rem) 0.85rem;
-  border-bottom: 0;
-  border-top: 1px solid rgba(255,255,255,0.16);
-}
-.about-terminal .terminal-command-line input { text-transform: none; }
-
 .node-monitor {
   position: relative;
   padding: 1.5rem 1.2rem;
@@ -1740,4 +1766,6 @@ body.gate-open { overflow: hidden; }
   .cipher-packet strong { letter-spacing: 0.13em; }
   .terminal-command-line { grid-template-columns: auto 1fr; }
   .terminal-command-line button { grid-column: 2; text-align: left; padding-top: 0; }
+  .gunstar-terminal__row { grid-template-columns: auto 1fr; row-gap: 0.6rem; }
+  .gunstar-terminal__run { grid-column: 2; justify-self: start; }
 }
