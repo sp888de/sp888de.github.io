@@ -1606,6 +1606,7 @@ body.gate-open { overflow: hidden; }
 }
 @keyframes successRing { to { box-shadow: 0 0 0 18px rgba(96,255,122,0), 0 0 70px rgba(96,255,122,0.25); } }
 .success-ring span { font-family: var(--font-display); font-size: 2rem; color: #60ff7a; }
+.success-ring__star { width: 56%; height: 56%; object-fit: contain; filter: drop-shadow(0 0 10px rgba(96,255,122,0.5)); }
 .gate-success p {
   margin: 0 auto 0.6rem;
   color: #60ff7a;
