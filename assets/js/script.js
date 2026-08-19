@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initGalleryFilters();
   initProductPage();
   initContactForm();
+  initAboutTerminal();
 });
 
 /* ---------- Mobile navigation ---------- */
@@ -577,6 +578,109 @@ function renderProductGallery(product) {
   }
 
   showMedia(product.media[0]);
+}
+
+/* ---------- About terminal (restricted command console) ---------- */
+function initAboutTerminal() {
+  const log = document.getElementById('about-terminal-log');
+  const form = document.getElementById('about-terminal-form');
+  const input = document.getElementById('about-terminal-input');
+  if (!log || !form || !input) return;
+
+  // Add / edit commands here.
+  // Key   = what the visitor types (case-insensitive).
+  // Value = array of strings, one per printed line.
+  const COMMANDS = {
+    help: [
+      'AVAILABLE COMMANDS:',
+      'HELP        — list available commands',
+      'WHOAMI      — system identity',
+      'DIVISIONS   — list divisions',
+      'CLEAR       — clear the screen'
+    ],
+    whoami: [
+      'SYSTEM // GUNSTAR',
+      'STATUS // ACTIVE',
+      'ACCESS // CLASSIFIED'
+    ],
+    divisions: [
+      '[101] MERCENARY',
+      '[110] BUSINESS MAN',
+      '[100] HACKER'
+    ]
+  };
+
+  const history = [];
+  let historyIndex = -1;
+
+  function print(text, className) {
+    const p = document.createElement('p');
+    if (className) p.className = className;
+    p.textContent = text;
+    log.appendChild(p);
+  }
+
+  function scrollToEnd() {
+    log.scrollTop = log.scrollHeight;
+  }
+
+  function runCommand(rawValue) {
+    const trimmed = rawValue.trim();
+    if (!trimmed) return;
+
+    print(`> ${trimmed}`, 'terminal-line--command');
+
+    const key = trimmed.toLowerCase();
+
+    if (key === 'clear') {
+      log.innerHTML = '';
+      scrollToEnd();
+      return;
+    }
+
+    const response = COMMANDS[key];
+    if (response) {
+      response.forEach(line => print(line));
+    } else {
+      print(`COMMAND NOT RECOGNIZED: "${trimmed}"`, 'terminal-line--error');
+      print('TYPE "HELP" TO LIST AVAILABLE COMMANDS.', 'terminal-line--warning');
+    }
+
+    scrollToEnd();
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const value = input.value;
+    if (!value.trim()) return;
+
+    history.push(value);
+    historyIndex = history.length;
+
+    runCommand(value);
+    input.value = '';
+  });
+
+  // Optional command history via arrow keys.
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowUp') {
+      if (historyIndex > 0) {
+        historyIndex -= 1;
+        input.value = history[historyIndex];
+        window.requestAnimationFrame(() => input.setSelectionRange(input.value.length, input.value.length));
+      }
+      e.preventDefault();
+    } else if (e.key === 'ArrowDown') {
+      if (historyIndex < history.length - 1) {
+        historyIndex += 1;
+        input.value = history[historyIndex];
+      } else {
+        historyIndex = history.length;
+        input.value = '';
+      }
+      e.preventDefault();
+    }
+  });
 }
 
 /* ---------- Contact form (mailto, no backend) ---------- */
