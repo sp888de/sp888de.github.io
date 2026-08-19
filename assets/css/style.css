@@ -1460,6 +1460,35 @@ body.gate-open { overflow: hidden; }
 .terminal-log .terminal-line--hint { color: #7b9cff; }
 .terminal-log .terminal-line--error { color: #ff594f; }
 .terminal-log .terminal-line--success { color: var(--protocol-accent); text-shadow: 0 0 8px rgba(96,255,122,0.28); }
+
+.about-terminal { --protocol-accent: #60ff7a; max-width: none; margin: 0; }
+.terminal-body {
+  padding: clamp(1.2rem, 3vw, 1.8rem);
+  min-height: 300px;
+  color: #8da792;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  background:
+    linear-gradient(rgba(96,255,122,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(96,255,122,0.018) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+.terminal-body p { margin: 0; }
+.terminal-body .terminal-line--command { color: #dce9de; }
+.terminal-body .terminal-line--warning { color: #d9b959; }
+.terminal-body .terminal-line--success { color: var(--protocol-accent); text-shadow: 0 0 8px rgba(96,255,122,0.28); }
+.terminal-cursor {
+  display: inline-block;
+  width: 0.55em;
+  height: 1em;
+  margin-left: 0.3em;
+  background: var(--protocol-accent);
+  vertical-align: text-bottom;
+  animation: terminalBlink 1s steps(1) infinite;
+}
+@keyframes terminalBlink { 50% { opacity: 0; } }
 .cipher-packet {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
