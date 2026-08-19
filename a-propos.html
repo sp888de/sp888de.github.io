@@ -105,33 +105,28 @@
         </p>
       </div>
 
-      <div class="terminal-frame about-terminal" id="about-terminal">
-        <div class="terminal-bar">
-          <div class="terminal-lights"><i></i><i></i><i></i></div>
+      <div class="gunstar-terminal" data-gunstar-terminal>
+        <div class="gunstar-terminal__bar">
+          <div class="gunstar-terminal__lights"><i></i><i></i><i></i></div>
           <span>GUNSTAR // TERMINAL</span>
           <span>NODE // 000</span>
         </div>
-        <div class="terminal-body" id="about-terminal-log" role="log" aria-live="polite">
-          <p>SYSTEM // GUNSTAR</p>
-          <p>STATUS // ACTIVE</p>
-          <p class="terminal-line--warning">ACCESS // CLASSIFIED</p>
-          <p>&nbsp;</p>
-          <p>TYPE <span class="terminal-line--command">HELP</span> TO LIST AVAILABLE COMMANDS.</p>
+        <div class="gunstar-terminal__body">
+          <div class="gunstar-terminal__log" data-gunstar-log aria-live="polite"></div>
+          <form class="gunstar-terminal__row" data-gunstar-form>
+            <span>&gt;</span>
+            <input
+              type="text"
+              data-gunstar-input
+              autocomplete="off"
+              spellcheck="false"
+              maxlength="32"
+              placeholder="ENTER COMMAND"
+              aria-label="Commande terminal GUNSTAR"
+            >
+            <button type="submit" class="gunstar-terminal__run">RUN</button>
+          </form>
         </div>
-        <form class="terminal-command-line" id="about-terminal-form" autocomplete="off">
-          <span>&gt;</span>
-          <input
-            type="text"
-            id="about-terminal-input"
-            name="command"
-            aria-label="Terminal command"
-            spellcheck="false"
-            autocomplete="off"
-            autocapitalize="off"
-            maxlength="60"
-          >
-          <button type="submit">RUN</button>
-        </form>
       </div>
 
     </div>
