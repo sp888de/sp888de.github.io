@@ -63,6 +63,8 @@ function initGalleryFilters() {
   const cards = Array.from(grid.querySelectorAll('.catalog-item'));
   const filterButtons = Array.from(document.querySelectorAll('.catalog-filters button'));
   const storageKey = 'gunstar-unlocked-archives';
+  // Catégories qui exigent de réussir un protocole avant d'être cliquables en ALL.
+  const gatedCategories = ['mercenary', 'business', 'hacker'];
   let unlockedArchives = new Set();
 
   // La progression ne dure que pendant la session du navigateur.
@@ -90,13 +92,19 @@ function applyFilter(filter) {
   });
 
   cards.forEach(card => {
+    const category = card.dataset.category;
     const show =
       filter === 'all' ||
-      filter === card.dataset.category;
+      filter === category;
 
     card.style.display = show ? '' : 'none';
 
-    const lockedInAll = filter === 'all';
+    // Verrouillé seulement en ALL, seulement si sa catégorie exige
+    // un protocole, et seulement tant que ce protocole n'est pas résolu.
+    const lockedInAll =
+      filter === 'all' &&
+      gatedCategories.includes(category) &&
+      !unlockedArchives.has(category);
 
     card.classList.toggle(
       'is-locked-in-all',
@@ -119,6 +127,10 @@ function applyFilter(filter) {
 }
   
   unlockedArchives.forEach(markArchiveUnlocked);
+
+  // Applique le verrouillage dès le chargement de la page,
+  // pas seulement après un clic sur un filtre.
+  applyFilter('all');
 
   const gate = initAccessGate((filter) => {
     unlockedArchives.add(filter);
