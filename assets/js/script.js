@@ -729,7 +729,7 @@ function initGunstarTerminal() {
 
     // Commande secrète — volontairement absente de HELP.
     STRASBOURG: () => printLines([
-      "Bravo d'avoir trouvé cette commande, tu es eveillé et fais partit intégrante de l'univers GUNSTAR.",
+      "Bravo d'avoir trouvé cette commande, tu es eveillé et fais partie intégrante de l'univers GUNSTAR.",
       'Pour ça tu obtiens un VIP ACCESS TOKEN.',
       'Collectionne-les tous pour obtenir une grosse récompense !!'
     ], 'is-command'),
