@@ -834,7 +834,7 @@ function initWallpaperPage() {
       const fields = metaFieldsFor(file);
       metaList.innerHTML = fields.map(([label, value]) => {
         if (label === 'STATUS') {
-          return `<dt>STATUS</dt><dd data-field="status">${isVerified ? 'VERIFIED' : 'UNVERIFIED'}</dd>`;
+          return `<dt>STATUS</dt><dd data-field="status" class="${isVerified ? 'is-verified-value' : ''}">${isVerified ? 'VERIFIED' : 'UNVERIFIED'}</dd>`;
         }
         return `<dt>${label}</dt><dd data-masked="${!isVerified}">${isVerified ? value : '████████'}</dd>`;
       }).join('');
@@ -890,6 +890,7 @@ function initWallpaperPage() {
     enterBtn.hidden = true;
     introStatus.hidden = false;
     introStatusText.textContent = 'INITIALIZING...';
+    introStatusText.classList.remove('is-success');
     introProgressBar.style.width = '0%';
 
     const start = performance.now();
@@ -902,6 +903,7 @@ function initWallpaperPage() {
         requestAnimationFrame(tick);
       } else {
         introStatusText.textContent = 'ACCESS GRANTED';
+        introStatusText.classList.add('is-success');
         window.setTimeout(() => {
           introSection.hidden = true;
           viewerSection.hidden = false;
@@ -989,7 +991,10 @@ function initWallpaperPage() {
     scanLabel.textContent = 'SCAN COMPLETE';
 
     window.setTimeout(() => {
-      if (statusField) statusField.textContent = 'VERIFIED';
+      if (statusField) {
+        statusField.textContent = 'VERIFIED';
+        statusField.classList.add('is-verified-value');
+      }
       scanBtn.hidden = true;
       scanProgress.hidden = true;
       downloadBtn.hidden = false;
