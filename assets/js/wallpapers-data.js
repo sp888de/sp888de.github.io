@@ -54,9 +54,20 @@ const GUNSTAR_WALLPAPERS = [
     access: "public"
   },
   {
-    id: "003",
-    tag: "N°003",
-    name: "GUNSTAR_N003",
+    id: "004",
+    tag: "N°004",
+    name: "GUNSTAR_N004",
+    division: "ARCHIVE",
+    status: "UNVERIFIED",
+    format: "1333 × 2000",
+    src: "assets/img/wallpapers/popstar_white_red.jpg",
+    description: "Visual transmission — placeholder file.",
+    access: "public"
+  },
+  {
+    id: "005",
+    tag: "N°005",
+    name: "GUNSTAR_N005",
     division: "ARCHIVE",
     status: "UNVERIFIED",
     format: "1333 × 2000",
