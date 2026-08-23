@@ -54,7 +54,6 @@ const GUNSTAR_PRODUCTS = [
     description: "This piece is not for sale here, place an enquiry if you would like to buy. A field asset from the Mercenary division, engineered around precision, distance and controlled impact.",
     details: [
       ["Category", "Mercenary"],
-      ["Format", "100% cotton"]
     ],
     delivery: "Contact us at contact@gunstar.world for more information.",
     terms: "By submitting an enquiry you agree to be contacted by GUNSTAR about this piece. Usage rights are discussed and confirmed individually."
@@ -74,8 +73,6 @@ const GUNSTAR_PRODUCTS = [
     description: "This piece is not for sale here, place an enquiry if you would like to buy. A second classified entry from the Mercenary division. Same command structure, different operative profile.",
     details: [
       ["Category", "Mercenary"],
-      ["Format", "Video"],
-      ["Reference", "N°03"]
     ],
     delivery: "Contact us at contact@gunstar.world for more information.",
     terms: "By submitting an enquiry you agree to be contacted by GUNSTAR about this piece. Usage rights are discussed and confirmed individually."
@@ -94,7 +91,6 @@ const GUNSTAR_PRODUCTS = [
     description: "This piece is not for sale here, place an enquiry if you would like to buy. An asset from the Business man division: controlled presence, private access and silent leverage.",
     details: [
       ["Category", "Business man"],
-      ["Reference", "N°04"]
     ],
     delivery: "Contact us at contact@gunstar.world for more information.",
     terms: "By submitting an enquiry you agree to be contacted by GUNSTAR about this piece. Usage rights are discussed and confirmed individually."
@@ -113,7 +109,6 @@ const GUNSTAR_PRODUCTS = [
     description: "This piece is not for sale here, place an enquiry if you would like to buy. The second Business man file. Capital, influence and discretion encoded into the same visual system.",
     details: [
       ["Category", "Business man"],
-      ["Reference", "N°05"]
     ],
     delivery: "Contact us at contact@gunstar.world for more information.",
     terms: "By submitting an enquiry you agree to be contacted by GUNSTAR about this piece. Usage rights are discussed and confirmed individually."
@@ -132,7 +127,6 @@ const GUNSTAR_PRODUCTS = [
     description: "This piece is not for sale here, place an enquiry if you would like to buy.",
     details: [
       ["Category", "Mercenary"],
-      ["Reference", "N°06"]
     ],
     delivery: "Contact us at contact@gunstar.world for more information.",
     terms: "By submitting an enquiry you agree to be contacted by GUNSTAR about this piece. Usage rights are discussed and confirmed individually."
@@ -150,7 +144,6 @@ const GUNSTAR_PRODUCTS = [
     description: "This piece is not for sale here, place an enquiry if you would like to buy. The first recovered file from the Hacker division: low light, corrupted signals and unauthorized access.",
     details: [
       ["Category", "Business man"],
-      ["Reference", "N°06"]
     ],
     delivery: "Contact us at contact@gunstar.world for more information.",
     terms: "By submitting an enquiry you agree to be contacted by GUNSTAR about this piece. Usage rights are discussed and confirmed individually."
@@ -167,7 +160,6 @@ const GUNSTAR_PRODUCTS = [
     description: "This piece is not for sale here, place an enquiry if you would like to buy.",
     details: [
       ["Category", "Hacker"],
-      ["Reference", "N°06"]
     ],
     delivery: "Contact us at contact@gunstar.world for more information.",
     terms: "By submitting an enquiry you agree to be contacted by GUNSTAR about this piece. Usage rights are discussed and confirmed individually."
@@ -183,7 +175,6 @@ const GUNSTAR_PRODUCTS = [
     description: "This piece is not for sale here, place an enquiry if you would like to buy.",
     details: [
       ["Category", "Hacker"],
-      ["Reference", "N°06"]
     ],
     delivery: "Contact us at contact@gunstar.world for more information.",
     terms: "By submitting an enquiry you agree to be contacted by GUNSTAR about this piece. Usage rights are discussed and confirmed individually."
