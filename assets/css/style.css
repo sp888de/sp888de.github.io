@@ -430,6 +430,17 @@ p { margin: 0 0 1rem; color: var(--bone-dim); max-width: 60ch; }
 }
 .form-field textarea { min-height: 140px; resize: vertical; }
 
+.form-status {
+  margin-top: 1.1rem;
+  padding: 0.8rem 1em;
+  border: 1px solid rgba(245,244,240,0.2);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+}
+.form-status--success { color: var(--bone); border-color: rgba(245,244,240,0.4); }
+.form-status--error { color: var(--bone-dim); border-color: rgba(245,244,240,0.2); }
+
 /* ---------- Contact list ---------- */
 .contact-list { display: flex; flex-direction: column; gap: 1.1rem; }
 .contact-list a {
