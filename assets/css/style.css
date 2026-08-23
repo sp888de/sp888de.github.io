@@ -1924,7 +1924,9 @@ html:not(.gate-open) body { background: var(--black); overflow: hidden; min-heig
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
-.wallpaper-progress {
+.wallpaper-intro__status-text.is-success {
+  color: #60ff7a;
+}
   height: 2px;
   background: rgba(245,244,240,0.14);
 }
@@ -1953,13 +1955,16 @@ html:not(.gate-open) body { background: var(--black); overflow: hidden; min-heig
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
+.wallpaper-viewer__signal {
+  color: #60ff7a;
+}
 .wallpaper-viewer__signal::before {
   content: "";
   display: inline-block;
   width: 6px; height: 6px;
   margin-right: 0.5em;
   border-radius: 50%;
-  background: var(--white);
+  background: #60ff7a;
   vertical-align: middle;
 }
 
@@ -2031,6 +2036,9 @@ html:not(.gate-open) body { background: var(--black); overflow: hidden; min-heig
 }
 .wallpaper-meta dd.is-revealed {
   color: var(--white);
+}
+.wallpaper-meta dd.is-verified-value {
+  color: #60ff7a;
 }
 
 /* ---------- Hold to scan ---------- */
