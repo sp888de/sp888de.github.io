@@ -658,19 +658,65 @@ function renderProductGallery(product) {
 }
 
 /* ---------- Contact form (mailto, no backend) ---------- */
+/* ---------- Formulaire de contact (envoi via Formspree) ---------- */
+/* Endpoint Formspree relié à contact@gunstar.world. Envoi en AJAX :
+   le visiteur ne quitte jamais la page, un message de statut
+   s'affiche à la place du mailto: précédent. */
 function initContactForm() {
   const form = document.querySelector('[data-contact-form]');
   if (!form) return;
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = form.querySelector('#name').value.trim();
-    const email = form.querySelector('#email').value.trim();
-    const message = form.querySelector('#message').value.trim();
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xyegapop';
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const submitLabel = submitBtn ? submitBtn.textContent : '';
 
-    const subject = encodeURIComponent(`Website contact — ${name}`);
-    const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
-    window.location.href = `mailto:contact@gunstar.com?subject=${subject}&body=${body}`;
+  let status = form.querySelector('[data-form-status]');
+  if (!status) {
+    status = document.createElement('p');
+    status.setAttribute('data-form-status', '');
+    status.className = 'form-status';
+    status.hidden = true;
+    form.appendChild(status);
+  }
+
+  function setStatus(text, kind) {
+    status.textContent = text;
+    status.hidden = false;
+    status.className = `form-status form-status--${kind}`;
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+    }
+    status.hidden = true;
+
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(form)
+      });
+
+      if (response.ok) {
+        setStatus('Message sent — GUNSTAR will get back to you.', 'success');
+        form.reset();
+      } else {
+        const data = await response.json().catch(() => null);
+        const detail = data && data.errors ? data.errors.map(err => err.message).join(', ') : null;
+        setStatus(detail || 'Something went wrong. Please try again.', 'error');
+      }
+    } catch (error) {
+      setStatus('Network error — please try again.', 'error');
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = submitLabel;
+      }
+    }
   });
 }
 
