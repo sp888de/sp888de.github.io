@@ -9,7 +9,8 @@ export default defineConfig({
         archive: 'galerie.html',
         product: 'product.html',
         about: 'a-propos.html',
-        contact: 'contact.html'
+        contact: 'contact.html',
+        wallpaper: 'wallpaper.html',
       }
     }
   }
