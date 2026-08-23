@@ -27,7 +27,7 @@ const GUNSTAR_WALLPAPERS = [
     division: "ARCHIVE",
     status: "UNVERIFIED",
     format: "1500 × 2000",
-    src: "assets/img/wallpapers/GUNSTAR_N001.jpg",
+    src: "assets/img/wallpapers/affiche_purple_dirt.png",
     description: "Visual transmission — placeholder file.",
     access: "public"
   },
@@ -38,7 +38,7 @@ const GUNSTAR_WALLPAPERS = [
     division: "ARCHIVE",
     status: "UNVERIFIED",
     format: "2000 × 1500",
-    src: "assets/img/wallpapers/GUNSTAR_N002.jpg",
+    src: "assets/img/wallpapers/Affiche_brun_dirt.png",
     description: "Visual transmission — placeholder file.",
     access: "public"
   },
@@ -49,7 +49,18 @@ const GUNSTAR_WALLPAPERS = [
     division: "ARCHIVE",
     status: "UNVERIFIED",
     format: "1333 × 2000",
-    src: "assets/img/wallpapers/GUNSTAR_N003.jpg",
+    src: "assets/img/wallpapers/popstar_black_red.jpg",
+    description: "Visual transmission — placeholder file.",
+    access: "public"
+  },
+  {
+    id: "003",
+    tag: "N°003",
+    name: "GUNSTAR_N003",
+    division: "ARCHIVE",
+    status: "UNVERIFIED",
+    format: "1333 × 2000",
+    src: "assets/img/wallpapers/popstar_white_red.jpg",
     description: "Visual transmission — placeholder file.",
     access: "public"
   }
