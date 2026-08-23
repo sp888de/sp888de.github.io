@@ -71,8 +71,53 @@ const GUNSTAR_WALLPAPERS = [
     division: "ARCHIVE",
     status: "UNVERIFIED",
     format: "1333 × 2000",
-    src: "assets/img/wallpapers/popstar_white_red.jpg",
+    src: "assets/img/wallpapers/idk.png",
+    description: "Visual transmission — placeholder file.",
+    access: "public"
+  },
+  {
+    id: "006",
+    tag: "N°006",
+    name: "GUNSTAR_N006",
+    division: "ARCHIVE",
+    status: "UNVERIFIED",
+    format: "1333 × 2000",
+    src: "assets/img/wallpapers/stop_talking.png",
+    description: "Visual transmission — placeholder file.",
+    access: "public"
+  },
+  {
+    id: "007",
+    tag: "N°007",
+    name: "GUNSTAR_N007",
+    division: "ARCHIVE",
+    status: "UNVERIFIED",
+    format: "1333 × 2000",
+    src: "assets/img/wallpapers/gunstar_december.png",
+    description: "Visual transmission — placeholder file.",
+    access: "public"
+  },
+  {
+    id: "008",
+    tag: "N°008",
+    name: "GUNSTAR_N008",
+    division: "ARCHIVE",
+    status: "UNVERIFIED",
+    format: "1333 × 2000",
+    src: "assets/img/wallpapers/stoptalkingdraw.png",
+    description: "Visual transmission — placeholder file.",
+    access: "public"
+  },
+  {
+    id: "009",
+    tag: "N°009",
+    name: "GUNSTAR_N009",
+    division: "ARCHIVE",
+    status: "UNVERIFIED",
+    format: "1333 × 2000",
+    src: "assets/img/wallpapers/stop_talkingv2.png",
     description: "Visual transmission — placeholder file.",
     access: "public"
   }
+  
 ];
