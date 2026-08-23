@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initProductPage();
   initContactForm();
   initGunstarTerminal();
+  initWallpaperPage();
 });
 
 /* ---------- Portail mot de passe (toutes les pages) ---------- */
@@ -764,5 +765,271 @@ function initGunstarTerminal() {
     }
 
     input.focus({ preventScroll: true });
+  });
+}
+
+/* ---------- Wallpaper // System (wallpaper.html) ---------- */
+function initWallpaperPage() {
+  const root = document.getElementById('wallpaper-root');
+  if (!root || typeof GUNSTAR_WALLPAPERS === 'undefined' || !GUNSTAR_WALLPAPERS.length) return;
+
+  const files = GUNSTAR_WALLPAPERS;
+  const SCAN_DURATION = 1800; // ms — durée du maintien requis
+
+  const introCount = document.getElementById('wallpaper-count');
+  const enterBtn = document.getElementById('wallpaper-enter');
+  const introStatus = document.getElementById('wallpaper-status');
+  const introStatusText = document.getElementById('wallpaper-status-text');
+  const introProgressBar = document.getElementById('wallpaper-progress-bar');
+  const introSection = document.getElementById('wallpaper-intro');
+  const viewerSection = document.getElementById('wallpaper-viewer');
+
+  const fileCounterTop = document.getElementById('wallpaper-file-counter');
+  const frame = document.getElementById('wallpaper-frame');
+  const img = document.getElementById('wallpaper-image');
+  const scanline = document.getElementById('wallpaper-scanline');
+  const metaList = document.getElementById('wallpaper-meta');
+
+  const scanBtn = document.getElementById('wallpaper-scan-btn');
+  const scanLabel = document.getElementById('wallpaper-scan-label');
+  const scanProgress = document.getElementById('wallpaper-scan-progress');
+  const scanBar = document.getElementById('wallpaper-scan-bar');
+  const scanPercent = document.getElementById('wallpaper-scan-percent');
+  const downloadBtn = document.getElementById('wallpaper-download');
+
+  const prevBtn = document.getElementById('wallpaper-prev');
+  const nextBtn = document.getElementById('wallpaper-next');
+  const counter = document.getElementById('wallpaper-counter');
+
+  introCount.textContent = `${files.length} FILE${files.length > 1 ? 'S' : ''} DETECTED.`;
+
+  let currentIndex = 0;
+  let scanning = false;
+  let scanFrame = null;
+  const verified = new Set(); // fichiers déjà scannés cette session
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  // Les champs affichés dépendent de ce qui existe réellement dans
+  // le dataset — on n'invente jamais une donnée absente.
+  function metaFieldsFor(file) {
+    const fields = [];
+    if (file.division) fields.push(['DIVISION', file.division]);
+    if (file.format) fields.push(['FORMAT', file.format]);
+    fields.push(['STATUS', null]); // rempli séparément, jamais masqué
+    return fields;
+  }
+
+  function renderWallpaper(index, direction) {
+    const file = files[index];
+    const isVerified = verified.has(file.id);
+
+    const swap = () => {
+      img.src = file.src;
+      img.alt = file.name;
+
+      fileCounterTop.textContent = `FILE ${pad(index + 1)} / ${pad(files.length)}`;
+      counter.textContent = `${pad(index + 1)} / ${pad(files.length)}`;
+
+      const fields = metaFieldsFor(file);
+      metaList.innerHTML = fields.map(([label, value]) => {
+        if (label === 'STATUS') {
+          return `<dt>STATUS</dt><dd data-field="status">${isVerified ? 'VERIFIED' : 'UNVERIFIED'}</dd>`;
+        }
+        return `<dt>${label}</dt><dd data-masked="${!isVerified}">${isVerified ? value : '████████'}</dd>`;
+      }).join('');
+
+      resetScanUI(isVerified);
+      frame.classList.remove('is-transitioning');
+    };
+
+    if (direction) {
+      frame.classList.add('is-transitioning');
+      window.setTimeout(swap, 160);
+    } else {
+      swap();
+    }
+
+    // Précharge discrètement le fichier suivant et précédent.
+    [1, -1].forEach(delta => {
+      const neighbor = files[(index + delta + files.length) % files.length];
+      if (neighbor) new Image().src = neighbor.src;
+    });
+  }
+
+  function resetScanUI(isVerified) {
+    scanning = false;
+    if (scanFrame) cancelAnimationFrame(scanFrame);
+    scanline.hidden = true;
+    scanline.classList.remove('is-active');
+    scanProgress.hidden = true;
+    scanBar.style.width = '0%';
+    scanPercent.textContent = '0%';
+
+    if (isVerified) {
+      scanBtn.hidden = true;
+      downloadBtn.hidden = false;
+      const file = files[currentIndex];
+      downloadBtn.href = file.src;
+      downloadBtn.download = `${file.name}.jpg`;
+    } else {
+      scanBtn.hidden = false;
+      scanBtn.classList.remove('is-verified');
+      scanLabel.textContent = 'HOLD TO SCAN';
+      downloadBtn.hidden = true;
+    }
+  }
+
+  function go(delta) {
+    currentIndex = (currentIndex + delta + files.length) % files.length;
+    renderWallpaper(currentIndex, delta);
+  }
+
+  // ---------- Enter archive ----------
+  enterBtn.addEventListener('click', () => {
+    enterBtn.hidden = true;
+    introStatus.hidden = false;
+    introStatusText.textContent = 'INITIALIZING...';
+    introProgressBar.style.width = '0%';
+
+    const start = performance.now();
+    const DURATION = 700;
+
+    function tick(now) {
+      const pct = Math.min(100, ((now - start) / DURATION) * 100);
+      introProgressBar.style.width = `${pct}%`;
+      if (pct < 100) {
+        requestAnimationFrame(tick);
+      } else {
+        introStatusText.textContent = 'ACCESS GRANTED';
+        window.setTimeout(() => {
+          introSection.hidden = true;
+          viewerSection.hidden = false;
+          renderWallpaper(currentIndex);
+        }, 260);
+      }
+    }
+    requestAnimationFrame(tick);
+  });
+
+  // ---------- Prev / Next ----------
+  prevBtn.addEventListener('click', () => go(-1));
+  nextBtn.addEventListener('click', () => go(1));
+
+  document.addEventListener('keydown', (e) => {
+    if (viewerSection.hidden) return;
+    if (e.key === 'ArrowLeft') go(-1);
+    if (e.key === 'ArrowRight') go(1);
+  });
+
+  // ---------- Swipe (mobile) ----------
+  let touchStartX = null;
+  frame.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+  }, { passive: true });
+  frame.addEventListener('touchend', (e) => {
+    if (touchStartX === null) return;
+    const delta = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(delta) > 40) go(delta < 0 ? 1 : -1);
+    touchStartX = null;
+  }, { passive: true });
+
+  // ---------- Hold to scan ----------
+  function startScan() {
+    const file = files[currentIndex];
+    if (verified.has(file.id) || scanning) return;
+
+    scanning = true;
+    scanBtn.classList.add('is-scanning');
+    scanLabel.textContent = 'SCANNING FILE';
+    scanProgress.hidden = false;
+    scanline.hidden = false;
+    scanline.classList.add('is-active');
+    scanline.style.animationDuration = `${SCAN_DURATION}ms`;
+
+    const maskedFields = Array.from(metaList.querySelectorAll('dd[data-masked="true"]'));
+    const start = performance.now();
+
+    function tick(now) {
+      if (!scanning) return;
+      const elapsed = now - start;
+      const pct = Math.min(100, (elapsed / SCAN_DURATION) * 100);
+      scanBar.style.width = `${pct}%`;
+      scanPercent.textContent = `${Math.floor(pct)}%`;
+
+      // Révèle les champs masqués progressivement.
+      const revealCount = Math.floor((pct / 100) * maskedFields.length);
+      maskedFields.forEach((el, i) => {
+        if (i < revealCount) {
+          const file = files[currentIndex];
+          const label = el.previousElementSibling ? el.previousElementSibling.textContent : '';
+          if (label === 'DIVISION') el.textContent = file.division || '';
+          if (label === 'FORMAT') el.textContent = file.format || '';
+          el.dataset.masked = 'false';
+          el.classList.add('is-revealed');
+        }
+      });
+
+      if (pct >= 100) {
+        completeScan(file);
+      } else {
+        scanFrame = requestAnimationFrame(tick);
+      }
+    }
+    scanFrame = requestAnimationFrame(tick);
+  }
+
+  function completeScan(file) {
+    scanning = false;
+    verified.add(file.id);
+    scanline.classList.remove('is-active');
+    scanline.hidden = true;
+
+    const statusField = metaList.querySelector('dd[data-field="status"]');
+    scanLabel.textContent = 'SCAN COMPLETE';
+
+    window.setTimeout(() => {
+      if (statusField) statusField.textContent = 'VERIFIED';
+      scanBtn.hidden = true;
+      scanProgress.hidden = true;
+      downloadBtn.hidden = false;
+      downloadBtn.href = file.src;
+      downloadBtn.download = `${file.name}.jpg`;
+    }, 350);
+  }
+
+  function abortScan() {
+    if (!scanning) return;
+    scanning = false;
+    if (scanFrame) cancelAnimationFrame(scanFrame);
+    scanBtn.classList.remove('is-scanning');
+    scanLabel.textContent = 'SCAN ABORTED';
+    scanline.classList.remove('is-active');
+    scanline.hidden = true;
+    scanProgress.hidden = true;
+    scanBar.style.width = '0%';
+    scanPercent.textContent = '0%';
+
+    // Laisse "SCAN ABORTED" visible un court instant, puis
+    // re-masque les champs révélés en re-rendant le fichier courant.
+    window.setTimeout(() => {
+      if (!verified.has(files[currentIndex].id)) {
+        renderWallpaper(currentIndex);
+      }
+    }, 900);
+  }
+
+  scanBtn.addEventListener('pointerdown', (e) => {
+    e.preventDefault();
+    startScan();
+  });
+  ['pointerup', 'pointerleave', 'pointercancel'].forEach(evt => {
+    scanBtn.addEventListener(evt, abortScan);
+  });
+  scanBtn.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); startScan(); }
+  });
+  scanBtn.addEventListener('keyup', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') abortScan();
   });
 }
