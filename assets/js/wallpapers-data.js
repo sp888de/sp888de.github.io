@@ -49,7 +49,7 @@ const GUNSTAR_WALLPAPERS = [
     division: "ARCHIVE",
     status: "UNVERIFIED",
     format: "1333 × 2000",
-    src: "assets/img/wallpapers/popstar_black_red.jpg",
+    src: "assets/img/wallpapers/popstar_black_red.png",
     description: "Visual transmission — placeholder file.",
     access: "public"
   },
@@ -60,7 +60,7 @@ const GUNSTAR_WALLPAPERS = [
     division: "ARCHIVE",
     status: "UNVERIFIED",
     format: "1333 × 2000",
-    src: "assets/img/wallpapers/popstar_white_red.jpg",
+    src: "assets/img/wallpapers/popstar_white_red.png",
     description: "Visual transmission — placeholder file.",
     access: "public"
   },
