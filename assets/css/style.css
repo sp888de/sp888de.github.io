@@ -1878,3 +1878,263 @@ html:not(.gate-open) body { background: var(--black); overflow: hidden; min-heig
   .gunstar-gate__form { grid-template-columns: auto 1fr; row-gap: 0.6rem; }
   .gunstar-gate__form button { grid-column: 2; justify-self: start; }
 }
+
+/* =========================================================
+   Wallpaper // System — terminal de consultation d'archives
+   visuelles. Réutilise les variables, la font mono et le
+   pattern "object-fit: contain" déjà en place sur la page
+   produit. Aucune nouvelle couleur, aucune nouvelle police.
+   ========================================================= */
+
+.wallpaper-page {
+  min-height: calc(100vh - 73px); /* hauteur du header sticky */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+}
+
+/* ---------- Intro screen ---------- */
+.wallpaper-intro {
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  text-align: center;
+}
+.wallpaper-intro__title {
+  margin: 0.6rem 0 1.4rem;
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+}
+.wallpaper-intro__count {
+  margin: 0 0 2.2rem;
+  color: var(--steel);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.wallpaper-intro__status {
+  margin-top: 1.8rem;
+}
+.wallpaper-intro__status-text {
+  margin: 0 0 0.8rem;
+  color: var(--bone-dim);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.wallpaper-progress {
+  height: 2px;
+  background: rgba(245,244,240,0.14);
+}
+.wallpaper-progress__bar {
+  height: 100%;
+  width: 0%;
+  background: var(--white);
+  transition: width 0.12s linear;
+}
+
+/* ---------- Main viewer ---------- */
+.wallpaper-viewer {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.wallpaper-viewer__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  color: var(--steel);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.wallpaper-viewer__signal::before {
+  content: "";
+  display: inline-block;
+  width: 6px; height: 6px;
+  margin-right: 0.5em;
+  border-radius: 50%;
+  background: var(--white);
+  vertical-align: middle;
+}
+
+/* ---------- Adaptive frame — never crops, always contains ---------- */
+.wallpaper-frame {
+  position: relative;
+  width: 100%;
+  border: 1px solid rgba(245,244,240,0.14);
+  background: var(--charcoal);
+  overflow: hidden;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+.wallpaper-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 62vh;
+  object-fit: contain;
+  margin: 0 auto;
+}
+@media (max-width: 640px) {
+  .wallpaper-frame img { max-height: 56vh; }
+}
+.wallpaper-frame.is-transitioning {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.wallpaper-scanline {
+  position: absolute;
+  left: 0; right: 0;
+  top: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(245,244,240,0.9), transparent);
+  box-shadow: 0 0 8px rgba(245,244,240,0.5);
+}
+.wallpaper-scanline.is-active {
+  animation: wallpaperScan linear forwards;
+}
+@keyframes wallpaperScan {
+  from { transform: translateY(0); }
+  to   { transform: translateY(calc(100% + 2px)); }
+}
+
+/* ---------- Meta info (masked → revealed) ---------- */
+.wallpaper-meta {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem 1rem;
+  margin: 1.2rem 0 1.6rem;
+}
+.wallpaper-meta dt {
+  color: var(--steel);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.wallpaper-meta dd {
+  margin: 0;
+  color: var(--bone);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+.wallpaper-meta dd[data-masked="true"] {
+  color: #4a4944;
+  user-select: none;
+}
+.wallpaper-meta dd.is-revealed {
+  color: var(--white);
+}
+
+/* ---------- Hold to scan ---------- */
+.wallpaper-scan {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 2rem;
+}
+.wallpaper-scan__btn {
+  width: 100%;
+  max-width: 320px;
+  padding: 0.95em 1.6em;
+  border: 2px solid var(--bone);
+  background: transparent;
+  color: var(--bone);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  touch-action: none;
+  user-select: none;
+}
+.wallpaper-scan__btn:hover,
+.wallpaper-scan__btn:focus-visible {
+  border-color: var(--white);
+}
+.wallpaper-scan__btn.is-scanning {
+  border-color: var(--white);
+  background: rgba(245,244,240,0.06);
+}
+.wallpaper-scan__btn.is-verified {
+  border-color: var(--white);
+  background: var(--white);
+  color: var(--black);
+  cursor: default;
+}
+
+.wallpaper-scan__progress {
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.wallpaper-scan__track {
+  flex: 1;
+  height: 2px;
+  background: rgba(245,244,240,0.14);
+}
+.wallpaper-scan__bar {
+  height: 100%;
+  width: 0%;
+  background: var(--white);
+}
+.wallpaper-scan__percent {
+  min-width: 3ch;
+  color: var(--steel);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+}
+
+.wallpaper-download {
+  width: 100%;
+  max-width: 320px;
+  justify-content: center;
+  text-align: center;
+}
+
+/* ---------- Previous / Next ---------- */
+.wallpaper-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid rgba(245,244,240,0.12);
+}
+.wallpaper-nav__btn {
+  background: none;
+  border: 0;
+  padding: 0.3rem 0;
+  color: var(--bone-dim);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.wallpaper-nav__btn:hover,
+.wallpaper-nav__btn:focus-visible {
+  color: var(--white);
+  border-bottom-color: var(--white);
+}
+.wallpaper-nav__counter {
+  color: var(--steel);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 480px) {
+  .wallpaper-nav__btn span.full { display: none; }
+}
