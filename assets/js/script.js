@@ -604,6 +604,19 @@ function renderProductGallery(product) {
 
   thumbsWrap.innerHTML = '';
 
+   // Limiter l’enregistrement rapide des médias produits
+  const gallery = document.querySelector('#product-root .product-gallery');
+
+  if (gallery) {
+    ['contextmenu', 'dragstart'].forEach((eventName) => {
+      gallery.addEventListener(eventName, (event) => {
+        if (event.target.closest('img, video')) {
+          event.preventDefault();
+        }
+      });
+    });
+  }
+  
   function showMedia(item) {
     slot.innerHTML = '';
     let el;
