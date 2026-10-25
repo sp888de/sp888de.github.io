@@ -627,7 +627,7 @@ function renderProductGallery(product) {
       el.muted = true;
       el.loop = true;
       el.playsInline = true;
-      el.controls = true; // lets the visitor unmute / pause manually
+      el.controls = false; // lets the visitor unmute / pause manually
     } else {
       el = document.createElement('img');
       el.src = item.src;
