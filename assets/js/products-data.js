@@ -170,9 +170,9 @@ const GUNSTAR_PRODUCTS = [
     name: "USB KEY",
     category: "Hacker",
    media: [
-    { type: "photo", src: "assets/img/usb_key/IMG_6698.png" },
-     { type: "photo", src: "assets/img/usb_key/IMG_6697.png" },
-     { type: "photo", src: "assets/img/usb_key/IMG_6704.png" }
+    { type: "photo", src: "assets/img/usb_key/IMG_6698.jpeg" },
+     { type: "photo", src: "assets/img/usb_key/IMG_6697.jpeg" },
+     { type: "photo", src: "assets/img/usb_key/IMG_6704.jpeg" }
 ],
     description: "This piece is not for sale here, place an enquiry if you would like to buy.",
     details: [
