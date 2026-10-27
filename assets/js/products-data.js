@@ -51,7 +51,7 @@ const GUNSTAR_PRODUCTS = [
       { type: "photo", src: "assets/img/sniper/P7291155.jpg" },
       { type: "video", src: "assets/video/snipervid.mp4" }
     ],
-    description: "This piece is not for sale here, place an enquiry if you would like to buy. A field asset from the Mercenary division, engineered around precision, distance and controlled impact.",
+    description: "This piece is sold out, try next time.",
     details: [
       ["Category", "Mercenary"],
     ],
@@ -70,7 +70,7 @@ const GUNSTAR_PRODUCTS = [
       { type: "photo", src: "assets/img/mechagirl/P7291158.jpg" },
       { type: "photo", src: "assets/img/mechagirl/P7291250.jpg" }
     ],
-    description: "This piece is not for sale here, place an enquiry if you would like to buy. A second classified entry from the Mercenary division. Same command structure, different operative profile.",
+    description: "This piece is sold out, try next time.",
     details: [
       ["Category", "Mercenary"],
     ],
@@ -88,7 +88,7 @@ const GUNSTAR_PRODUCTS = [
       { type: "video", src: "assets/img/babytee/IMG_4417.mp4" },
       { type: "video", src: "assets/img/babytee/bc4eda649d234d3c845555c94d6b5ea6.mp4" }
     ],
-    description: "This piece is not for sale here, place an enquiry if you would like to buy. An asset from the Business man division: controlled presence, private access and silent leverage.",
+    description: "This piece is sold out, try next time.",
     details: [
       ["Category", "Business man"],
     ],
@@ -106,7 +106,7 @@ const GUNSTAR_PRODUCTS = [
       { type: "photo", src: "assets/img/arkan_insert_coin/4F2304B1-1725-4937-A1F5-00C4966709A8.jpeg" },
       { type: "photo", src: "assets/img/arkan_insert_coin/2FE51D00-C24C-4C75-BEDE-DBB7AEC4BE05.jpeg" }
     ],
-    description: "This piece is not for sale here, place an enquiry if you would like to buy. The second Business man file. Capital, influence and discretion encoded into the same visual system.",
+    description: "This piece is sold out, try next time.",
     details: [
       ["Category", "Business man"],
     ],
@@ -124,7 +124,7 @@ const GUNSTAR_PRODUCTS = [
       { type: "photo", src: "assets/img/demonvest/DSC07666.jpg" },
       { type: "photo", src: "assets/img/demonvest/027826A9-8270-4E91-AEFC-1C23A57866BD_1_105_c.jpeg" }
     ],
-    description: "This piece is not for sale here, place an enquiry if you would like to buy.",
+    description: "This piece is sold out, try next time.",
     details: [
       ["Category", "Mercenary"],
     ],
@@ -141,7 +141,7 @@ const GUNSTAR_PRODUCTS = [
       { type: "photo", src: "assets/img/pop_star_wallpaper/AB676C5E-57C5-42B4-AFAD-664D34532DB0_1_102_o.jpeg" },
       { type: "photo", src: "assets/img/pop_star_wallpaper/67D1B77A-A1FF-4EEA-8BBD-A74CB02AD0B0.jpeg" }
     ],
-    description: "This piece is not for sale here, place an enquiry if you would like to buy. The first recovered file from the Hacker division: low light, corrupted signals and unauthorized access.",
+    description: "This piece is sold out, try next time.",
     details: [
       ["Category", "Business man"],
     ],
@@ -157,7 +157,7 @@ const GUNSTAR_PRODUCTS = [
       { type: "photo", src: "assets/img/starboy/7403F916-C927-481F-96BD-4E784FC2D07C.png" },
       { type: "photo", src: "assets/img/starboy/3D484495-8E69-4FE0-9083-61F8CA46FA90.jpeg" }
     ],
-    description: "This piece is not for sale here, place an enquiry if you would like to buy.",
+    description: "This piece is sold out, try next time.",
     details: [
       ["Category", "Hacker"],
     ],
@@ -170,15 +170,32 @@ const GUNSTAR_PRODUCTS = [
     name: "USB KEY",
     category: "Hacker",
    media: [
-    { type: "photo", src: "assets/img/usb_key/IMG_6698.jpeg" },
+     { type: "photo", src: "assets/img/usb_key/IMG_6698.jpeg" },
      { type: "photo", src: "assets/img/usb_key/IMG_6697.jpeg" },
      { type: "photo", src: "assets/img/usb_key/IMG_6704.jpeg" }
 ],
-    description: "This piece is not for sale here, place an enquiry if you would like to buy.",
+    description: "This piece is for sale but not here. Place an enquiry or DM us on instagram if you would like to buy.",
     details: [
       ["Category", "Hacker"],
     ],
     delivery: "Contact us at contact@gunstar.world for more information.",
     terms: "By submitting an enquiry you agree to be contacted by GUNSTAR about this piece. Usage rights are discussed and confirmed individually."
-  }
+  },
+ {
+    id: "10",
+    tag: "10101",
+    name: "GLOVES",
+    category: "Mercenary",
+   media: [
+     { type: "photo", src: "assets/img/usb_key/IMG_6698.jpeg" },
+     { type: "photo", src: "assets/img/usb_key/IMG_6697.jpeg" },
+     { type: "photo", src: "assets/img/usb_key/IMG_6704.jpeg" }
+],
+    description: "This piece is for sale but not here. Place an enquiry or DM us on instagram if you would like to buy.",
+    details: [
+      ["Category", "Mercenary"],
+    ],
+    delivery: "Contact us at contact@gunstar.world for more information.",
+    terms: "By submitting an enquiry you agree to be contacted by GUNSTAR about this piece. Usage rights are discussed and confirmed individually."
+  } 
 ];
