@@ -187,9 +187,9 @@ const GUNSTAR_PRODUCTS = [
     name: "GLOVES",
     category: "Mercenary",
    media: [
-     { type: "photo", src: "assets/img/usb_key/IMG_6698.jpeg" },
-     { type: "photo", src: "assets/img/usb_key/IMG_6697.jpeg" },
-     { type: "photo", src: "assets/img/usb_key/IMG_6704.jpeg" }
+     { type: "photo", src: "assets/img/gloves/F6D3D97A-E04C-43FD-936F-27C91E884354.jpeg" },
+     { type: "photo", src: "assets/img/gloves/IMG_6888.jpeg" },
+     { type: "photo", src: "assets/img/gloves/IMG_6892.jpeg" }
 ],
     description: "This piece is for sale but not here. Place an enquiry or DM us on instagram if you would like to buy.",
     details: [
