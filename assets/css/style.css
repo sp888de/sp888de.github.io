@@ -2161,3 +2161,194 @@ html:not(.gate-open) body { background: var(--black); overflow: hidden; min-heig
 @media (max-width: 480px) {
   .wallpaper-nav__btn span.full { display: none; }
 }
+
+/* GUNSTAR — bouton technique */
+
+.enquiry-btn {
+  --button-fill: #0a0a0a;
+  --button-border: #888;
+  --button-text: #f5f5f5;
+
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 64px;
+  align-items: stretch;
+
+  width: 100%;
+  max-width: 520px;
+  min-height: 64px;
+  box-sizing: border-box;
+
+  background: var(--button-border);
+  color: var(--button-text);
+  text-decoration: none;
+  border: 0;
+
+  clip-path: polygon(
+    16px 0,
+    100% 0,
+    100% calc(100% - 16px),
+    calc(100% - 16px) 100%,
+    0 100%,
+    0 16px
+  );
+
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+/* Fond intérieur : laisse apparaître le contour de 1 px */
+
+.enquiry-btn::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  z-index: -1;
+
+  background: var(--button-fill);
+
+  clip-path: polygon(
+    15px 0,
+    100% 0,
+    100% calc(100% - 15px),
+    calc(100% - 15px) 100%,
+    0 100%,
+    0 15px
+  );
+
+  transition: background-color 180ms ease;
+}
+
+.enquiry-btn__label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 18px 28px;
+  text-align: center;
+
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.enquiry-btn__arrow {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-left: 1px solid var(--button-border);
+  transition: border-color 180ms ease;
+}
+
+.enquiry-btn__arrow svg {
+  width: 25px;
+  height: 25px;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+  transition: transform 180ms ease;
+}
+
+/* Petits repères aux quatre coins */
+
+.enquiry-btn__label::before,
+.enquiry-btn__label::after,
+.enquiry-btn__arrow::before,
+.enquiry-btn__arrow::after {
+  content: "";
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-color: currentColor;
+  border-style: solid;
+  pointer-events: none;
+}
+
+.enquiry-btn__label::before {
+  top: 10px;
+  left: 20px;
+  border-width: 1px 0 0 1px;
+}
+
+.enquiry-btn__label::after {
+  bottom: 10px;
+  left: 10px;
+  border-width: 0 0 1px 1px;
+}
+
+.enquiry-btn__arrow::before {
+  top: 10px;
+  right: 10px;
+  border-width: 1px 1px 0 0;
+}
+
+.enquiry-btn__arrow::after {
+  bottom: 10px;
+  right: 20px;
+  border-width: 0 1px 1px 0;
+}
+
+/* Survol et navigation au clavier */
+
+.enquiry-btn:hover,
+.enquiry-btn:focus-visible {
+  --button-fill: #dedede;
+  --button-border: #fff;
+  --button-text: #0a0a0a;
+
+  color: var(--button-text);
+  text-decoration: none;
+}
+
+.enquiry-btn:hover .enquiry-btn__arrow,
+.enquiry-btn:focus-visible .enquiry-btn__arrow {
+  border-left-color: #777;
+}
+
+.enquiry-btn:hover svg,
+.enquiry-btn:focus-visible svg {
+  transform: translate(2px, -2px);
+}
+
+/* Mobile */
+
+@media (max-width: 480px) {
+  .enquiry-btn {
+    grid-template-columns: minmax(0, 1fr) 48px;
+    min-height: 58px;
+  }
+
+  .enquiry-btn__label {
+    padding: 16px 22px;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+  }
+
+  .enquiry-btn__arrow svg {
+    width: 21px;
+    height: 21px;
+  }
+}
+
+/* Respect des préférences d’animation */
+
+@media (prefers-reduced-motion: reduce) {
+  .enquiry-btn,
+  .enquiry-btn::before,
+  .enquiry-btn__arrow,
+  .enquiry-btn__arrow svg {
+    transition: none;
+  }
+
+  .enquiry-btn:hover svg,
+  .enquiry-btn:focus-visible svg {
+    transform: none;
+  }
+}
