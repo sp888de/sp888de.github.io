@@ -64,11 +64,7 @@ const GUNSTAR_PRODUCTS = [
     name: "Mechagirl",
     category: "Mercenary",
     media: [
-      { type: "photo", src: "assets/img/mechagirl/P7291167.jpg" },
-      { type: "photo", src: "assets/img/mechagirl/P7291170.jpg" },
-      { type: "photo", src: "assets/img/mechagirl/P7291255.jpg" },
-      { type: "photo", src: "assets/img/mechagirl/P7291158.jpg" },
-      { type: "photo", src: "assets/img/mechagirl/P7291250.jpg" }
+      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/P7291247.jpg" }
     ],
     description: "This piece is sold out, try next time.",
     details: [
