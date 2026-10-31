@@ -65,7 +65,7 @@ const GUNSTAR_PRODUCTS = [
     category: "Mercenary",
     media: [
       { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/P7291247.jpg" },
-      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/IMG_5662.jpg}
+      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/IMG_5662.jpg"}
     ],
     description: "This piece is sold out, try next time.",
     details: [
