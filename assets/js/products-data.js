@@ -64,7 +64,8 @@ const GUNSTAR_PRODUCTS = [
     name: "Mechagirl",
     category: "Mercenary",
     media: [
-      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/P7291247.jpg" }
+      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/P7291247.jpg" },
+      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/IMG_5662.jpg}
     ],
     description: "This piece is sold out, try next time.",
     details: [
@@ -79,10 +80,9 @@ const GUNSTAR_PRODUCTS = [
     name: "BOGO",
     category: "Business man",
     media: [
-      { type: "photo", src: "assets/img/babytee/0D04D802-1D4B-4A74-8B21-775653399C15_1_102_o.jpeg" },
-      { type: "photo", src: "assets/img/babytee/30804994-2478-4A84-8C51-87FD69D9662E_1_102_o.jpeg" },
-      { type: "video", src: "assets/img/babytee/IMG_4417.mp4" },
-      { type: "video", src: "assets/img/babytee/bc4eda649d234d3c845555c94d6b5ea6.mp4" }
+      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/4-DSC00260.jpg" },
+      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/5-DSC00259.jpg" },
+      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/6-DSC00254.jpg" }
     ],
     description: "This piece is sold out, try next time.",
     details: [
@@ -97,10 +97,7 @@ const GUNSTAR_PRODUCTS = [
     name: "INSERT COIN",
     category: "Business man",
     media: [
-      { type: "photo", src: "assets/img/arkan_insert_coin/IMG_3697.jpeg" },
-      { type: "photo", src: "assets/img/arkan_insert_coin/8091D81E-BF93-41DB-ADD6-1CE79032783A.jpeg" },
-      { type: "photo", src: "assets/img/arkan_insert_coin/4F2304B1-1725-4937-A1F5-00C4966709A8.jpeg" },
-      { type: "photo", src: "assets/img/arkan_insert_coin/2FE51D00-C24C-4C75-BEDE-DBB7AEC4BE05.jpeg" }
+      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/IMG_3697.jpg" }
     ],
     description: "This piece is sold out, try next time.",
     details: [
@@ -115,10 +112,8 @@ const GUNSTAR_PRODUCTS = [
     name: "Demon vest",
     category: "Mercenary",
     media: [
-      { type: "photo", src: "assets/img/demonvest/gunstar_test.png" },
-      { type: "photo", src: "assets/img/demonvest/DSC07597.jpg" },
-      { type: "photo", src: "assets/img/demonvest/DSC07666.jpg" },
-      { type: "photo", src: "assets/img/demonvest/027826A9-8270-4E91-AEFC-1C23A57866BD_1_105_c.jpeg" }
+      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/DSC07666.jpg" },
+      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/DSC07611.jpg" }
     ],
     description: "This piece is sold out, try next time.",
     details: [
@@ -166,9 +161,9 @@ const GUNSTAR_PRODUCTS = [
     name: "USB KEY",
     category: "Hacker",
    media: [
-     { type: "photo", src: "assets/img/usb_key/IMG_6698.jpeg" },
-     { type: "photo", src: "assets/img/usb_key/IMG_6697.jpeg" },
-     { type: "photo", src: "assets/img/usb_key/IMG_6704.jpeg" }
+     { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/IMG_6698.jpg" },
+     { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/IMG_6697.jpg" },
+     { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/IMG_6704.jpg" }
 ],
     description: "This piece is for sale but not here. Place an enquiry or DM us on instagram if you would like to buy.",
     details: [
@@ -183,9 +178,9 @@ const GUNSTAR_PRODUCTS = [
     name: "GLOVES",
     category: "Mercenary",
    media: [
-     { type: "photo", src: "assets/img/gloves/F6D3D97A-E04C-43FD-936F-27C91E884354.jpeg" },
-     { type: "photo", src: "assets/img/gloves/IMG_6888.jpeg" },
-     { type: "photo", src: "assets/img/gloves/IMG_6892.jpeg" }
+     { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/29102026-RAW05810.jpg" },
+     { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/29102026-RAW05882.jpg" },
+     { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/29102026-RAW05941.jpg" }
 ],
     description: "This piece is for sale but not here. Place an enquiry or DM us on instagram if you would like to buy.",
     details: [
