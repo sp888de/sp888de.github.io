@@ -107,7 +107,9 @@ function readCart() {
     </div>
   `;
 
-  document.body.append(cartButton, dialog);
+  const cartMount = document.querySelector("[data-cart-mount]") || document.body;
+  cartMount.append(cartButton);
+  document.body.append(dialog);
 
   const itemsContainer = dialog.querySelector(".cart-items");
   const totalContainer = dialog.querySelector(".cart-total");

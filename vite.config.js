@@ -10,6 +10,7 @@ export default defineConfig({
         product: 'product.html',
         about: 'a-propos.html',
         contact: 'contact.html',
+        gallery: 'gallery.html',
         wallpaper: 'wallpaper.html',
         checkout: 'checkout.html',
         checkoutReturn: 'checkout-return.html',

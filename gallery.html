@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gallery — GUNSTAR</title>
+  <meta name="description" content="Walk through the GUNSTAR visual archive and download artworks for personal use.">
+  <link rel="icon" type="image/png" href="https://res.cloudinary.com/iptm1k0x/image/upload/demon_face.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono&family=Newsreader:ital@0;1&family=Oswald:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/gallery.css">
+</head>
+<body class="gallery-page">
+  <header class="gallery-header">
+    <a class="gallery-brand" href="index.html" aria-label="GUNSTAR home">
+      <img src="assets/img/etoile_blanche.png" width="27" height="27" alt="">
+      <img src="assets/img/bogo_blanc.png" width="105" height="27" alt="GUNSTAR">
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="galerie.html">Shop</a>
+      <a href="gallery.html" aria-current="page">Gallery</a>
+      <a href="a-propos.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="gallery-cart" data-cart-mount></div>
+  </header>
+
+  <main>
+    <section class="gallery-room" id="gallery-room" aria-label="Exhibition room" hidden>
+      <div class="gallery-stage" id="gallery-stage" aria-hidden="true"></div>
+      <div class="gallery-veil" aria-hidden="true"></div>
+
+      <div class="gallery-walk" aria-label="Walk through the gallery">
+        <button type="button" id="gallery-prev" aria-label="Previous position">←</button>
+        <button type="button" id="gallery-next" aria-label="Next position">→</button>
+      </div>
+      <p class="gallery-hint" id="gallery-hint">Scroll or drag to walk<br>Select an artwork to look closer</p>
+
+      <div class="gallery-caption">
+        <p>GUNSTAR VISUAL ARCHIVE</p>
+        <h1>GALLERY</h1>
+        <button class="gallery-underlined" type="button" id="gallery-collection">View the collection <span aria-hidden="true">↗</span></button>
+      </div>
+
+      <div class="gallery-focus" id="gallery-focus" hidden>
+        <span id="gallery-focus-title" aria-live="polite"></span>
+        <button type="button" id="gallery-open">Open artwork <span aria-hidden="true">↗</span></button>
+        <button type="button" id="gallery-step-back">Step back</button>
+      </div>
+      <button class="gallery-current gallery-underlined" id="gallery-look" type="button">Look closer <span aria-hidden="true">↗</span></button>
+    </section>
+
+    <section class="gallery-list" id="gallery-list" aria-labelledby="gallery-list-title">
+      <p class="gallery-list-kicker">GUNSTAR VISUAL ARCHIVE</p>
+      <h2 id="gallery-list-title" tabindex="-1">COLLECTION</h2>
+      <div class="gallery-grid" id="gallery-grid"></div>
+    </section>
+    <div class="gallery-views" role="group" aria-label="Gallery view" hidden>
+      <button type="button" id="gallery-room-view" aria-pressed="false" aria-controls="gallery-room">Room</button>
+      <button type="button" id="gallery-list-view" aria-pressed="true" aria-controls="gallery-list">Collection</button>
+    </div>
+  </main>
+
+  <dialog class="gallery-detail" id="gallery-detail" aria-labelledby="gallery-detail-title">
+    <form method="dialog"><button class="gallery-close" aria-label="Close artwork">×</button></form>
+    <div class="gallery-detail-layout">
+      <div class="gallery-detail-image"><img id="gallery-artwork" alt=""></div>
+      <div class="gallery-detail-copy">
+        <p class="gallery-detail-kicker">GUNSTAR VISUAL ARCHIVE</p>
+        <h2 id="gallery-detail-title"></h2>
+        <p id="gallery-dimensions"></p>
+        <p class="gallery-use">Available for personal use.</p>
+        <a class="gallery-download" id="gallery-download" download>Download wallpaper <span aria-hidden="true">↓</span></a>
+        <button class="gallery-underlined" type="button" id="gallery-locate" hidden>View in room <span aria-hidden="true">↗</span></button>
+      </div>
+    </div>
+  </dialog>
+  <script defer src="assets/js/products-data.js?v=popstar2"></script>
+  <script defer src="assets/js/cart.js?v=gallery1"></script>
+  <script defer src="assets/js/script.js"></script>
+  <script type="module" src="assets/js/gallery.js"></script>
+</body>
+</html>
