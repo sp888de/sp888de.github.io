@@ -403,7 +403,7 @@ cancelButton.addEventListener("click", () => withCheckoutLock("cancel"));
   const field = document.getElementById("variant-field");
   const options = product?.displayOptions || sizes;
   field.hidden = !available || !options.length;
-  document.getElementById("variant-label").textContent = sizes.length ? "Size" : "Capacity";
+  document.getElementById("variant-label").textContent = product?.variantLabel ?? (sizes.length ? "Size" : "Capacity");
   const choices = document.getElementById("variant-options");
   for (const [index, option] of options.entries()) {
     const button = document.createElement("button");
