@@ -158,9 +158,10 @@ const GUNSTAR_PRODUCTS = [
     tag: "11000",
     name: "Pop star wallpaper",
     seoTitle: "Pop Star Wallpaper | GUNSTAR",
-    seoDescription: "Shop the GUNSTAR Pop Star Wallpaper in white or black for €9.90.",
+    seoDescription: "Shop the GUNSTAR Pop Star Wallpaper in white or black for €9.90, printed on 200 g/m² paper.",
     purchasable: true,
     price: 990,
+    paperWeight: 200,
     sizes: ["WHITE", "BLACK"],
     variantLabel: "Colour",
     category: "Business man",
@@ -172,6 +173,7 @@ const GUNSTAR_PRODUCTS = [
     description: "Available in white and black.",
     details: [
       ["Category", "Business man"],
+      ["Paper", "200 g/m²"],
     ],
     delivery: "Contact us at contact@gunstar.world for more information.",
     terms: "By submitting an enquiry you agree to be contacted by GUNSTAR about this piece. Usage rights are discussed and confirmed individually."

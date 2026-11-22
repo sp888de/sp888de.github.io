@@ -2,6 +2,18 @@ import { createRoom } from './gallery-room.js';
 
 const threeURL = 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
 const mediaRoot = 'https://res.cloudinary.com/iptm1k0x/image/upload/';
+const previewRoot = mediaRoot + 'c_limit,w_900,h_1000,q_auto/';
+const posterPrice = 990;
+const paperWeight = 200;
+const euro = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' });
+
+if (typeof GUNSTAR_PRODUCTS === 'undefined' && document.readyState !== 'complete') {
+  await new Promise(resolve => window.addEventListener('load', resolve, { once: true }));
+}
+
+const shopPoster = typeof GUNSTAR_PRODUCTS === 'undefined'
+  ? undefined
+  : GUNSTAR_PRODUCTS.find(product => product.id === '07');
 const artworks = [
   ['GUNSTAR_N001', 1559, 1949, 'affiche_purple_dirt.png'],
   ['GUNSTAR_N002', 1559, 1949, 'Affiche_brun_dirt.png'],
@@ -11,9 +23,28 @@ const artworks = [
   ['GUNSTAR_N006', 6000, 4000, 'gunsatr_december.png']
 ].map(([name, width, height, file]) => ({
   name, width, height,
-  preview: mediaRoot + 'c_limit,w_900,h_1000,q_auto/' + file,
+  preview: previewRoot + file,
+  price: posterPrice,
+  paperWeight,
   download: mediaRoot + 'fl_attachment:' + name + '/' + file
 }));
+
+if (shopPoster) {
+  const cover = shopPoster.media.find(item => item.variant === 'WHITE');
+  artworks.push({
+    name: shopPoster.name,
+    width: 4724,
+    height: 5906,
+    preview: cover.src.replace(mediaRoot, previewRoot),
+    price: shopPoster.price,
+    paperWeight: shopPoster.paperWeight,
+    shopUrl: 'product.html?item=' + shopPoster.id
+  });
+}
+
+function posterSpecs(artwork) {
+  return euro.format(artwork.price / 100) + ' · ' + artwork.paperWeight + ' g/m² paper';
+}
 
 const get = id => document.getElementById('gallery-' + id);
 const stage = get('stage');
@@ -54,7 +85,10 @@ const cards = artworks.map((artwork, index) => {
   const title = document.createElement('span');
   title.className = 'gallery-card-title';
   title.textContent = artwork.name;
-  card.append(mount, title);
+  const specs = document.createElement('span');
+  specs.className = 'gallery-card-specs';
+  specs.textContent = posterSpecs(artwork);
+  card.append(mount, title, specs);
   card.addEventListener('click', () => {
     usedCollection = true;
     openArtwork(index, card, thumbnail.getBoundingClientRect());
@@ -121,9 +155,23 @@ function openArtwork(index, trigger, origin) {
   image.width = artwork.width;
   image.height = artwork.height;
   get('detail-title').textContent = artwork.name;
-  get('dimensions').textContent = artwork.width + ' × ' + artwork.height + ' px';
-  get('download').href = artwork.download;
-  get('download').download = artwork.name + '.png';
+  get('poster-specs').textContent = posterSpecs(artwork);
+  get('dimensions').hidden = !artwork.download;
+  get('dimensions').textContent = artwork.download
+    ? 'Wallpaper for personal use · ' + artwork.width + ' × ' + artwork.height + ' px'
+    : '';
+  const download = get('download');
+  download.hidden = !artwork.download;
+  if (artwork.download) {
+    download.href = artwork.download;
+    download.download = artwork.name + '.png';
+  } else {
+    download.removeAttribute('href');
+  }
+  const shop = get('shop');
+  shop.hidden = !artwork.shopUrl;
+  if (artwork.shopUrl) shop.href = artwork.shopUrl;
+  else shop.removeAttribute('href');
   locate.hidden = !room;
   detail.scrollTop = 0;
   detail.showModal();

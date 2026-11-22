@@ -1,13 +1,13 @@
 const OUTER = 18;
 const INNER = 12.2;
 const HEIGHT = 6.2;
-const OUTER_SLOTS = 36;
-const INNER_SLOTS = 24;
-const STEP = 2 * Math.PI / OUTER_SLOTS;
 const TAU = 2 * Math.PI;
 const ART_Y = 2.05;
 
 export function createRoom(THREE, stage, artworks, onPick, onStepBack) {
+  const outerSlots = Math.round(36 / artworks.length) * artworks.length;
+  const innerSlots = Math.round(24 / artworks.length) * artworks.length;
+  const stepAngle = TAU / outerSlots;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const scene = new THREE.Scene();
   scene.background = new THREE.Color('#191817');
@@ -124,10 +124,10 @@ export function createRoom(THREE, stage, artworks, onPick, onStepBack) {
   });
 
   function addPrint(slot, outside) {
-    const slots = outside ? OUTER_SLOTS : INNER_SLOTS;
+    const slots = outside ? outerSlots : innerSlots;
     const angle = (slot + (outside ? 0 : .5)) * TAU / slots;
     const count = artworks.length;
-    const index = (count * (slots + 1) - slot + (outside ? 0 : 3)) % count;
+    const index = (slots - slot + (outside ? 0 : 3)) % count;
     const artwork = artworks[index];
     const { art, label } = artMaterials[index];
     const ratio = artwork.width / artwork.height;
@@ -161,8 +161,8 @@ export function createRoom(THREE, stage, artworks, onPick, onStepBack) {
     scene.add(group);
   }
 
-  for (let slot = 0; slot < OUTER_SLOTS; slot++) addPrint(slot, true);
-  for (let slot = 0; slot < INNER_SLOTS; slot++) addPrint(slot, false);
+  for (let slot = 0; slot < outerSlots; slot++) addPrint(slot, true);
+  for (let slot = 0; slot < innerSlots; slot++) addPrint(slot, false);
   const pickable = [...targets, ...walls];
 
   const narrow = () => camera.aspect < .87;
@@ -227,7 +227,7 @@ export function createRoom(THREE, stage, artworks, onPick, onStepBack) {
       onStepBack();
       return;
     }
-    walk((Math.round((target - offset()) / STEP) - direction) * STEP + offset());
+    walk((Math.round((target - offset()) / stepAngle) - direction) * stepAngle + offset());
   }
 
   function render(now) {
@@ -354,11 +354,11 @@ export function createRoom(THREE, stage, artworks, onPick, onStepBack) {
     step,
     stepBack,
     nearest() {
-      const slot = Math.round((target - offset()) / STEP);
-      return targets[(slot % OUTER_SLOTS + OUTER_SLOTS) % OUTER_SLOTS].userData;
+      const slot = Math.round((target - offset()) / stepAngle);
+      return targets[(slot % outerSlots + outerSlots) % outerSlots].userData;
     },
     locate(index) {
-      const copies = targets.slice(0, OUTER_SLOTS).filter(print => print.userData.index === index);
+      const copies = targets.slice(0, outerSlots).filter(print => print.userData.index === index);
       function distance(print) {
         const delta = print.userData.angle - pose.angle;
         return Math.abs(Math.atan2(Math.sin(delta), Math.cos(delta)));
