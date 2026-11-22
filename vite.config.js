@@ -11,6 +11,8 @@ export default defineConfig({
         about: 'a-propos.html',
         contact: 'contact.html',
         wallpaper: 'wallpaper.html',
+        checkout: 'checkout.html',
+        checkoutReturn: 'checkout-return.html',
       }
     }
   }

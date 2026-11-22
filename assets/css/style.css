@@ -186,7 +186,7 @@ p { margin: 0 0 1rem; color: var(--bone-dim); max-width: 60ch; }
 
 .brand__logo-wordmark {
   display: block;
-  height: 22px;
+  height: 17px;
   width: auto;
   object-fit: contain;
   flex-shrink: 0;
@@ -2350,5 +2350,361 @@ html:not(.gate-open) body { background: var(--black); overflow: hidden; min-heig
   .enquiry-btn:hover svg,
   .enquiry-btn:focus-visible svg {
     transform: none;
+  }
+}
+
+/* ---------- GUNSTAR / product size selector ---------- */
+.product-sizes[hidden] { display: none; }
+.product-sizes { margin: 0 0 1.4rem; }
+.product-sizes__label {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: #aaa;
+  margin-bottom: 0.75rem;
+}
+.product-sizes__choices { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.product-size-btn {
+  position: relative;
+  isolation: isolate;
+  min-width: 60px;
+  min-height: 54px;
+  padding: 12px 16px;
+  border: 1px solid #888;
+  background: #0a0a0a;
+  color: #f5f5f5;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+.product-size-btn:hover,
+.product-size-btn:focus-visible,
+.product-size-btn.is-selected {
+  background: #dedede;
+  color: #0a0a0a;
+  border-color: #fff;
+}
+.product-size-btn:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+/* GUNSTAR — CART */
+
+button.enquiry-btn {
+  font: inherit;
+  cursor: pointer;
+}
+
+button.enquiry-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.cart-trigger {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1000;
+  padding: 14px 20px;
+  border: 1px solid #777;
+  background: #101010;
+  color: #fff;
+  font: 12px "IBM Plex Mono", monospace;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+.cart-panel {
+  position: fixed;
+  inset: 0 0 0 auto;
+  box-sizing: border-box;
+  width: min(460px, 100vw);
+  max-width: 100vw;
+  height: 100dvh;
+  max-height: 100dvh;
+  margin: 0;
+  padding: 24px;
+  border: 0;
+  border-left: 1px solid #555;
+  background: #0c0c0c;
+  color: #eee;
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.cart-panel::backdrop {
+  background: rgb(0 0 0 / 75%);
+}
+
+.cart-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.cart-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #444;
+}
+
+.cart-heading h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.cart-panel button {
+  border: 1px solid #666;
+  border-radius: 0;
+  padding: 10px 12px;
+  background: transparent;
+  color: #eee;
+  font: inherit;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.cart-panel button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.cart-panel button:not(:disabled):hover,
+.cart-trigger:hover {
+  background: #eee;
+  color: #111;
+}
+
+.cart-panel button:focus-visible,
+.cart-panel a:focus-visible,
+.cart-trigger:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.cart-items {
+  flex: 1;
+  padding: 20px 0;
+}
+
+.cart-item {
+  padding: 20px 0;
+  border-bottom: 1px solid #333;
+}
+
+.cart-item a {
+  color: #fff;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.cart-item p {
+  margin: 12px 0;
+  color: #aaa;
+  font-size: 12px;
+}
+
+.cart-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cart-controls button:last-child {
+  margin-left: auto;
+}
+
+.cart-footer {
+  padding-top: 24px;
+  border-top: 1px solid #444;
+}
+
+.cart-total {
+  font-size: 14px;
+}
+
+.cart-footer p {
+  color: #aaa;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.cart-panel .cart-checkout {
+  width: 100%;
+  margin-top: 12px;
+  padding: 16px;
+}
+
+/* GUNSTAR — PRODUCT PRICE */
+
+.product-price {
+  margin: 20px 0;
+  color: #eee;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.product-price[hidden] {
+  display: none;
+}
+
+/* GUNSTAR — SIZE SELECTOR */
+
+.product-size {
+  display: grid;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.product-size[hidden] {
+  display: none;
+}
+
+.product-size label {
+  color: #aaa;
+  font: 11px "IBM Plex Mono", monospace;
+  letter-spacing: 0.1em;
+}
+
+.product-size select {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #666;
+  border-radius: 0;
+  background: #101010;
+  color: #eee;
+  font: 13px "IBM Plex Mono", monospace;
+  cursor: pointer;
+}
+
+.product-size select:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+/* GUNSTAR — EMBEDDED STRIPE CHECKOUT */
+.gs-checkout-container { max-width: 900px; }
+.gs-checkout-heading { margin-bottom: 2rem; }
+.gs-checkout-heading h1 { font-size: clamp(2.75rem, 8vw, 5.5rem); margin-bottom: 1.25rem; }
+.gs-checkout-heading p:last-child { font-size: 0.875rem; color: #aaa; }
+#gs-checkout-status { padding: 1.25rem 0; font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.07em; }
+#gs-checkout-status.gs-checkout-error { color: #ffb2a9; }
+#gs-stripe-checkout { min-height: 380px; }
+.gs-checkout-cancel { margin-top: 2rem; padding: 1rem 1.15rem; width: 100%; background: transparent; color: #ddd; border: 1px solid #777; font-family: var(--font-mono); font-size: 0.73rem; letter-spacing: 0.07em; }
+.gs-checkout-cancel:hover, .gs-checkout-cancel:focus-visible { color: #111; background: #fff; }
+.gs-checkout-cancel:disabled { opacity: .4; cursor: wait; }
+
+/* Shared scan line */
+body::after {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: -16vh;
+  height: 16vh;
+  pointer-events: none;
+  z-index: 5;
+  background: linear-gradient(transparent, rgba(255,255,255,.045), transparent);
+  animation: gateScan 7s linear infinite;
+}
+@media (max-width: 680px), (hover: none) and (pointer: coarse) {
+  body::after {
+    background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,.08) 48%, rgba(255,255,255,.28) 50%, transparent 52%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body::after { display: none; }
+}
+/* Compact desktop spacing */
+@media (min-width: 1024px) {
+  :root {
+    --container: min(1600px, 96%);
+  }
+
+  .section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .section--tight {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .section-head,
+  .catalog-head {
+    margin-bottom: 1.5rem;
+  }
+
+  .shop-page .shop-group + .shop-group {
+    margin-top: 2rem;
+  }
+
+  .footer {
+    padding-top: 2rem;
+    padding-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 680px) {
+  .shop-page.section--tight {
+    padding-block: 1rem;
+  }
+
+  .shop-page > .container {
+    padding-inline: 0.75rem;
+  }
+
+  .shop-page .catalog-head {
+    margin-bottom: 1rem;
+    gap: 0.75rem;
+  }
+
+  .shop-page .shop-group + .shop-group {
+    margin-top: 1rem;
+  }
+
+  .shop-page .shop-group h2 {
+    padding-block: 0.5rem;
+  }
+
+  .shop-page .shop-drop .catalog {
+    gap: 0.5rem;
+  }
+
+  .shop-page .shop-drop .catalog-item__caption {
+    padding-block: 0.4rem;
+  }
+}
+
+/* Espacements mobiles — toutes les pages */
+@media (max-width: 680px) {
+  .container {
+    padding-inline: 0.75rem;
+  }
+
+  .section {
+    padding-block: 2rem;
+  }
+
+  .section--tight {
+    padding-block: 1rem;
+  }
+
+  .section-head,
+  .catalog-head {
+    margin-bottom: 1rem;
+    gap: 0.75rem;
+  }
+
+  .footer {
+    padding-block: 1.5rem;
   }
 }

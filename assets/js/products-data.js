@@ -29,9 +29,11 @@ const GUNSTAR_PRODUCTS = [
     id: "01",
     tag: "N°0000",
     name: "INTRODUCTION",
+    seoTitle: "Discover the GUNSTAR Universe — Three Divisions",
+    seoDescription: "Enter the GUNSTAR universe and discover its three divisions: Mercenary, Business Man and Hacker, each with its own clothing series and visual identity.",
     category: "None",
     media: [
-      { type: "video", src: "assets/video/gunstarhomepage_2.mp4" }
+      { type: "video", src: "https://res.cloudinary.com/iptm1k0x/video/upload/v1793478625/gunstarhomepage_2.mp4" }
     ],
     description: "Congratulations. Curiosity brought you into the archive. Here is some classified information for you : Three divisions operate inside GUNSTAR: Mercenary, Business man and Hacker. Each division controls a classified clothing series. Be awake. Choose GUNSTAR.",
     details: [
@@ -42,14 +44,18 @@ const GUNSTAR_PRODUCTS = [
   },
   {
     id: "02",
+    sizes: ["S", "M", "L", "XL"],
     tag: "N°1010",
     name: "SNIPER",
+    seoTitle: "SNIPER — Mercenary Clothing Archive | GUNSTAR",
+    seoDescription: "Explore SNIPER, an archived GUNSTAR clothing piece from the Mercenary division. View the design and photographs. This piece is sold out.",
+    purchasable: false,
+    price: null,
     category: "Mercenary",
     media: [
-      { type: "photo", src: "assets/img/sniper/P7291258.jpg" },
-      { type: "photo", src: "assets/img/sniper/P7291260.jpg" },
-      { type: "photo", src: "assets/img/sniper/P7291155.jpg" },
-      { type: "video", src: "assets/video/snipervid.mp4" }
+      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/P7291261.jpg" },
+      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/P7291156.jpg" },
+      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/IMG_5662.jpg" }
     ],
     description: "This piece is sold out, try next time.",
     details: [
@@ -60,12 +66,18 @@ const GUNSTAR_PRODUCTS = [
   },
   {
     id: "03",
+    sizes: ["S", "M", "L", "XL"],
     tag: "N°1011",
     name: "Mechagirl",
+    seoTitle: "Mechagirl — Mercenary Clothing Archive | GUNSTAR",
+    seoDescription: "Discover Mechagirl, an archived GUNSTAR clothing piece from the Mercenary division. Explore the design and photographs. This piece is sold out.",
+    purchasable: false,
+    price: null,
     category: "Mercenary",
     media: [
-      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/P7291247.jpg" },
-      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/IMG_5662.jpg"}
+      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/IMG_5662.jpg" },
+      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/P7291158.jpg" },
+      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/P7291170.jpg" }
     ],
     description: "This piece is sold out, try next time.",
     details: [
@@ -76,12 +88,17 @@ const GUNSTAR_PRODUCTS = [
   },
   {
     id: "04",
+    sizes: ["S", "M", "L", "XL"],
     tag: "N°1100",
     name: "BOGO",
+    seoTitle: "BOGO — Business Man Clothing Archive | GUNSTAR",
+    seoDescription: "Explore BOGO, an archived GUNSTAR clothing piece from the Business Man division. View the design and photographs. This piece is sold out.",
+    purchasable: false,
+    price: null,
     category: "Business man",
     media: [
+      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/10-DSC00221.jpg" },
       { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/4-DSC00260.jpg" },
-      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/5-DSC00259.jpg" },
       { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/6-DSC00254.jpg" }
     ],
     description: "This piece is sold out, try next time.",
@@ -93,13 +110,20 @@ const GUNSTAR_PRODUCTS = [
   },
   {
     id: "05",
+    sizes: ["S", "M", "L", "XL"],
     tag: "N°1101",
     name: "INSERT COIN",
+    seoTitle: "INSERT COIN — Exclusive Piece for Arkan | GUNSTAR",
+    seoDescription: "Discover INSERT COIN, a GUNSTAR clothing piece created exclusively for the artist Arkan. Explore photographs from the Business Man archive.",
+    purchasable: false,
+    price: null,
     category: "Business man",
     media: [
-      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/IMG_3697.jpg" }
+      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/IMG_3697.jpg" },
+      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/IMG_3533.jpg" },
+      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/tee_coin_inside_v2.png" }
     ],
-    description: "This piece is sold out, try next time.",
+    description: "This piece was exclusively made for the artist Arkan.",
     details: [
       ["Category", "Business man"],
     ],
@@ -108,12 +132,19 @@ const GUNSTAR_PRODUCTS = [
   },
   {
     id: "06",
+    sizes: ["S", "M", "L", "XL"],
     tag: "N°10100",
     name: "Demon vest",
+    seoTitle: "Demon Vest — Mercenary Clothing Archive | GUNSTAR",
+    seoDescription: "Explore the GUNSTAR Demon Vest from the Mercenary division. View photographs of this archived clothing piece. This piece is sold out.",
+    purchasable: false,
+    price: null,
     category: "Mercenary",
     media: [
       { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/DSC07666.jpg" },
-      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/DSC07611.jpg" }
+      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/DSC07611.jpg" },
+      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/DSC07086.jpg" },
+      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/DSC07083.jpg" }
     ],
     description: "This piece is sold out, try next time.",
     details: [
@@ -126,13 +157,19 @@ const GUNSTAR_PRODUCTS = [
     id: "07",
     tag: "11000",
     name: "Pop star wallpaper",
+    seoTitle: "Pop Star Wallpaper — Business Man Archive | GUNSTAR",
+    seoDescription: "Explore Pop Star Wallpaper, a visual creation from the GUNSTAR Business Man archive. View the images associated with this archived piece.",
+    purchasable: false,
+    price: 790,
+    sizes: [],
+    displayOptions: ["WHITE", "BLACK"],
     category: "Business man",
     media: [
-      { type: "photo", src: "assets/img/pop_star_wallpaper/29B29B0F-B199-42C5-8F34-66A8E97BBD47_1_102_o.jpeg" },
-      { type: "photo", src: "assets/img/pop_star_wallpaper/AB676C5E-57C5-42B4-AFAD-664D34532DB0_1_102_o.jpeg" },
-      { type: "photo", src: "assets/img/pop_star_wallpaper/67D1B77A-A1FF-4EEA-8BBD-A74CB02AD0B0.jpeg" }
+      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/popstar_black_red.png" },
+      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/popstar_white_red.png" },
+      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/IMG_5675.jpg" }
     ],
-    description: "This piece is sold out, try next time.",
+    description: "This piece will be soon available.",
     details: [
       ["Category", "Business man"],
     ],
@@ -141,12 +178,16 @@ const GUNSTAR_PRODUCTS = [
   },
   {
     id: "08",
+    sizes: ["S", "M", "L", "XL"],
     tag: "1000",
     name: "Starboy",
+    seoTitle: "Starboy — Hacker Clothing Archive | GUNSTAR",
+    seoDescription: "Discover Starboy, an archived GUNSTAR clothing piece from the Hacker division. Explore its visual design. This piece is sold out.",
+    purchasable: false,
+    price: null,
     category: "Hacker",
     media: [
-      { type: "photo", src: "assets/img/starboy/7403F916-C927-481F-96BD-4E784FC2D07C.png" },
-      { type: "photo", src: "assets/img/starboy/3D484495-8E69-4FE0-9083-61F8CA46FA90.jpeg" }
+      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/starface_copie.png" }
     ],
     description: "This piece is sold out, try next time.",
     details: [
@@ -158,14 +199,20 @@ const GUNSTAR_PRODUCTS = [
   {
     id: "09",
     tag: "1001",
-    name: "USB KEY",
+    name: "USB DRIVE",
+    seoTitle: "USB Drive — Zinc Alloy USB 3.0 | GUNSTAR",
+    seoDescription: "Discover the GUNSTAR USB Drive: a zinc alloy USB 3.0 flash drive from the Hacker division, supplied blank with no preloaded files or software.",
+    purchasable: true,
+    price: 1990,
+    sizes: [],
+    displayOptions: ["64 Go", "128 Go"],
     category: "Hacker",
-   media: [
+    media: [
      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/IMG_6698.jpg" },
      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/IMG_6697.jpg" },
      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/IMG_6704.jpg" }
 ],
-    description: "This piece is for sale but not here. Place an enquiry or DM us on instagram if you would like to buy.",
+    description: "Every file matters. Every detail counts. Crafted from durable zinc alloy, the GUNSTAR USB Drive features USB 3.0 technology. <strong>The USB drive is delivered completely blank, with no preloaded files or software.</strong> <strong>Carry the data. Be Awake.</strong>",
     details: [
       ["Category", "Hacker"],
     ],
@@ -175,14 +222,20 @@ const GUNSTAR_PRODUCTS = [
  {
     id: "10",
     tag: "10101",
-    name: "GLOVES",
+    name: "GS GLOVES",
+    seoTitle: "GS Gloves — Reflective Touchscreen Gloves | GUNSTAR",
+    seoDescription: "Discover GUNSTAR GS Gloves: reflective gloves with touchscreen-compatible fingertips and a tactical aesthetic, designed for the Mercenary division.",
+    purchasable: true,
+    price: 2990,
+    sizes: ["M", "L"],
+    displayOptions: ["S", "M", "L", "XL"],
     category: "Mercenary",
-   media: [
+    media: [
      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/29102026-RAW05810.jpg" },
      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/29102026-RAW05882.jpg" },
      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/29102026-RAW05941.jpg" }
 ],
-    description: "This piece is for sale but not here. Place an enquiry or DM us on instagram if you would like to buy.",
+    description: "Built for the Mercenary. Designed for those who operate beyond the ordinary. 88% Polyester / 12% Spandex. Featuring a reflective print and touchscreen-compatible fingertips, the GUNSTAR Gloves combine functionality with a tactical aesthetic. <strong>Stay equipped. Be Awake.</strong>",
     details: [
       ["Category", "Mercenary"],
     ],

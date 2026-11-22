@@ -9,7 +9,7 @@
 // disponible, et style.css masque déjà tout le contenu tant que
 // <html> n'a pas la classe .gate-open — voir "Site-wide password
 // gate" dans style.css. Ça évite un flash du contenu protégé.
-initGunstarGate();
+document.documentElement.classList.add('gate-open');
 
 document.addEventListener('DOMContentLoaded', () => {
   initNav();
@@ -574,12 +574,18 @@ function initProductPage() {
   const product = GUNSTAR_PRODUCTS.find(p => p.id === id) || GUNSTAR_PRODUCTS[0];
   if (!product) return;
 
-  document.title = `${product.name} — GUNSTAR`;
+  document.title = product.seoTitle || `${product.name} — GUNSTAR`;
+
+const metaDescription = document.querySelector('meta[name="description"]');
+
+if (metaDescription && product.seoDescription) {
+  metaDescription.setAttribute('content', product.seoDescription);
+}
 
   document.getElementById('product-index').textContent = product.tag;
   document.getElementById('product-category').textContent = product.category;
   document.getElementById('product-title').textContent = product.name;
-  document.getElementById('product-description').textContent = product.description;
+  document.getElementById('product-description').innerHTML = product.description;
   document.getElementById('product-delivery').textContent = product.delivery || '';
   document.getElementById('product-terms').textContent = product.terms || '';
 
@@ -594,7 +600,49 @@ function initProductPage() {
     detailsList.appendChild(dd);
   });
 
+  renderProductSizes(product);
   renderProductGallery(product);
+}
+
+/* Size options shown only for products that define sizes. */
+function renderProductSizes(product) {
+  const container = document.getElementById('product-sizes');
+  if (!container) return;
+
+  container.replaceChildren();
+  delete container.dataset.selectedSize;
+  const sizes = Array.isArray(product.sizes) ? product.sizes : [];
+  container.hidden = sizes.length === 0;
+  if (!sizes.length) return;
+
+  const label = document.createElement('p');
+  label.className = 'product-sizes__label';
+  label.textContent = 'SELECT SIZE';
+  container.appendChild(label);
+
+  const choices = document.createElement('div');
+  choices.className = 'product-sizes__choices';
+  choices.setAttribute('role', 'group');
+  choices.setAttribute('aria-label', `Size for ${product.name}`);
+  container.appendChild(choices);
+
+  sizes.forEach(size => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'product-size-btn';
+    button.textContent = size;
+    button.dataset.size = size;
+    button.setAttribute('aria-pressed', 'false');
+    button.addEventListener('click', () => {
+      choices.querySelectorAll('.product-size-btn').forEach(other => {
+        const selected = other === button;
+        other.classList.toggle('is-selected', selected);
+        other.setAttribute('aria-pressed', String(selected));
+      });
+      container.dataset.selectedSize = size;
+    });
+    choices.appendChild(button);
+  });
 }
 
 function renderProductGallery(product) {
