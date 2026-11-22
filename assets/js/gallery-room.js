@@ -10,8 +10,8 @@ const ART_Y = 2.05;
 export function createRoom(THREE, stage, artworks, onPick, onStepBack) {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color('#eeeff0');
-  scene.fog = new THREE.Fog('#eeeff0', 14, 41);
+  scene.background = new THREE.Color('#191817');
+  scene.fog = new THREE.Fog('#191817', 14, 41);
   const camera = new THREE.PerspectiveCamera(56, 1, 0.05, 70);
   const renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -53,16 +53,16 @@ export function createRoom(THREE, stage, artworks, onPick, onStepBack) {
     walls.push(wall);
   }
 
-  addWall(OUTER, THREE.BackSide, [[0, '#d9dcdf'], [.24, '#f0f1f2'], [.57, '#f9f9f8'], [.86, '#eeefef'], [1, '#d4d6d8']]);
-  addWall(INNER, THREE.FrontSide, [[0, '#e0e2e4'], [.24, '#f7f7f6'], [.59, '#fdfdfc'], [.86, '#edeeef'], [1, '#d3d6d8']]);
+  addWall(OUTER, THREE.BackSide, [[0, '#131212'], [.24, '#222120'], [.57, '#292827'], [.86, '#1e1d1c'], [1, '#141313']]);
+  addWall(INNER, THREE.FrontSide, [[0, '#141313'], [.24, '#232221'], [.59, '#2c2b29'], [.86, '#201f1e'], [1, '#161514']]);
 
   const floor = new THREE.Mesh(new THREE.CircleGeometry(OUTER, 160), material('#fff', gradient([
-    [0, '#e0e2e3'], [INNER / OUTER, '#c9cdd0'], [.82, '#e5e6e6'], [1, '#bfc3c7']
+    [0, '#1f1e1d'], [INNER / OUTER, '#161515'], [.82, '#292725'], [1, '#191817']
   ], true)));
   floor.rotation.x = -Math.PI / 2;
   scene.add(floor);
 
-  const ceiling = new THREE.Mesh(new THREE.CircleGeometry(OUTER, 160), material('#dfe2e4'));
+  const ceiling = new THREE.Mesh(new THREE.CircleGeometry(OUTER, 160), material('#141313'));
   ceiling.rotation.x = Math.PI / 2;
   ceiling.position.y = HEIGHT;
   scene.add(ceiling);
@@ -74,15 +74,15 @@ export function createRoom(THREE, stage, artworks, onPick, onStepBack) {
   }
 
   const lightTrack = OUTER - .85;
-  addRing(lightTrack - .055, lightTrack + .055, HEIGHT - .026, '#bfc3c6', true);
-  addRing(lightTrack - .028, lightTrack + .028, HEIGHT - .031, '#fff', true);
-  addRing(INNER, INNER + .045, .002, '#aeb4b9', false);
-  addRing(OUTER - .045, OUTER, .002, '#aeb4b9', false);
+  addRing(lightTrack - .055, lightTrack + .055, HEIGHT - .026, '#3c3937', true);
+  addRing(lightTrack - .028, lightTrack + .028, HEIGHT - .031, '#a6a09a', true);
+  addRing(INNER, INNER + .045, .002, '#423e3b', false);
+  addRing(OUTER - .045, OUTER, .002, '#423e3b', false);
 
-  const shadow = gradient([[0, '#343a4860'], [.46, '#343a4853'], [.72, '#343a4820'], [1, '#343a4800']], true);
-  const halo = gradient([[0, '#ffffffdc'], [.4, '#ffffffb3'], [1, '#ffffff00']], true);
-  const frameMaterial = material('#292c30');
-  const matMaterial = material('#f9f9f8');
+  const shadow = gradient([[0, '#00000080'], [.46, '#00000063'], [.72, '#00000026'], [1, '#00000000']], true);
+  const halo = gradient([[0, '#c6beaf59'], [.4, '#c6beaf3b'], [1, '#c6beaf00']], true);
+  const frameMaterial = material('#4b4744');
+  const matMaterial = material('#8e8982');
   const shadowMaterial = material('#fff', shadow, { transparent: true, depthWrite: false });
   const haloMaterial = material('#fff', halo, { transparent: true, depthWrite: false });
   const ray = new THREE.Raycaster();
@@ -93,17 +93,17 @@ export function createRoom(THREE, stage, artworks, onPick, onStepBack) {
 
   function labelTexture(artwork, fontsReady = false) {
     return texture(512, (ctx) => {
-      ctx.fillStyle = '#24262a';
+      ctx.fillStyle = '#f5f4f0';
       ctx.font = fontsReady ? '34px Newsreader, Georgia' : '34px Georgia';
       ctx.fillText(artwork.name, 12, 51);
-      ctx.fillStyle = '#4d5256';
+      ctx.fillStyle = '#c0bbb4';
       ctx.font = fontsReady ? '20px "DM Mono", monospace' : '20px monospace';
       ctx.fillText('GUNSTAR / VISUAL ARCHIVE', 12, 85);
     });
   }
 
   const artMaterials = artworks.map(artwork => {
-    const art = material('#dddfe1');
+    const art = material('#3a3836');
     loader.load(artwork.preview, map => {
       map.colorSpace = THREE.SRGBColorSpace;
       map.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
