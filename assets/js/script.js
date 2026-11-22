@@ -651,6 +651,7 @@ function renderProductGallery(product) {
   if (!thumbsWrap || !slot) return;
 
   thumbsWrap.innerHTML = '';
+  const thumbs = [];
 
    // Limiter l’enregistrement rapide des médias produits
   const gallery = document.querySelector('#product-root .product-gallery');
@@ -679,9 +680,15 @@ function renderProductGallery(product) {
     } else {
       el = document.createElement('img');
       el.src = item.src;
-      el.alt = product.name;
+      el.alt = item.variant ? product.name + ' — ' + item.variant : product.name;
     }
     slot.appendChild(el);
+  }
+
+  function selectMedia(item) {
+    const activeIndex = product.media.indexOf(item);
+    thumbs.forEach((thumb, index) => thumb.classList.toggle('is-active', index === activeIndex));
+    showMedia(item);
   }
 
   // Build one thumbnail per media entry (only needed if there is more than one)
@@ -689,8 +696,8 @@ function renderProductGallery(product) {
     product.media.forEach((item, index) => {
       const thumb = document.createElement('button');
       thumb.type = 'button';
-      thumb.className = 'product-gallery__thumb' + (index === 0 ? ' is-active' : '');
-      thumb.setAttribute('aria-label', `View ${product.name} — image ${index + 1}`);
+      thumb.className = 'product-gallery__thumb';
+      thumb.setAttribute('aria-label', `View ${product.name} — ${item.variant || `image ${index + 1}`}`);
 
       let thumbEl;
       if (item.type === 'video') {
@@ -705,17 +712,27 @@ function renderProductGallery(product) {
       }
       thumb.appendChild(thumbEl);
 
-      thumb.addEventListener('click', () => {
-        thumbsWrap.querySelectorAll('.product-gallery__thumb').forEach(t => t.classList.remove('is-active'));
-        thumb.classList.add('is-active');
-        showMedia(item);
-      });
-
+      thumb.addEventListener('click', () => selectMedia(item));
+      thumbs.push(thumb);
       thumbsWrap.appendChild(thumb);
     });
   }
 
-  showMedia(product.media[0]);
+  const variants = document.getElementById('variant-options');
+  let initialMedia = product.media[0];
+  if (variants && product.media.some(item => item.variant)) {
+    const mediaForVariant = value => product.media.find(item => item.variant === value);
+    const selected = variants.querySelector('button[aria-pressed="true"]');
+    if (selected) initialMedia = mediaForVariant(selected.value) || initialMedia;
+
+    variants.addEventListener('click', event => {
+      const button = event.target.closest('button[value]');
+      if (!button || button.disabled) return;
+      const media = mediaForVariant(button.value);
+      if (media) selectMedia(media);
+    });
+  }
+  selectMedia(initialMedia);
 }
 
 /* ---------- Contact form (mailto, no backend) ---------- */

@@ -409,6 +409,7 @@ cancelButton.addEventListener("click", () => withCheckoutLock("cancel"));
     const button = document.createElement("button");
     button.type = "button";
     button.textContent = option;
+    button.value = option;
     button.disabled = sizes.length ? !sizes.includes(option) : index !== 0;
     button.setAttribute("aria-pressed", String(!button.disabled && (sizes.length ? option === size : index === 0)));
     button.addEventListener("click", () => {

@@ -165,8 +165,8 @@ const GUNSTAR_PRODUCTS = [
     variantLabel: "Colour",
     category: "Business man",
     media: [
-      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/popstar_black_red.png" },
-      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/popstar_white_red.png" },
+      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/popstar_black_red.png", variant: "BLACK" },
+      { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/popstar_white_red.png", variant: "WHITE" },
       { type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/IMG_5675.jpg" }
     ],
     description: "Available in white and black.",
