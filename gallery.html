@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Gallery — GUNSTAR</title>
-  <meta name="description" content="Explore the GUNSTAR poster collection in a 3D gallery. Browse the artworks, paper specifications and original wallpapers.">
+  <meta name="description" content="Explore the GUNSTAR poster collection in a 3D gallery. Shop A3 portrait prints on 200 g/m² paper.">
   <link rel="icon" type="image/png" href="https://res.cloudinary.com/iptm1k0x/image/upload/demon_face.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono&family=IBM+Plex+Mono:wght@500;600&family=Newsreader:ital@0;1&family=Oswald:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/gallery.css?v=posters">
+  <link rel="stylesheet" href="assets/css/gallery.css?v=a3-cart">
 </head>
 <body class="gallery-page">
   <header class="header">
@@ -74,16 +74,18 @@
         <p class="gallery-detail-kicker">GUNSTAR VISUAL ARCHIVE</p>
         <h2 id="gallery-detail-title"></h2>
         <p class="gallery-poster-specs" id="gallery-poster-specs"></p>
-        <p id="gallery-dimensions" hidden></p>
-        <a class="gallery-download" id="gallery-download" download hidden>Download wallpaper <span aria-hidden="true">↓</span></a>
-        <a class="gallery-download" id="gallery-shop" hidden>View in Shop <span aria-hidden="true">↗</span></a>
+        <p id="gallery-dimensions"></p>
+        <label class="gallery-colour" id="gallery-colour-field" hidden>Colour
+          <select id="gallery-colour"></select>
+        </label>
+        <button class="gallery-purchase" id="gallery-add-to-cart" type="button">Add to cart <span aria-hidden="true">+</span></button>
         <button class="gallery-underlined" type="button" id="gallery-locate" hidden>View in room <span aria-hidden="true">↗</span></button>
       </div>
     </div>
   </dialog>
-  <script defer src="assets/js/products-data.js?v=posters"></script>
-  <script defer src="assets/js/cart.js?v=gallery1"></script>
+  <script defer src="assets/js/products-data.js?v=a3-cart"></script>
+  <script defer src="assets/js/cart.js?v=a3-cart"></script>
   <script defer src="assets/js/script.js"></script>
-  <script type="module" src="assets/js/gallery.js?v=posters"></script>
+  <script type="module" src="assets/js/gallery.js?v=a3-cart"></script>
 </body>
 </html>

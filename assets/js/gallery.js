@@ -3,47 +3,34 @@ import { createRoom } from './gallery-room.js';
 const threeURL = 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
 const mediaRoot = 'https://res.cloudinary.com/iptm1k0x/image/upload/';
 const previewRoot = mediaRoot + 'c_limit,w_900,h_1000,q_auto/';
-const posterPrice = 990;
-const paperWeight = 200;
 const euro = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' });
 
 if (typeof GUNSTAR_PRODUCTS === 'undefined' && document.readyState !== 'complete') {
   await new Promise(resolve => window.addEventListener('load', resolve, { once: true }));
 }
 
-const shopPoster = typeof GUNSTAR_PRODUCTS === 'undefined'
-  ? undefined
-  : GUNSTAR_PRODUCTS.find(product => product.id === '07');
-const artworks = [
-  ['GUNSTAR_N001', 1559, 1949, 'affiche_purple_dirt.png'],
-  ['GUNSTAR_N002', 1559, 1949, 'Affiche_brun_dirt.png'],
-  ['GUNSTAR_N003', 1772, 2480, 'stop_talkingv2.png'],
-  ['GUNSTAR_N004', 1772, 2480, 'stoptalkingdraw.png'],
-  ['GUNSTAR_N005', 1772, 2480, 'stop_talking.png'],
-  ['GUNSTAR_N006', 6000, 4000, 'gunsatr_december.png']
-].map(([name, width, height, file]) => ({
-  name, width, height,
-  preview: previewRoot + file,
-  price: posterPrice,
-  paperWeight,
-  download: mediaRoot + 'fl_attachment:' + name + '/' + file
-}));
-
-if (shopPoster) {
-  const cover = shopPoster.media.find(item => item.variant === 'WHITE');
-  artworks.push({
-    name: shopPoster.name,
-    width: 4724,
-    height: 5906,
-    preview: cover.src.replace(mediaRoot, previewRoot),
-    price: shopPoster.price,
-    paperWeight: shopPoster.paperWeight,
-    shopUrl: 'product.html?item=' + shopPoster.id
-  });
+function preview(src) {
+  return src.replace(mediaRoot, previewRoot);
 }
 
+const artworks = typeof GUNSTAR_PRODUCTS === 'undefined' ? [] : GUNSTAR_PRODUCTS
+  .filter(product => product.posterArtwork)
+  .sort((a, b) => Number(Boolean(a.sizes?.length)) - Number(Boolean(b.sizes?.length)))
+  .map(product => {
+    const cover = product.media.find(item => item.variant === product.sizes?.[0]) ?? product.media[0];
+    return {
+      ...product.posterArtwork,
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      variants: product.sizes ?? [],
+      media: product.media,
+      preview: preview(cover.src)
+    };
+  });
+
 function posterSpecs(artwork) {
-  return euro.format(artwork.price / 100) + ' · ' + artwork.paperWeight + ' g/m² paper';
+  return euro.format(artwork.price / 100) + ' · ' + GUNSTAR_POSTER_PAPER_WEIGHT + ' g/m² paper';
 }
 
 const get = id => document.getElementById('gallery-' + id);
@@ -55,6 +42,8 @@ const roomView = get('room-view');
 const listView = get('list-view');
 const detail = get('detail');
 const image = get('artwork');
+const colour = get('colour');
+const addToCart = get('add-to-cart');
 const locate = get('locate');
 const look = get('look');
 const open = get('open');
@@ -156,22 +145,10 @@ function openArtwork(index, trigger, origin) {
   image.height = artwork.height;
   get('detail-title').textContent = artwork.name;
   get('poster-specs').textContent = posterSpecs(artwork);
-  get('dimensions').hidden = !artwork.download;
-  get('dimensions').textContent = artwork.download
-    ? 'Wallpaper for personal use · ' + artwork.width + ' × ' + artwork.height + ' px'
-    : '';
-  const download = get('download');
-  download.hidden = !artwork.download;
-  if (artwork.download) {
-    download.href = artwork.download;
-    download.download = artwork.name + '.png';
-  } else {
-    download.removeAttribute('href');
-  }
-  const shop = get('shop');
-  shop.hidden = !artwork.shopUrl;
-  if (artwork.shopUrl) shop.href = artwork.shopUrl;
-  else shop.removeAttribute('href');
+  get('dimensions').textContent = GUNSTAR_POSTER_FORMAT;
+  get('colour-field').hidden = !artwork.variants.length;
+  colour.replaceChildren(...artwork.variants.map(variant => new Option(variant, variant)));
+  addToCart.disabled = !window.GunstarCart;
   locate.hidden = !room;
   detail.scrollTop = 0;
   detail.showModal();
@@ -191,6 +168,17 @@ function openArtwork(index, trigger, origin) {
 function openFocusedArtwork() {
   if (selectedPrint) openArtwork(selectedPrint.index, open, room.bounds(selectedPrint));
 }
+
+colour.addEventListener('change', () => {
+  const artwork = artworks[lastArtwork];
+  const variant = artwork.media.find(item => item.variant === colour.value);
+  if (variant) image.src = preview(variant.src);
+});
+
+addToCart.addEventListener('click', () => {
+  const artwork = artworks[lastArtwork];
+  if (artwork) window.GunstarCart?.add(artwork.id, colour.value || null);
+});
 
 get('collection').addEventListener('click', showCollection);
 get('step-back').addEventListener('click', stepBack);
@@ -227,7 +215,14 @@ function useFallback() {
   setView(false);
 }
 
+if (!artworks.length) {
+  const message = document.createElement('p');
+  message.textContent = 'The poster collection is currently unavailable.';
+  grid.append(message);
+}
+
 try {
+  if (!artworks.length) throw new Error('Poster data unavailable.');
   const THREE = await import(/* @vite-ignore */ threeURL);
   room = createRoom(THREE, stage, artworks, print => {
     if (selectedPrint === print) openFocusedArtwork();

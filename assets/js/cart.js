@@ -264,6 +264,22 @@ cancelButton.addEventListener("click", () => withCheckoutLock("cancel"));
     }
   });
 
+  function addItemToCart(id, size = null, quantity = 1) {
+    const product = findProduct(id);
+    if (!product?.purchasable || checkoutPending || !Number.isSafeInteger(quantity) || quantity < 1) return;
+    const sizes = getSizes(product);
+    if (sizes.length ? !sizes.includes(size) : size !== null) return;
+
+    const existing = cart.find(item => item.id === id && item.size === size);
+    if (existing) existing.quantity = Math.min(99, existing.quantity + quantity);
+    else cart.push({ id, size, quantity: Math.min(99, quantity) });
+
+    persist();
+    openCart();
+  }
+
+  window.GunstarCart = { add: addItemToCart };
+
   function persist() {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
@@ -436,26 +452,7 @@ cancelButton.addEventListener("click", () => withCheckoutLock("cancel"));
   addButton.disabled = !available;
   label.textContent = available ? "BUY THIS ITEM" : "NOT AVAILABLE";
 
-  addButton.addEventListener("click", () => {
-    if (!available || checkoutPending) return;
-
-    const existing = cart.find(item =>
-      item.id === product.id && item.size === size
-    );
-
-    if (existing) {
-      existing.quantity = Math.min(99, existing.quantity + quantity);
-    } else {
-      cart.push({
-        id: product.id,
-        size,
-        quantity
-      });
-    }
-
-    persist();
-    openCart();
-  });
+  addButton.addEventListener("click", () => addItemToCart(product?.id, size, quantity));
 }
 
   window.addEventListener("storage", event => {

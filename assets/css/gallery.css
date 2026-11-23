@@ -192,12 +192,13 @@ button { font: inherit; cursor: pointer; }
 .gallery-detail-image img { display: block; width: 100%; height: auto; max-height: 68vh; object-fit: contain; }
 .gallery-detail h2 { font-size: clamp(32px, 4.6vw, 62px); margin-bottom: 16px; overflow-wrap: anywhere; }
 .gallery-poster-specs { margin: 0 0 24px; color: var(--ink); }
-.gallery-download {
+.gallery-purchase {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 320px;
+  width: min(100%, 320px);
   min-height: 46px;
+  border: 0;
   gap: 12px;
   margin-bottom: 16px;
   padding: 10px 15px;
@@ -207,7 +208,24 @@ button { font: inherit; cursor: pointer; }
   font: 12px var(--mono);
   text-transform: uppercase;
 }
-.gallery-download:hover, #gallery-open:hover { background: #dddad4; }
+.gallery-purchase:disabled { opacity: .55; cursor: not-allowed; }
+.gallery-colour {
+  display: grid;
+  gap: 8px;
+  max-width: 320px;
+  margin: 16px 0;
+  font: 12px var(--mono);
+  text-transform: uppercase;
+}
+.gallery-colour select {
+  min-height: 42px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+}
+.gallery-purchase:hover:not(:disabled), #gallery-open:hover { background: #dddad4; }
 
 @media (max-width: 700px), (max-height: 520px) {
   .gallery-caption { bottom: 80px; max-width: calc(100% - 32px); gap: 7px; }

@@ -24,6 +24,14 @@
 // reopen a new { ... } outside it — that breaks the whole file.
 // =========================================================
 
+const GUNSTAR_POSTER_PRICE = 990;
+const GUNSTAR_POSTER_PAPER_WEIGHT = 200;
+const GUNSTAR_POSTER_FORMAT = "A3 portrait · 297 × 420 mm";
+const GUNSTAR_POSTER_DETAILS = [
+  ["Format", GUNSTAR_POSTER_FORMAT],
+  ["Paper", `${GUNSTAR_POSTER_PAPER_WEIGHT} g/m²`]
+];
+
 const GUNSTAR_PRODUCTS = [
   {
     id: "01",
@@ -160,8 +168,8 @@ const GUNSTAR_PRODUCTS = [
     seoTitle: "Pop Star Wallpaper | GUNSTAR",
     seoDescription: "Shop the GUNSTAR Pop Star Wallpaper in white or black for €9.90, printed on 200 g/m² paper.",
     purchasable: true,
-    price: 990,
-    paperWeight: 200,
+    price: GUNSTAR_POSTER_PRICE,
+    posterArtwork: { width: 4724, height: 5906 },
     sizes: ["WHITE", "BLACK"],
     variantLabel: "Colour",
     category: "Business man",
@@ -173,7 +181,7 @@ const GUNSTAR_PRODUCTS = [
     description: "Available in white and black.",
     details: [
       ["Category", "Business man"],
-      ["Paper", "200 g/m²"],
+      ...GUNSTAR_POSTER_DETAILS,
     ],
     delivery: "Contact us at contact@gunstar.world for more information.",
     terms: "By submitting an enquiry you agree to be contacted by GUNSTAR about this piece. Usage rights are discussed and confirmed individually."
@@ -243,5 +251,25 @@ const GUNSTAR_PRODUCTS = [
     ],
     delivery: "Contact us at contact@gunstar.world for more information.",
     terms: "By submitting an enquiry you agree to be contacted by GUNSTAR about this piece. Usage rights are discussed and confirmed individually."
-  } 
+  },
+  ...[
+    ["11", "001", 1559, 1949, "affiche_purple_dirt.png"],
+    ["12", "002", 1559, 1949, "Affiche_brun_dirt.png"],
+    ["13", "003", 1772, 2480, "stop_talkingv2.png"],
+    ["14", "004", 1772, 2480, "stoptalkingdraw.png"],
+    ["15", "005", 1772, 2480, "stop_talking.png"],
+    ["16", "006", 6000, 4000, "gunsatr_december.png"]
+  ].map(([id, number, width, height, file]) => ({
+    id,
+    tag: `N°${number}`,
+    name: `GUNSTAR_N${number}`,
+    category: "Visual Archive",
+    purchasable: true,
+    price: GUNSTAR_POSTER_PRICE,
+    posterArtwork: { width, height },
+    media: [{ type: "photo", src: "https://res.cloudinary.com/iptm1k0x/image/upload/" + file }],
+    description: "GUNSTAR Visual Archive poster.",
+    details: GUNSTAR_POSTER_DETAILS,
+    delivery: "Shipping calculated at checkout."
+  }))
 ];
