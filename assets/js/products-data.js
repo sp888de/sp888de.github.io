@@ -256,7 +256,7 @@ const GUNSTAR_PRODUCTS = [
     ["11", "001", 1559, 1949, "affiche_purple_dirt.png"],
     ["12", "002", 1559, 1949, "Affiche_brun_dirt.png"],
     ["13", "003", 1772, 2480, "stop_talkingv2.png"],
-    ["14", "004", 1772, 2480, "stoptalkingdraw.png"],
+    ["14", "004", 1772, 2480, "me_draw.png"],
     ["15", "005", 1772, 2480, "stop_talking.png"],
     ["16", "006", 6000, 4000, "gunsatr_december.png"]
   ].map(([id, number, width, height, file]) => ({
