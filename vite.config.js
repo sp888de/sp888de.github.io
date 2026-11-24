@@ -6,11 +6,12 @@ export default defineConfig({
     rollupOptions: {
       input: {
         home: 'index.html',
-        archive: 'galerie.html',
+        shop: 'Shop.html',
+        legacyShop: 'galerie.html',
         product: 'product.html',
         about: 'a-propos.html',
         contact: 'contact.html',
-        gallery: 'gallery.html',
+        gallery: 'Gallery.html',
         wallpaper: 'wallpaper.html',
         checkout: 'checkout.html',
         checkoutReturn: 'checkout-return.html',

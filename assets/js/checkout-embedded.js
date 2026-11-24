@@ -103,7 +103,7 @@
       if (!response.ok) throw new Error(result.error || 'Unable to close checkout.');
       if (result.status === 'released') {
         localStorage.removeItem(PENDING_KEY);
-        location.assign('/galerie.html');
+        location.assign('/Shop.html');
         return;
       }
       if (result.status === 'paid' && sessionId) {

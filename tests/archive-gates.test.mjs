@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { JSDOM } from 'jsdom';
 
-const html = await readFile(new URL('../galerie.html', import.meta.url), 'utf8');
+const html = await readFile(new URL('../Shop.html', import.meta.url), 'utf8');
 const dom = new JSDOM(html, { runScripts: 'dangerously' });
 const { document } = dom.window;
 const filters = Array.from(document.querySelectorAll('[data-filter]'));
