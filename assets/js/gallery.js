@@ -16,17 +16,22 @@ function preview(src) {
 const artworks = typeof GUNSTAR_PRODUCTS === 'undefined' ? [] : GUNSTAR_PRODUCTS
   .filter(product => product.posterArtwork)
   .sort((a, b) => Number(Boolean(a.sizes?.length)) - Number(Boolean(b.sizes?.length)))
-  .map(product => {
-    const cover = product.media.find(item => item.variant === product.sizes?.[0]) ?? product.media[0];
-    return {
-      ...product.posterArtwork,
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      variants: product.sizes ?? [],
-      media: product.media,
-      preview: preview(cover.src)
-    };
+  .flatMap(product => {
+    const covers = product.sizes?.length
+      ? product.media.filter(item => product.sizes.includes(item.variant))
+      : [product.media[0]];
+    return covers.map(cover => {
+      const variant = cover.variant ?? null;
+      const colour = variant && (variant[0] + variant.slice(1).toLowerCase());
+      return {
+        ...product.posterArtwork,
+        id: product.id,
+        name: colour ? product.name + ' — ' + colour : product.name,
+        price: product.price,
+        variant,
+        preview: preview(cover.src)
+      };
+    });
   });
 
 function posterSpecs(artwork) {
@@ -42,7 +47,6 @@ const roomView = get('room-view');
 const listView = get('list-view');
 const detail = get('detail');
 const image = get('artwork');
-const colour = get('colour');
 const addToCart = get('add-to-cart');
 const locate = get('locate');
 const look = get('look');
@@ -146,8 +150,6 @@ function openArtwork(index, trigger, origin) {
   get('detail-title').textContent = artwork.name;
   get('poster-specs').textContent = posterSpecs(artwork);
   get('dimensions').textContent = GUNSTAR_POSTER_FORMAT;
-  get('colour-field').hidden = !artwork.variants.length;
-  colour.replaceChildren(...artwork.variants.map(variant => new Option(variant, variant)));
   addToCart.disabled = !window.GunstarCart;
   locate.hidden = !room;
   detail.scrollTop = 0;
@@ -169,15 +171,9 @@ function openFocusedArtwork() {
   if (selectedPrint) openArtwork(selectedPrint.index, open, room.bounds(selectedPrint));
 }
 
-colour.addEventListener('change', () => {
-  const artwork = artworks[lastArtwork];
-  const variant = artwork.media.find(item => item.variant === colour.value);
-  if (variant) image.src = preview(variant.src);
-});
-
 addToCart.addEventListener('click', () => {
   const artwork = artworks[lastArtwork];
-  if (artwork) window.GunstarCart?.add(artwork.id, colour.value || null);
+  if (artwork) window.GunstarCart?.add(artwork.id, artwork.variant);
 });
 
 get('collection').addEventListener('click', showCollection);
